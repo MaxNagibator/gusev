@@ -24,7 +24,7 @@ namespace Hexapod
         public Position FinishPosition { get; set; }
         public Track Track { get; set; }
 
-        public void CalculateTrack()
+        private void CalculateTrack()
         {
             var positions = new List<Position>();
             var dX = (FinishPosition.X0 - StartPosition.X0)/Track.StepCount;
@@ -137,7 +137,7 @@ namespace Hexapod
                     };
         }
 
-        public void CreateHexapod(MainForm mainForm)
+        public void SetParameters(MainForm mainForm)
         {
             PlatformRadius = Convert.ToInt32(mainForm.uiPlatformRadiusTextBox.Text);
             PlatformHeight = Convert.ToInt32(mainForm.uiPlatformHeightTextBox.Text);
@@ -148,7 +148,6 @@ namespace Hexapod
             RailsRadius = Convert.ToInt32(mainForm.uiRailsRadiusTextBox.Text);
             RailsMinLength = Convert.ToInt32(mainForm.uiRailsMinLengthTextBox.Text);
             RailsMaxLength = Convert.ToInt32(mainForm.uiRailsMaxLengthTextBox.Text);
-
             StartPosition = new Position
                                 {
                                     X0 = Convert.ToInt32(mainForm.uiStartPositionX0TextBox.Text),
@@ -173,6 +172,7 @@ namespace Hexapod
                             StepCount = Convert.ToInt32(mainForm.uiTrackStepCountTextBox.Text)
                         };
             CalculatePoints();
+            CalculateTrack();
         }
     }
 }

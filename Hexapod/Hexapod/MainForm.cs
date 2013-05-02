@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Tao.OpenGl;
 using Tao.FreeGlut;
@@ -7,7 +8,7 @@ namespace Hexapod
 {
     public partial class MainForm : Form
     {
-        private Hexapod _hexapod;
+        private Hexapod _hexapod = new Hexapod();
         private int _sceneRotateX;
         private int _sceneRotateY;
         private int _sceneRotateZ;
@@ -18,8 +19,7 @@ namespace Hexapod
         {
             InitializeComponent();
             InitializeOpenGl();
-            _hexapod = CreateHexapod();
-            _hexapod.CalculateTrack();
+            _hexapod.SetParameters(this);
             UpdateTrackInformation();
         }
 
@@ -30,83 +30,40 @@ namespace Hexapod
             Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
         }
 
-        private Hexapod CreateHexapod()
-        {
-            var h = new Hexapod
-                        {
-                            PlatformRadius = Convert.ToInt32(uiPlatformRadiusTextBox.Text),
-                            PlatformHeight = Convert.ToInt32(uiPlatformHeightTextBox.Text),
-                            CardanAngle = Convert.ToInt32(uiCardanAngleTextBox.Text),
-                            CardanHeight = Convert.ToInt32(uiCardanHeightTextBox.Text),
-                            CardanRadius = Convert.ToInt32(uiCardanRadiusTextBox.Text),
-                            CardanLocationRadius = Convert.ToInt32(uiCardanToCenterLenghtTextBox.Text),
-                            RailsRadius = Convert.ToInt32(uiRailsRadiusTextBox.Text),
-                            RailsMinLength = Convert.ToInt32(uiRailsMinLengthTextBox.Text),
-                            RailsMaxLength = Convert.ToInt32(uiRailsMaxLengthTextBox.Text),
-                            StartPosition = new Position
-                                                {
-                                                    X0 = Convert.ToInt32(uiStartPositionX0TextBox.Text),
-                                                    Y0 = Convert.ToInt32(uiStartPositionY0TextBox.Text),
-                                                    Z0 = Convert.ToInt32(uiStartPositionZ0TextBox.Text),
-                                                    Fi = Convert.ToInt32(uiStartPositionFiTextBox.Text),
-                                                    Theta = Convert.ToInt32(uiStartPositionThetaTextBox.Text),
-                                                    Psi = Convert.ToInt32(uiFinishPositionPsiTextBox.Text),
-                                                },
-                            FinishPosition = new Position
-                                                 {
-                                                     X0 = Convert.ToInt32(uiFinishPositionX0TextBox.Text),
-                                                     Y0 = Convert.ToInt32(uiFinishPositionY0TextBox.Text),
-                                                     Z0 = Convert.ToInt32(uiFinishPositionZ0TextBox.Text),
-                                                     Fi = Convert.ToInt32(uiFinishPositionFiTextBox.Text),
-                                                     Theta = Convert.ToInt32(uiFinishPositionThetaTextBox.Text),
-                                                     Psi = Convert.ToInt32(uiFinishPositionPsiTextBox.Text)
-                                                 },
-                            Track = new Track
-                                        {
-                                            Time = Convert.ToInt32(uiTrackTimeTextBox.Text),
-                                            StepCount = Convert.ToInt32(uiTrackStepCountTextBox.Text)
-                                        }
-                        };
-            h.CalculatePoints();
-            return h;
-        }
-
         private void uiParameters_TextChanged(object sender, EventArgs e)
         {
-            _hexapod = CreateHexapod();
-            _hexapod.CalculateTrack();
+            _hexapod.SetParameters(this);
             UpdateTrackInformation();
         }
 
         private void UpdateTrackInformation()
         {
-            textBox1.Text = "";
             uiTrackDataGridView.Rows.Clear();
-            foreach (Position position in _hexapod.Track.Positions)
+            foreach (var position in _hexapod.Track.Positions.Select(
+                position => new object[]
+                                {
+                                    position.Time, position.X0, position.Y0, position.Z0,
+                                    position.Fi, position.Theta, position.Psi,
+                                    position.Rail1Length, position.Rail2Length, position.Rail3Length,
+                                    position.Rail4Length, position.Rail5Length, position.Rail6Length
+                                }))
             {
-                var r = new object[]
-                            {
-                                position.Time, position.X0, position.Y0, position.Z0,
-                                position.Fi, position.Theta, position.Psi,
-                                position.Rail1Length, position.Rail2Length, position.Rail3Length,
-                                position.Rail4Length, position.Rail5Length, position.Rail6Length
-                            };
-                uiTrackDataGridView.Rows.Add(r);
+                uiTrackDataGridView.Rows.Add(position);
             }
             _time = 1;
-            uiUpdateSceneTimer.Stop();
             uiUpdateSceneTimer.Start();
         }
 
         private void DrawHexapod(object sender, EventArgs e)
         {
-
-            DrawHexapod(_hexapod.Track.Positions[_time]);
-            _time++;
-            if (_time >= _hexapod.Track.Positions.Count)
+            if (_time < _hexapod.Track.Positions.Count - 1)
+            {
+                _time++;
+                DrawHexapod(_hexapod.Track.Positions[_time]);
+            }
+            else
             {
                 uiUpdateSceneTimer.Stop();
-                _time--;
             }
         }
 
@@ -119,33 +76,42 @@ namespace Hexapod
             // настройка проекции 
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
-            Glu.gluPerspective(45, (float) uiSimpleOpenGlControl.Width/(float) uiSimpleOpenGlControl.Height, 0.1, 800);
+            Glu.gluPerspective(45, (float) uiSimpleOpenGlControl.Width/uiSimpleOpenGlControl.Height, 0.1, 800);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glLoadIdentity();
             // настройка параметров OpenGL для визуализации 
             Gl.glEnable(Gl.GL_DEPTH_TEST);
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
             Gl.glLoadIdentity();
-            Gl.glColor3f(1.0f, 0, 0);
             Gl.glPushMatrix();
-            Gl.glTranslated(10, 10, -200);
-            Gl.glRotated(_sceneRotateX, 1, 0, 0);
-            Gl.glRotated(_sceneRotateY, 0, 1, 0);
-            Gl.glRotated(_sceneRotateZ, 0, 0, 1);
-            Gl.glScalef(0.3f, 0.3f, 0.3f);
-            DrawAxes();
-            DrawBasePlatform();
-            DrawRails(position);
-            DrawPlatform(position);
+            DrawAllComponents(position);
             Gl.glPopMatrix();
             Gl.glFlush();
             uiSimpleOpenGlControl.Invalidate();
         }
 
+        private void DrawAllComponents(Position position)
+        {
+            SetSceneParameters();
+            DrawAxes();
+            DrawBasePlatform();
+            DrawRails(position);
+            DrawPlatform(position);
+        }
+
+        private void SetSceneParameters()
+        {
+            Gl.glTranslated(0, 0, -200);
+            Gl.glRotated(_sceneRotateX, 1, 0, 0);
+            Gl.glRotated(_sceneRotateY, 0, 1, 0);
+            Gl.glRotated(_sceneRotateZ, 0, 0, 1);
+            Gl.glScalef(0.3f, 0.3f, 0.3f);
+        }
+
         private void DrawAxes()
         {
             Gl.glBegin(Gl.GL_LINES);
-            Gl.glColor3f(0.0f, 0.0f, 0.0f); //xyz
+            Gl.glColor3f(0.0f, 0.0f, 0.0f);
             Gl.glVertex3f(0.0f, 0.0f, 0.0f);
             Gl.glVertex3f(100.0f, 0.0f, 0.0f);
             Gl.glVertex3f(0.0f, 0.0f, 0.0f);
@@ -198,13 +164,6 @@ namespace Hexapod
                 Gl.glVertex3f(x, y, z + 10);
             }
             Gl.glEnd();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            _hexapod = CreateHexapod();
-            _hexapod.CalculateTrack();
-            UpdateTrackInformation();
         }
 
         private void uiShowRotateXDownButton_Click(object sender, EventArgs e)

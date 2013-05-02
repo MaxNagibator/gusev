@@ -122,9 +122,7 @@
             this.uiFinishPositionY0TextBox = new System.Windows.Forms.TextBox();
             this.uiFinishPositionX0Label = new System.Windows.Forms.Label();
             this.uiFinishPositionX0TextBox = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.uiInformateionLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.uiShowRotateXDownButton = new System.Windows.Forms.Button();
             this.uiShowRotateXUpButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -390,6 +388,7 @@
             this.uiTrackTimeTextBox.Size = new System.Drawing.Size(102, 20);
             this.uiTrackTimeTextBox.TabIndex = 21;
             this.uiTrackTimeTextBox.Text = "5";
+            this.uiTrackTimeTextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
             // uiTrackStepCountTextBox
             // 
@@ -398,9 +397,11 @@
             this.uiTrackStepCountTextBox.Size = new System.Drawing.Size(102, 20);
             this.uiTrackStepCountTextBox.TabIndex = 10;
             this.uiTrackStepCountTextBox.Text = "400";
+            this.uiTrackStepCountTextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
             // uiTrackAxeComboBox
             // 
+            this.uiTrackAxeComboBox.Enabled = false;
             this.uiTrackAxeComboBox.FormattingEnabled = true;
             this.uiTrackAxeComboBox.Items.AddRange(new object[] {
             "X0",
@@ -417,6 +418,7 @@
             // uiTrackByTurnRadioButton
             // 
             this.uiTrackByTurnRadioButton.AutoSize = true;
+            this.uiTrackByTurnRadioButton.Enabled = false;
             this.uiTrackByTurnRadioButton.Location = new System.Drawing.Point(9, 42);
             this.uiTrackByTurnRadioButton.Name = "uiTrackByTurnRadioButton";
             this.uiTrackByTurnRadioButton.Size = new System.Drawing.Size(81, 17);
@@ -428,6 +430,7 @@
             // 
             this.uiTrackSimultaneouslyRadioButton.AutoSize = true;
             this.uiTrackSimultaneouslyRadioButton.Checked = true;
+            this.uiTrackSimultaneouslyRadioButton.Enabled = false;
             this.uiTrackSimultaneouslyRadioButton.Location = new System.Drawing.Point(9, 19);
             this.uiTrackSimultaneouslyRadioButton.Name = "uiTrackSimultaneouslyRadioButton";
             this.uiTrackSimultaneouslyRadioButton.Size = new System.Drawing.Size(99, 17);
@@ -457,9 +460,9 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.uiSimpleOpenGlControl);
-            this.groupBox4.Location = new System.Drawing.Point(690, 12);
+            this.groupBox4.Location = new System.Drawing.Point(471, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(302, 264);
+            this.groupBox4.Size = new System.Drawing.Size(521, 396);
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -474,9 +477,9 @@
             this.uiSimpleOpenGlControl.BackColor = System.Drawing.Color.Black;
             this.uiSimpleOpenGlControl.ColorBits = ((byte)(32));
             this.uiSimpleOpenGlControl.DepthBits = ((byte)(16));
-            this.uiSimpleOpenGlControl.Location = new System.Drawing.Point(6, 12);
+            this.uiSimpleOpenGlControl.Location = new System.Drawing.Point(6, 10);
             this.uiSimpleOpenGlControl.Name = "uiSimpleOpenGlControl";
-            this.uiSimpleOpenGlControl.Size = new System.Drawing.Size(290, 242);
+            this.uiSimpleOpenGlControl.Size = new System.Drawing.Size(509, 380);
             this.uiSimpleOpenGlControl.StencilBits = ((byte)(0));
             this.uiSimpleOpenGlControl.TabIndex = 0;
             // 
@@ -489,7 +492,7 @@
             this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Controls.Add(this.trackBar1);
             this.groupBox5.Controls.Add(this.uiTrackDataGridView);
-            this.groupBox5.Location = new System.Drawing.Point(12, 286);
+            this.groupBox5.Location = new System.Drawing.Point(12, 414);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(834, 176);
             this.groupBox5.TabIndex = 20;
@@ -1072,16 +1075,6 @@
             this.uiFinishPositionX0TextBox.Text = "30";
             this.uiFinishPositionX0TextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(471, 12);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 31;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // uiInformateionLabel
             // 
             this.uiInformateionLabel.AutoSize = true;
@@ -1090,15 +1083,6 @@
             this.uiInformateionLabel.Size = new System.Drawing.Size(35, 13);
             this.uiInformateionLabel.TabIndex = 32;
             this.uiInformateionLabel.Text = "label2";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(296, 468);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(257, 128);
-            this.textBox1.TabIndex = 33;
             // 
             // uiShowRotateXDownButton
             // 
@@ -1206,9 +1190,7 @@
             this.Controls.Add(this.uiShowRotateYDownButton);
             this.Controls.Add(this.uiShowRotateXUpButton);
             this.Controls.Add(this.uiShowRotateXDownButton);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.uiInformateionLabel);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.uiFinishPostionGroupBox);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -1325,11 +1307,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn uiCardan4DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiCardan5DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiCardan6DataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button6;
         public System.Windows.Forms.TextBox uiTrackTimeTextBox;
         public System.Windows.Forms.TextBox uiTrackStepCountTextBox;
         private System.Windows.Forms.Label uiInformateionLabel;
-        private System.Windows.Forms.TextBox textBox1;
         private Tao.Platform.Windows.SimpleOpenGlControl uiSimpleOpenGlControl;
         private System.Windows.Forms.Button uiShowRotateXDownButton;
         private System.Windows.Forms.Button uiShowRotateXUpButton;
