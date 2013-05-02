@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Threading;
-using System.Timers;
 using System.Windows.Forms;
 using Tao.OpenGl;
 using Tao.FreeGlut;
@@ -12,24 +8,26 @@ namespace Hexapod
     public partial class MainForm : Form
     {
         private Hexapod _hexapod;
-        private int _sceneRotateX = 0;
-        private int _sceneRotateY = 0;
-        private int _sceneRotateZ = 0;
+        private int _sceneRotateX;
+        private int _sceneRotateY;
+        private int _sceneRotateZ;
         private int _rotateAngle= 10;
         private int _time;
-        private System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
 
         public MainForm()
         {
             InitializeComponent();
-            uiSimpleOpenGlControl.InitializeContexts();
-            Glut.glutInit();
-            Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
+            InitializeOpenGl();
             _hexapod = CreateHexapod();
             _hexapod.CalculateTrack();
             UpdateTrackInformation();
-            t.Tick += DrawHexapod;
-            t.Interval = 1;
+        }
+
+        private void InitializeOpenGl()
+        {
+            uiSimpleOpenGlControl.InitializeContexts();
+            Glut.glutInit();
+            Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
         }
 
         private Hexapod CreateHexapod()
@@ -96,8 +94,8 @@ namespace Hexapod
                 uiTrackDataGridView.Rows.Add(r);
             }
             _time = 1;
-            t.Stop();
-            t.Start();
+            uiUpdateSceneTimer.Stop();
+            uiUpdateSceneTimer.Start();
         }
 
         private void DrawHexapod(object sender, EventArgs e)
@@ -107,7 +105,7 @@ namespace Hexapod
             _time++;
             if (_time >= _hexapod.Track.Positions.Count)
             {
-                t.Stop();
+                uiUpdateSceneTimer.Stop();
                 _time--;
             }
         }
