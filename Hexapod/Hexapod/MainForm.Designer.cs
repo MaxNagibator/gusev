@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiHexapodGroupBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.uiСardanLabel = new System.Windows.Forms.Label();
@@ -70,20 +68,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.uiTrackDataGridView = new System.Windows.Forms.DataGridView();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.X0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Y0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Z0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Theta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Psi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cardan1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cardan2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cardan3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cardan4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cardan5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cardan6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiStartPositionX0TextBox = new System.Windows.Forms.TextBox();
             this.uiStartPositionX0Label = new System.Windows.Forms.Label();
             this.uiStartPositionY0TextBox = new System.Windows.Forms.TextBox();
@@ -133,14 +117,28 @@
             this.uiShowRotateZDownButton = new System.Windows.Forms.Button();
             this.uiShowRotateZUpButton = new System.Windows.Forms.Button();
             this.uiUpdateSceneTimer = new System.Windows.Forms.Timer(this.components);
+            this.uiTrackDataGridView = new System.Windows.Forms.DataGridView();
+            this.uiTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiX0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiY0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiZ0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiFiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiThetaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiPsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiHexapodGroupBox.SuspendLayout();
             this.uiSelectTrackGroupBox.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiTrackDataGridView)).BeginInit();
             this.uiStartPositionGroupBox.SuspendLayout();
             this.uiFinishPostionGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiTrackDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // uiHexapodGroupBox
@@ -485,23 +483,23 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.uiTrackDataGridView);
             this.groupBox5.Controls.Add(this.button5);
             this.groupBox5.Controls.Add(this.button4);
             this.groupBox5.Controls.Add(this.button3);
             this.groupBox5.Controls.Add(this.button2);
             this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Controls.Add(this.trackBar1);
-            this.groupBox5.Controls.Add(this.uiTrackDataGridView);
             this.groupBox5.Location = new System.Drawing.Point(12, 414);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(834, 176);
+            this.groupBox5.Size = new System.Drawing.Size(1084, 270);
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(192, 153);
+            this.button5.Location = new System.Drawing.Point(184, 240);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(25, 23);
             this.button5.TabIndex = 3;
@@ -510,7 +508,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(161, 153);
+            this.button4.Location = new System.Drawing.Point(153, 240);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(25, 23);
             this.button4.TabIndex = 3;
@@ -519,7 +517,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(130, 153);
+            this.button3.Location = new System.Drawing.Point(122, 240);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(25, 23);
             this.button3.TabIndex = 3;
@@ -528,7 +526,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(223, 153);
+            this.button2.Location = new System.Drawing.Point(215, 240);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(25, 23);
             this.button2.TabIndex = 3;
@@ -537,7 +535,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(99, 153);
+            this.button1.Location = new System.Drawing.Point(91, 240);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 23);
             this.button1.TabIndex = 2;
@@ -546,156 +544,11 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(8, 117);
+            this.trackBar1.Location = new System.Drawing.Point(0, 204);
             this.trackBar1.Maximum = 508;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(663, 45);
             this.trackBar1.TabIndex = 1;
-            // 
-            // uiTrackDataGridView
-            // 
-            this.uiTrackDataGridView.AllowUserToAddRows = false;
-            this.uiTrackDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.uiTrackDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.uiTrackDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.uiTrackDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.time,
-            this.X0,
-            this.Y0,
-            this.Z0,
-            this.Fi,
-            this.Theta,
-            this.Psi,
-            this.Cardan1,
-            this.Cardan2,
-            this.Cardan3,
-            this.Cardan4,
-            this.Cardan5,
-            this.Cardan6});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.uiTrackDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.uiTrackDataGridView.Location = new System.Drawing.Point(6, 19);
-            this.uiTrackDataGridView.Name = "uiTrackDataGridView";
-            this.uiTrackDataGridView.ReadOnly = true;
-            this.uiTrackDataGridView.Size = new System.Drawing.Size(822, 97);
-            this.uiTrackDataGridView.TabIndex = 0;
-            // 
-            // time
-            // 
-            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.time.HeaderText = "time";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            this.time.Width = 51;
-            // 
-            // X0
-            // 
-            this.X0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.X0.HeaderText = "X0";
-            this.X0.Name = "X0";
-            this.X0.ReadOnly = true;
-            this.X0.Width = 45;
-            // 
-            // Y0
-            // 
-            this.Y0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Y0.HeaderText = "Y0";
-            this.Y0.Name = "Y0";
-            this.Y0.ReadOnly = true;
-            this.Y0.Width = 45;
-            // 
-            // Z0
-            // 
-            this.Z0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Z0.HeaderText = "Z0";
-            this.Z0.Name = "Z0";
-            this.Z0.ReadOnly = true;
-            this.Z0.Width = 45;
-            // 
-            // Fi
-            // 
-            this.Fi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Fi.HeaderText = "Fi";
-            this.Fi.Name = "Fi";
-            this.Fi.ReadOnly = true;
-            this.Fi.Width = 40;
-            // 
-            // Theta
-            // 
-            this.Theta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Theta.HeaderText = "Theta";
-            this.Theta.Name = "Theta";
-            this.Theta.ReadOnly = true;
-            this.Theta.Width = 60;
-            // 
-            // Psi
-            // 
-            this.Psi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Psi.HeaderText = "Psi";
-            this.Psi.Name = "Psi";
-            this.Psi.ReadOnly = true;
-            this.Psi.Width = 46;
-            // 
-            // Cardan1
-            // 
-            this.Cardan1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cardan1.HeaderText = "Cardan1";
-            this.Cardan1.Name = "Cardan1";
-            this.Cardan1.ReadOnly = true;
-            this.Cardan1.Width = 72;
-            // 
-            // Cardan2
-            // 
-            this.Cardan2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cardan2.HeaderText = "Cardan2";
-            this.Cardan2.Name = "Cardan2";
-            this.Cardan2.ReadOnly = true;
-            this.Cardan2.Width = 72;
-            // 
-            // Cardan3
-            // 
-            this.Cardan3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cardan3.HeaderText = "Cardan3";
-            this.Cardan3.Name = "Cardan3";
-            this.Cardan3.ReadOnly = true;
-            this.Cardan3.Width = 72;
-            // 
-            // Cardan4
-            // 
-            this.Cardan4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cardan4.HeaderText = "Cardan4";
-            this.Cardan4.Name = "Cardan4";
-            this.Cardan4.ReadOnly = true;
-            this.Cardan4.Width = 72;
-            // 
-            // Cardan5
-            // 
-            this.Cardan5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cardan5.HeaderText = "Cardan5";
-            this.Cardan5.Name = "Cardan5";
-            this.Cardan5.ReadOnly = true;
-            this.Cardan5.Width = 72;
-            // 
-            // Cardan6
-            // 
-            this.Cardan6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cardan6.HeaderText = "Cardan6";
-            this.Cardan6.Name = "Cardan6";
-            this.Cardan6.ReadOnly = true;
-            this.Cardan6.Width = 72;
             // 
             // uiStartPositionX0TextBox
             // 
@@ -1176,11 +1029,101 @@
             this.uiUpdateSceneTimer.Interval = 1;
             this.uiUpdateSceneTimer.Tick += new System.EventHandler(this.DrawHexapod);
             // 
+            // uiTrackDataGridView
+            // 
+            this.uiTrackDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.uiTrackDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.uiTimeDataGridViewTextBoxColumn,
+            this.uiX0DataGridViewTextBoxColumn,
+            this.uiY0DataGridViewTextBoxColumn,
+            this.uiZ0DataGridViewTextBoxColumn,
+            this.uiFiDataGridViewTextBoxColumn,
+            this.uiThetaDataGridViewTextBoxColumn,
+            this.uiPsiDataGridViewTextBoxColumn,
+            this.uiCardan1DataGridViewTextBoxColumn,
+            this.uiCardan2DataGridViewTextBoxColumn,
+            this.uiCardan3DataGridViewTextBoxColumn,
+            this.uiCardan4DataGridViewTextBoxColumn,
+            this.uiCardan5DataGridViewTextBoxColumn,
+            this.uiCardan6DataGridViewTextBoxColumn});
+            this.uiTrackDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.uiTrackDataGridView.Location = new System.Drawing.Point(3, 16);
+            this.uiTrackDataGridView.Name = "uiTrackDataGridView";
+            this.uiTrackDataGridView.Size = new System.Drawing.Size(1078, 164);
+            this.uiTrackDataGridView.TabIndex = 4;
+            // 
+            // uiTimeDataGridViewTextBoxColumn
+            // 
+            this.uiTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.uiTimeDataGridViewTextBoxColumn.HeaderText = "time";
+            this.uiTimeDataGridViewTextBoxColumn.Name = "uiTimeDataGridViewTextBoxColumn";
+            this.uiTimeDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // uiX0DataGridViewTextBoxColumn
+            // 
+            this.uiX0DataGridViewTextBoxColumn.HeaderText = "X0";
+            this.uiX0DataGridViewTextBoxColumn.Name = "uiX0DataGridViewTextBoxColumn";
+            // 
+            // uiY0DataGridViewTextBoxColumn
+            // 
+            this.uiY0DataGridViewTextBoxColumn.HeaderText = "Y0";
+            this.uiY0DataGridViewTextBoxColumn.Name = "uiY0DataGridViewTextBoxColumn";
+            // 
+            // uiZ0DataGridViewTextBoxColumn
+            // 
+            this.uiZ0DataGridViewTextBoxColumn.HeaderText = "Z0";
+            this.uiZ0DataGridViewTextBoxColumn.Name = "uiZ0DataGridViewTextBoxColumn";
+            // 
+            // uiFiDataGridViewTextBoxColumn
+            // 
+            this.uiFiDataGridViewTextBoxColumn.HeaderText = "Fi";
+            this.uiFiDataGridViewTextBoxColumn.Name = "uiFiDataGridViewTextBoxColumn";
+            // 
+            // uiThetaDataGridViewTextBoxColumn
+            // 
+            this.uiThetaDataGridViewTextBoxColumn.HeaderText = "Theta";
+            this.uiThetaDataGridViewTextBoxColumn.Name = "uiThetaDataGridViewTextBoxColumn";
+            // 
+            // uiPsiDataGridViewTextBoxColumn
+            // 
+            this.uiPsiDataGridViewTextBoxColumn.HeaderText = "Psi";
+            this.uiPsiDataGridViewTextBoxColumn.Name = "uiPsiDataGridViewTextBoxColumn";
+            // 
+            // uiCardan1DataGridViewTextBoxColumn
+            // 
+            this.uiCardan1DataGridViewTextBoxColumn.HeaderText = "Cardan1";
+            this.uiCardan1DataGridViewTextBoxColumn.Name = "uiCardan1DataGridViewTextBoxColumn";
+            // 
+            // uiCardan2DataGridViewTextBoxColumn
+            // 
+            this.uiCardan2DataGridViewTextBoxColumn.HeaderText = "Cardan2";
+            this.uiCardan2DataGridViewTextBoxColumn.Name = "uiCardan2DataGridViewTextBoxColumn";
+            // 
+            // uiCardan3DataGridViewTextBoxColumn
+            // 
+            this.uiCardan3DataGridViewTextBoxColumn.HeaderText = "Cardan3";
+            this.uiCardan3DataGridViewTextBoxColumn.Name = "uiCardan3DataGridViewTextBoxColumn";
+            // 
+            // uiCardan4DataGridViewTextBoxColumn
+            // 
+            this.uiCardan4DataGridViewTextBoxColumn.HeaderText = "Cardan4";
+            this.uiCardan4DataGridViewTextBoxColumn.Name = "uiCardan4DataGridViewTextBoxColumn";
+            // 
+            // uiCardan5DataGridViewTextBoxColumn
+            // 
+            this.uiCardan5DataGridViewTextBoxColumn.HeaderText = "Cardan5";
+            this.uiCardan5DataGridViewTextBoxColumn.Name = "uiCardan5DataGridViewTextBoxColumn";
+            // 
+            // uiCardan6DataGridViewTextBoxColumn
+            // 
+            this.uiCardan6DataGridViewTextBoxColumn.HeaderText = "Cardan6";
+            this.uiCardan6DataGridViewTextBoxColumn.Name = "uiCardan6DataGridViewTextBoxColumn";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 602);
+            this.ClientSize = new System.Drawing.Size(1108, 696);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -1207,11 +1150,11 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiTrackDataGridView)).EndInit();
             this.uiStartPositionGroupBox.ResumeLayout(false);
             this.uiStartPositionGroupBox.PerformLayout();
             this.uiFinishPostionGroupBox.ResumeLayout(false);
             this.uiFinishPostionGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiTrackDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1253,7 +1196,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.DataGridView uiTrackDataGridView;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox uiStartPositionX0TextBox;
         private System.Windows.Forms.Label uiStartPositionX0Label;
@@ -1293,7 +1235,23 @@
         private System.Windows.Forms.Label uiFinishPositionX0Label;
         public System.Windows.Forms.TextBox uiFinishPositionX0TextBox;
         private System.Windows.Forms.ComboBox uiTrackAxeComboBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uitimeDataGridViewTextBoxColumn;
+        public System.Windows.Forms.TextBox uiTrackTimeTextBox;
+        public System.Windows.Forms.TextBox uiTrackStepCountTextBox;
+        private System.Windows.Forms.Label uiInformateionLabel;
+        private Tao.Platform.Windows.SimpleOpenGlControl uiSimpleOpenGlControl;
+        private System.Windows.Forms.Button uiShowRotateXDownButton;
+        private System.Windows.Forms.Button uiShowRotateXUpButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button uiShowRotateYDownButton;
+        private System.Windows.Forms.Button uiShowRotateYUpButton;
+        private System.Windows.Forms.Button uiShowRotateZDownButton;
+        private System.Windows.Forms.Button uiShowRotateZUpButton;
+        private System.Windows.Forms.Timer uiUpdateSceneTimer;
+        public System.Windows.Forms.TextBox uiStartPositionPsiTextBox;
+        private System.Windows.Forms.DataGridView uiTrackDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uiTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiX0DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiY0DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiZ0DataGridViewTextBoxColumn;
@@ -1306,34 +1264,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn uiCardan4DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiCardan5DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiCardan6DataGridViewTextBoxColumn;
-        public System.Windows.Forms.TextBox uiTrackTimeTextBox;
-        public System.Windows.Forms.TextBox uiTrackStepCountTextBox;
-        private System.Windows.Forms.Label uiInformateionLabel;
-        private Tao.Platform.Windows.SimpleOpenGlControl uiSimpleOpenGlControl;
-        private System.Windows.Forms.Button uiShowRotateXDownButton;
-        private System.Windows.Forms.Button uiShowRotateXUpButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn X0;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Y0;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Z0;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Theta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Psi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cardan1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cardan2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cardan3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cardan4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cardan5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cardan6;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button uiShowRotateYDownButton;
-        private System.Windows.Forms.Button uiShowRotateYUpButton;
-        private System.Windows.Forms.Button uiShowRotateZDownButton;
-        private System.Windows.Forms.Button uiShowRotateZUpButton;
-        private System.Windows.Forms.Timer uiUpdateSceneTimer;
-        public System.Windows.Forms.TextBox uiStartPositionPsiTextBox;
     }
 }
 
