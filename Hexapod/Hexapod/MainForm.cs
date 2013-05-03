@@ -162,19 +162,32 @@ namespace Hexapod
             {
                 var x0 = (position.X0 + _hexapod.PlatformRadius*Math.Cos(i/180*Math.PI));
                 var y0 = (position.Y0 + _hexapod.PlatformRadius*Math.Sin(i/180*Math.PI));
-                var z0 = (position.Z0);
+                var z0 = 0;
                 var fi = position.Fi/180*Math.PI;
                 var theta = position.Theta/180*Math.PI;
                 var psi = position.Psi/180*Math.PI;
-                var x = ((float) (x0*(Math.Cos(psi)*Math.Cos(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Sin(fi)) +
-                                  y0*(-Math.Cos(psi)*Math.Sin(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Cos(fi)) +
-                                  z0*(Math.Sin(psi)*Math.Sin(theta))));
-                var y = ((float) (x0*(Math.Sin(psi)*Math.Cos(fi) + Math.Cos(psi)*Math.Cos(theta)*Math.Sin(fi)) +
-                                  y0*(-Math.Sin(psi)*Math.Sin(fi) + Math.Cos(psi)*Math.Cos(theta)*Math.Cos(fi)) +
-                                  z0*(-Math.Cos(psi)*Math.Sin(theta))));
-                var z = ((float) (x0*(Math.Sin(theta)*Math.Sin(fi)) +
-                                  y0*(Math.Sin(theta)*Math.Cos(fi)) +
-                                  z0*(Math.Cos(theta))));
+                var x = ((float)(x0 * (Math.Cos(psi) * Math.Cos(fi) - Math.Sin(psi) * Math.Cos(theta) * Math.Sin(fi)) +
+                                  y0 * (-Math.Cos(psi) * Math.Sin(fi) - Math.Sin(psi) * Math.Cos(theta) * Math.Cos(fi)) +
+                                  z0 * (Math.Sin(psi) * Math.Sin(theta))));
+                var y = ((float)(x0 * (Math.Sin(psi) * Math.Cos(fi) + Math.Cos(psi) * Math.Cos(theta) * Math.Sin(fi)) +
+                                  y0 * (-Math.Sin(psi) * Math.Sin(fi) + Math.Cos(psi) * Math.Cos(theta) * Math.Cos(fi)) +
+                                  z0 * (-Math.Cos(psi) * Math.Sin(theta))));
+                var z = ((float)(x0 * (Math.Sin(theta) * Math.Sin(fi)) +
+                                  y0 * (Math.Sin(theta) * Math.Cos(fi)) +
+                                  z0 * (Math.Cos(theta)) + (position.Z0)));
+                //var x = ((float) (x0*(Math.Cos(theta)) +
+                //                  y0*
+                //                  (-Math.Cos(psi)*Math.Sin(theta)*Math.Cos(fi) -
+                //                   Math.Sin(psi)*Math.Sin(theta)*Math.Sin(fi)) +
+                //                  z0*
+                //                  (Math.Sin(psi)*Math.Sin(theta)*Math.Cos(fi) +
+                //                   Math.Cos(psi)*Math.Sin(theta)*Math.Sin(fi))));
+                //var y = ((float) (x0*(Math.Cos(psi)*Math.Sin(theta)) +
+                //                  y0*(Math.Cos(psi)*Math.Cos(theta)*Math.Cos(fi) - Math.Sin(psi)*Math.Sin(fi)) +
+                //                  z0*(-Math.Cos(psi)*Math.Cos(theta)*Math.Sin(fi) - Math.Sin(psi)*Math.Cos(fi))));
+                //var z = ((float) (x0*(Math.Sin(psi)*Math.Sin(theta)) +
+                //                  y0*(Math.Sin(psi)*Math.Cos(theta)*Math.Cos(fi) + Math.Cos(psi)*Math.Sin(fi)) +
+                //                  z0*(-Math.Sin(psi)*Math.Cos(theta)*Math.Sin(fi) + Math.Cos(psi)*Math.Cos(fi))));
                 Gl.glVertex3f(x, y, z);
                 Gl.glVertex3f(x, y, z + 10);
             }

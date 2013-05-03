@@ -171,19 +171,28 @@ namespace Hexapod
             var theta = thetaR/180*Math.PI;
             var psi = psiR/180*Math.PI;
             var p = new Point();
-            var x = x0 + CardanLocationRadius*Math.Cos(CardanAngle/2/180*Math.PI);
-            var y = y0 + CardanLocationRadius*Math.Sin(CardanAngle/2/180*Math.PI);
+            var x = x0;// +CardanLocationRadius * Math.Cos(CardanAngle / 2 / 180 * Math.PI);
+            var y = y0;// +CardanLocationRadius * Math.Sin(CardanAngle / 2 / 180 * Math.PI);
             var z = 0;
-            p.X = x*(Math.Cos(psi)*Math.Cos(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Sin(fi)) +
-                  y*(-Math.Cos(psi)*Math.Sin(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Cos(fi)) +
-                  z*(Math.Sin(psi)*Math.Sin(theta));
-            p.Y = x*(Math.Sin(psi)*Math.Cos(fi) + Math.Cos(psi)*Math.Cos(theta)*Math.Sin(fi)) +
-                  y*(-Math.Sin(psi)*Math.Sin(fi) + Math.Cos(psi)*Math.Cos(theta)*Math.Cos(fi)) +
-                  z*(-Math.Cos(psi)*Math.Sin(theta));
-            p.Z = x*(Math.Sin(theta)*Math.Sin(fi)) +
-                  y*(Math.Sin(theta)*Math.Cos(fi)) +
-                  z*(Math.Cos(theta));
-            p.Z = z0;
+            p.X = x * (Math.Cos(psi) * Math.Cos(fi) - Math.Sin(psi) * Math.Cos(theta) * Math.Sin(fi)) +
+                  y * (-Math.Cos(psi) * Math.Sin(fi) - Math.Sin(psi) * Math.Cos(theta) * Math.Cos(fi)) +
+                  z * (Math.Sin(psi) * Math.Sin(theta));
+            p.Y = x * (Math.Sin(psi) * Math.Cos(fi) + Math.Cos(psi) * Math.Cos(theta) * Math.Sin(fi)) +
+                  y * (-Math.Sin(psi) * Math.Sin(fi) + Math.Cos(psi) * Math.Cos(theta) * Math.Cos(fi)) +
+                  z * (-Math.Cos(psi) * Math.Sin(theta));
+            p.Z = x * (Math.Sin(theta) * Math.Sin(fi)) +
+                  y * (Math.Sin(theta) * Math.Cos(fi)) +
+                  z * (Math.Cos(theta));
+            p.Z += z0;
+            //p.X = x*(Math.Cos(theta)) +
+            //      y*(-Math.Cos(psi)*Math.Sin(theta)*Math.Cos(fi) - Math.Sin(psi)*Math.Sin(theta)*Math.Sin(fi)) +
+            //      z*(Math.Sin(psi)*Math.Sin(theta)*Math.Cos(fi) + Math.Cos(psi)*Math.Sin(theta)*Math.Sin(fi));
+            //p.Y = x*(Math.Cos(psi)*Math.Sin(theta)) +
+            //      y*(Math.Cos(psi)*Math.Cos(theta)*Math.Cos(fi) - Math.Sin(psi)*Math.Sin(fi)) +
+            //      z*(-Math.Cos(psi)*Math.Cos(theta)*Math.Sin(fi) - Math.Sin(psi)*Math.Cos(fi));
+            //p.Z = x*(Math.Sin(psi)*Math.Sin(theta)) +
+            //      y*(Math.Sin(psi)*Math.Cos(theta)*Math.Cos(fi) + Math.Cos(psi)*Math.Sin(fi)) +
+            //      z*(-Math.Sin(psi)*Math.Cos(theta)*Math.Sin(fi) + Math.Cos(psi)*Math.Cos(fi));
             return p;
         }
     }
