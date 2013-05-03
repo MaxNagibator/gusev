@@ -8,11 +8,11 @@ namespace Hexapod
 {
     public partial class MainForm : Form
     {
-        private Hexapod _hexapod = new Hexapod();
+        private readonly Hexapod _hexapod = new Hexapod();
         private int _sceneRotateX;
         private int _sceneRotateY;
         private int _sceneRotateZ;
-        private int _rotateAngle= 10;
+        private const int _rotateAngle = 10;
         private int _time;
 
         public MainForm()
