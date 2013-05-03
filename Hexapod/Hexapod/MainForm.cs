@@ -155,11 +155,26 @@ namespace Hexapod
         private void DrawPlatform(Position position)
         {
             Gl.glBegin(Gl.GL_LINES);
+            Gl.glRotated(position.Fi, 0, 0, 1);
+            Gl.glRotated(position.Theta, 1, 0, 0);
+            Gl.glRotated(position.Psi, 0, 0, 1);
             for (double i = 0; i < 360; i++)
             {
-                var x = (float) (position.X0 + _hexapod.PlatformRadius*Math.Cos(i/180*Math.PI));
-                var y = (float) (position.Y0 + _hexapod.PlatformRadius*Math.Sin(i/180*Math.PI));
-                var z = (float) (position.Z0);
+                var x0 = (position.X0 + _hexapod.PlatformRadius*Math.Cos(i/180*Math.PI));
+                var y0 = (position.Y0 + _hexapod.PlatformRadius*Math.Sin(i/180*Math.PI));
+                var z0 = (position.Z0);
+                var fi = position.Fi/180*Math.PI;
+                var theta = position.Theta/180*Math.PI;
+                var psi = position.Psi/180*Math.PI;
+                var x = ((float) (x0*(Math.Cos(psi)*Math.Cos(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Sin(fi)) +
+                                  y0*(-Math.Cos(psi)*Math.Sin(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Cos(fi)) +
+                                  z0*(Math.Sin(psi)*Math.Sin(theta))));
+                var y = ((float) (x0*(Math.Sin(psi)*Math.Cos(fi) + Math.Cos(psi)*Math.Cos(theta)*Math.Sin(fi)) +
+                                  y0*(-Math.Sin(psi)*Math.Sin(fi) + Math.Cos(psi)*Math.Cos(theta)*Math.Cos(fi)) +
+                                  z0*(-Math.Cos(psi)*Math.Sin(theta))));
+                var z = ((float) (x0*(Math.Sin(theta)*Math.Sin(fi)) +
+                                  y0*(Math.Sin(theta)*Math.Cos(fi)) +
+                                  z0*(Math.Cos(theta))));
                 Gl.glVertex3f(x, y, z);
                 Gl.glVertex3f(x, y, z + 10);
             }
