@@ -396,7 +396,7 @@
             this.uiTrackStepCountTextBox.Name = "uiTrackStepCountTextBox";
             this.uiTrackStepCountTextBox.Size = new System.Drawing.Size(102, 20);
             this.uiTrackStepCountTextBox.TabIndex = 10;
-            this.uiTrackStepCountTextBox.Text = "400";
+            this.uiTrackStepCountTextBox.Text = "20";
             this.uiTrackStepCountTextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
             // uiTrackAxeComboBox
@@ -1018,7 +1018,7 @@
             this.uiFinishPositionFiTextBox.Name = "uiFinishPositionFiTextBox";
             this.uiFinishPositionFiTextBox.Size = new System.Drawing.Size(52, 20);
             this.uiFinishPositionFiTextBox.TabIndex = 18;
-            this.uiFinishPositionFiTextBox.Text = "11";
+            this.uiFinishPositionFiTextBox.Text = "0";
             this.uiFinishPositionFiTextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
             // uiFinishPositionZ0Label
@@ -1036,7 +1036,7 @@
             this.uiFinishPositionZ0TextBox.Name = "uiFinishPositionZ0TextBox";
             this.uiFinishPositionZ0TextBox.Size = new System.Drawing.Size(52, 20);
             this.uiFinishPositionZ0TextBox.TabIndex = 6;
-            this.uiFinishPositionZ0TextBox.Text = "400";
+            this.uiFinishPositionZ0TextBox.Text = "200";
             this.uiFinishPositionZ0TextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
             // uiFinishPositionY0Label
@@ -1054,7 +1054,7 @@
             this.uiFinishPositionY0TextBox.Name = "uiFinishPositionY0TextBox";
             this.uiFinishPositionY0TextBox.Size = new System.Drawing.Size(52, 20);
             this.uiFinishPositionY0TextBox.TabIndex = 4;
-            this.uiFinishPositionY0TextBox.Text = "20";
+            this.uiFinishPositionY0TextBox.Text = "0";
             this.uiFinishPositionY0TextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
             // uiFinishPositionX0Label
@@ -1072,7 +1072,7 @@
             this.uiFinishPositionX0TextBox.Name = "uiFinishPositionX0TextBox";
             this.uiFinishPositionX0TextBox.Size = new System.Drawing.Size(52, 20);
             this.uiFinishPositionX0TextBox.TabIndex = 1;
-            this.uiFinishPositionX0TextBox.Text = "30";
+            this.uiFinishPositionX0TextBox.Text = "50";
             this.uiFinishPositionX0TextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
             // uiInformateionLabel

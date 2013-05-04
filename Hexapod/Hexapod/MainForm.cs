@@ -50,7 +50,9 @@ namespace Hexapod
             {
                 uiTrackDataGridView.Rows.Add(position);
             }
+            
             _time = 1;
+            uiUpdateSceneTimer.Interval = Convert.ToInt16(_hexapod.Track.Time * 1000 / _hexapod.Track.StepCount);
             uiUpdateSceneTimer.Start();
         }
 
@@ -124,74 +126,41 @@ namespace Hexapod
         private void DrawRails(Position position)
         {
             Gl.glBegin(Gl.GL_LINES);
-            Gl.glVertex3f((float) _hexapod.A.X, (float) _hexapod.A.Y, (float) _hexapod.A.Z);
-            Gl.glVertex3f((float) position.G.X, (float) position.G.Y, (float) position.G.Z);
-            Gl.glVertex3f((float) _hexapod.B.X, (float) _hexapod.B.Y, (float) _hexapod.B.Z);
-            Gl.glVertex3f((float) position.H.X, (float) position.H.Y, (float) position.H.Z);
-            Gl.glVertex3f((float) _hexapod.C.X, (float) _hexapod.C.Y, (float) _hexapod.C.Z);
-            Gl.glVertex3f((float) position.I.X, (float) position.I.Y, (float) position.I.Z);
-            Gl.glVertex3f((float) _hexapod.D.X, (float) _hexapod.D.Y, (float) _hexapod.D.Z);
-            Gl.glVertex3f((float) position.J.X, (float) position.J.Y, (float) position.J.Z);
-            Gl.glVertex3f((float) _hexapod.E.X, (float) _hexapod.E.Y, (float) _hexapod.E.Z);
-            Gl.glVertex3f((float) position.K.X, (float) position.K.Y, (float) position.K.Z);
-            Gl.glVertex3f((float) _hexapod.F.X, (float) _hexapod.F.Y, (float) _hexapod.F.Z);
-            Gl.glVertex3f((float) position.L.X, (float) position.L.Y, (float) position.L.Z);
+            Gl.glVertex3d(_hexapod.A.X, _hexapod.A.Y, _hexapod.A.Z);
+            Gl.glVertex3d(position.G.X, position.G.Y, position.G.Z);
+            Gl.glVertex3d(_hexapod.B.X, _hexapod.B.Y, _hexapod.B.Z);
+            Gl.glVertex3d(position.H.X, position.H.Y, position.H.Z);
+            Gl.glVertex3d(_hexapod.C.X, _hexapod.C.Y, _hexapod.C.Z);
+            Gl.glVertex3d(position.I.X, position.I.Y, position.I.Z);
+            Gl.glVertex3d(_hexapod.D.X, _hexapod.D.Y, _hexapod.D.Z);
+            Gl.glVertex3d(position.J.X, position.J.Y, position.J.Z);
+            Gl.glVertex3d(_hexapod.E.X, _hexapod.E.Y, _hexapod.E.Z);
+            Gl.glVertex3d(position.K.X, position.K.Y, position.K.Z);
+            Gl.glVertex3d(_hexapod.F.X, _hexapod.F.Y, _hexapod.F.Z);
+            Gl.glVertex3d(position.L.X, position.L.Y, position.L.Z);
             Gl.glEnd();
         }
 
         private void DrawBasePlatform()
         {
+            Gl.glPushMatrix();
+            Gl.glTranslated(0, 0, -10);
             Gl.glBegin(Gl.GL_LINES);
-            for (double i = 0; i < 360; i++)
-            {
-                var x = (float) (_hexapod.PlatformRadius*Math.Cos(i/180*Math.PI));
-                var y = (float) (_hexapod.PlatformRadius*Math.Sin(i/180*Math.PI));
-                Gl.glVertex3f(x, y, 0);
-                Gl.glVertex3f(x, y, -10);
-            }
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, 10f, 360, 360);
             Gl.glEnd();
+            Gl.glPopMatrix();
         }
 
         private void DrawPlatform(Position position)
         {
-            Gl.glBegin(Gl.GL_LINES);
-            Gl.glRotated(position.Fi, 0, 0, 1);
-            Gl.glRotated(position.Theta, 1, 0, 0);
+            Gl.glPushMatrix();
+            Gl.glTranslated(position.X0, position.Y0, position.Z0);
             Gl.glRotated(position.Psi, 0, 0, 1);
-            for (double i = 0; i < 360; i++)
-            {
-                var x0 = (position.X0 + _hexapod.PlatformRadius*Math.Cos(i/180*Math.PI));
-                var y0 = (position.Y0 + _hexapod.PlatformRadius*Math.Sin(i/180*Math.PI));
-                var z0 = 0;
-                var fi = position.Fi/180*Math.PI;
-                var theta = position.Theta/180*Math.PI;
-                var psi = position.Psi/180*Math.PI;
-                var x = ((float)(x0 * (Math.Cos(psi) * Math.Cos(fi) - Math.Sin(psi) * Math.Cos(theta) * Math.Sin(fi)) +
-                                  y0 * (-Math.Cos(psi) * Math.Sin(fi) - Math.Sin(psi) * Math.Cos(theta) * Math.Cos(fi)) +
-                                  z0 * (Math.Sin(psi) * Math.Sin(theta))));
-                var y = ((float)(x0 * (Math.Sin(psi) * Math.Cos(fi) + Math.Cos(psi) * Math.Cos(theta) * Math.Sin(fi)) +
-                                  y0 * (-Math.Sin(psi) * Math.Sin(fi) + Math.Cos(psi) * Math.Cos(theta) * Math.Cos(fi)) +
-                                  z0 * (-Math.Cos(psi) * Math.Sin(theta))));
-                var z = ((float)(x0 * (Math.Sin(theta) * Math.Sin(fi)) +
-                                  y0 * (Math.Sin(theta) * Math.Cos(fi)) +
-                                  z0 * (Math.Cos(theta)) + (position.Z0)));
-                //var x = ((float) (x0*(Math.Cos(theta)) +
-                //                  y0*
-                //                  (-Math.Cos(psi)*Math.Sin(theta)*Math.Cos(fi) -
-                //                   Math.Sin(psi)*Math.Sin(theta)*Math.Sin(fi)) +
-                //                  z0*
-                //                  (Math.Sin(psi)*Math.Sin(theta)*Math.Cos(fi) +
-                //                   Math.Cos(psi)*Math.Sin(theta)*Math.Sin(fi))));
-                //var y = ((float) (x0*(Math.Cos(psi)*Math.Sin(theta)) +
-                //                  y0*(Math.Cos(psi)*Math.Cos(theta)*Math.Cos(fi) - Math.Sin(psi)*Math.Sin(fi)) +
-                //                  z0*(-Math.Cos(psi)*Math.Cos(theta)*Math.Sin(fi) - Math.Sin(psi)*Math.Cos(fi))));
-                //var z = ((float) (x0*(Math.Sin(psi)*Math.Sin(theta)) +
-                //                  y0*(Math.Sin(psi)*Math.Cos(theta)*Math.Cos(fi) + Math.Cos(psi)*Math.Sin(fi)) +
-                //                  z0*(-Math.Sin(psi)*Math.Cos(theta)*Math.Sin(fi) + Math.Cos(psi)*Math.Cos(fi))));
-                Gl.glVertex3f(x, y, z);
-                Gl.glVertex3f(x, y, z + 10);
-            }
-            Gl.glEnd();
+            Gl.glPushMatrix();
+            Gl.glRotated(position.Theta, 1, 0, 0);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, 10f, 360, 360);
+            Gl.glPopMatrix();
+            Gl.glPopMatrix();
         }
 
         private void uiShowRotateXDownButton_Click(object sender, EventArgs e)
