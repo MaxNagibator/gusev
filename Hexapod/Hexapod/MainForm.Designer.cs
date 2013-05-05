@@ -30,18 +30,29 @@
         {
             this.components = new System.ComponentModel.Container();
             this.uiHexapodGroupBox = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.uiСardanLabel = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.uiRailsLabel = new System.Windows.Forms.Label();
+            this.button17 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.button16 = new System.Windows.Forms.Button();
             this.uiRailsRadiusLabel = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
             this.uiRailsMaxLengthTextBox = new System.Windows.Forms.TextBox();
+            this.button14 = new System.Windows.Forms.Button();
             this.uiRailsMinLengthTextBox = new System.Windows.Forms.TextBox();
+            this.button13 = new System.Windows.Forms.Button();
             this.uiRailsRadiusTextBox = new System.Windows.Forms.TextBox();
+            this.button12 = new System.Windows.Forms.Button();
             this.uiCardanHeightLabel = new System.Windows.Forms.Label();
             this.uiCardanAngleTextBox = new System.Windows.Forms.TextBox();
             this.uiCardanAngleLabel = new System.Windows.Forms.Label();
             this.uiCardanHeightTextBox = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.simpleOpenGlControl2 = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.uiCardanToCenterLenghtLabel = new System.Windows.Forms.Label();
             this.uiCardanRadiusLabel = new System.Windows.Forms.Label();
             this.uiCardanRadiusTextBox = new System.Windows.Forms.TextBox();
@@ -59,9 +70,21 @@
             this.uiTrackSimultaneouslyRadioButton = new System.Windows.Forms.RadioButton();
             this.uiTrackStepCountLabel = new System.Windows.Forms.Label();
             this.uiTrackTimeLabel = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.uiSimpleOpenGlControl = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.uiTrackDataGridView = new System.Windows.Forms.DataGridView();
+            this.uiTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiX0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiY0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiZ0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiFiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiThetaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiPsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiCardan6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -107,54 +130,61 @@
             this.uiFinishPositionX0Label = new System.Windows.Forms.Label();
             this.uiFinishPositionX0TextBox = new System.Windows.Forms.TextBox();
             this.uiInformateionLabel = new System.Windows.Forms.Label();
-            this.uiShowRotateXDownButton = new System.Windows.Forms.Button();
-            this.uiShowRotateXUpButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.uiShowRotateYDownButton = new System.Windows.Forms.Button();
-            this.uiShowRotateYUpButton = new System.Windows.Forms.Button();
-            this.uiShowRotateZDownButton = new System.Windows.Forms.Button();
-            this.uiShowRotateZUpButton = new System.Windows.Forms.Button();
             this.uiUpdateSceneTimer = new System.Windows.Forms.Timer(this.components);
-            this.uiTrackDataGridView = new System.Windows.Forms.DataGridView();
-            this.uiTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiX0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiY0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiZ0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiFiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiThetaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiPsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiCardan1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiCardan2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiCardan3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiCardan4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiCardan5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiCardan6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiMainPanel = new System.Windows.Forms.Panel();
+            this.uiSettingsPanel = new System.Windows.Forms.Panel();
+            this.uiSettingsVisibleButton = new System.Windows.Forms.Button();
+            this.uiMoveYUpButton = new System.Windows.Forms.Button();
+            this.uiMoveXDownButton = new System.Windows.Forms.Button();
+            this.uiShowRotateZUpButton = new System.Windows.Forms.Button();
+            this.uiMoveXUpButton = new System.Windows.Forms.Button();
+            this.uiShowRotateZDownButton = new System.Windows.Forms.Button();
+            this.uiMoveYDownButton = new System.Windows.Forms.Button();
+            this.uiShowRotateYUpButton = new System.Windows.Forms.Button();
+            this.uiShowRotateYDownButton = new System.Windows.Forms.Button();
+            this.uiMoveZDownButton = new System.Windows.Forms.Button();
+            this.uiShowRotateXUpButton = new System.Windows.Forms.Button();
+            this.uiMoveZUpButton = new System.Windows.Forms.Button();
+            this.uiShowRotateXDownButton = new System.Windows.Forms.Button();
+            this.uiShowZoomUpButton = new System.Windows.Forms.Button();
+            this.uiShowZoomDownButton = new System.Windows.Forms.Button();
+            this.uiSimpleOpenGlControl = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.uiHexapodGroupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.uiSelectTrackGroupBox.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiTrackDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.uiStartPositionGroupBox.SuspendLayout();
             this.uiFinishPostionGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uiTrackDataGridView)).BeginInit();
+            this.uiMainPanel.SuspendLayout();
+            this.uiSettingsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // uiHexapodGroupBox
             // 
+            this.uiHexapodGroupBox.Controls.Add(this.label17);
             this.uiHexapodGroupBox.Controls.Add(this.label1);
+            this.uiHexapodGroupBox.Controls.Add(this.label16);
             this.uiHexapodGroupBox.Controls.Add(this.uiСardanLabel);
+            this.uiHexapodGroupBox.Controls.Add(this.label15);
             this.uiHexapodGroupBox.Controls.Add(this.uiRailsLabel);
+            this.uiHexapodGroupBox.Controls.Add(this.button17);
             this.uiHexapodGroupBox.Controls.Add(this.label10);
+            this.uiHexapodGroupBox.Controls.Add(this.button16);
             this.uiHexapodGroupBox.Controls.Add(this.uiRailsRadiusLabel);
+            this.uiHexapodGroupBox.Controls.Add(this.button15);
             this.uiHexapodGroupBox.Controls.Add(this.uiRailsMaxLengthTextBox);
+            this.uiHexapodGroupBox.Controls.Add(this.button14);
             this.uiHexapodGroupBox.Controls.Add(this.uiRailsMinLengthTextBox);
+            this.uiHexapodGroupBox.Controls.Add(this.button13);
             this.uiHexapodGroupBox.Controls.Add(this.uiRailsRadiusTextBox);
+            this.uiHexapodGroupBox.Controls.Add(this.button12);
             this.uiHexapodGroupBox.Controls.Add(this.uiCardanHeightLabel);
             this.uiHexapodGroupBox.Controls.Add(this.uiCardanAngleTextBox);
             this.uiHexapodGroupBox.Controls.Add(this.uiCardanAngleLabel);
             this.uiHexapodGroupBox.Controls.Add(this.uiCardanHeightTextBox);
+            this.uiHexapodGroupBox.Controls.Add(this.groupBox1);
             this.uiHexapodGroupBox.Controls.Add(this.uiCardanToCenterLenghtLabel);
             this.uiHexapodGroupBox.Controls.Add(this.uiCardanRadiusLabel);
             this.uiHexapodGroupBox.Controls.Add(this.uiCardanRadiusTextBox);
@@ -171,6 +201,15 @@
             this.uiHexapodGroupBox.TabStop = false;
             this.uiHexapodGroupBox.Text = "Гексапод";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(1017, 100);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(12, 13);
+            this.label17.TabIndex = 38;
+            this.label17.Text = "z";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -179,6 +218,15 @@
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 20;
             this.label1.Text = "макс. длина";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(1017, 50);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(12, 13);
+            this.label16.TabIndex = 37;
+            this.label16.Text = "y";
             // 
             // uiСardanLabel
             // 
@@ -190,6 +238,15 @@
             this.uiСardanLabel.TabIndex = 19;
             this.uiСardanLabel.Text = "карданы";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(1017, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(12, 13);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "x";
+            // 
             // uiRailsLabel
             // 
             this.uiRailsLabel.AutoSize = true;
@@ -200,6 +257,16 @@
             this.uiRailsLabel.TabIndex = 18;
             this.uiRailsLabel.Text = "штанги";
             // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(986, 127);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(25, 23);
+            this.button17.TabIndex = 35;
+            this.button17.Text = "+";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.uiShowRotateZUpButton_Click);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -208,6 +275,16 @@
             this.label10.Size = new System.Drawing.Size(63, 13);
             this.label10.TabIndex = 13;
             this.label10.Text = "мин. длина";
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(986, 100);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(25, 23);
+            this.button16.TabIndex = 34;
+            this.button16.Text = "-";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.uiShowRotateZDownButton_Click);
             // 
             // uiRailsRadiusLabel
             // 
@@ -218,6 +295,16 @@
             this.uiRailsRadiusLabel.TabIndex = 13;
             this.uiRailsRadiusLabel.Text = "радиусы";
             // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(986, 74);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(25, 23);
+            this.button15.TabIndex = 35;
+            this.button15.Text = "+";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.uiShowRotateYUpButton_Click);
+            // 
             // uiRailsMaxLengthTextBox
             // 
             this.uiRailsMaxLengthTextBox.Location = new System.Drawing.Point(68, 238);
@@ -226,6 +313,16 @@
             this.uiRailsMaxLengthTextBox.TabIndex = 12;
             this.uiRailsMaxLengthTextBox.Text = "400";
             this.uiRailsMaxLengthTextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(986, 50);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(25, 23);
+            this.button14.TabIndex = 34;
+            this.button14.Text = "-";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.uiShowRotateYDownButton_Click);
             // 
             // uiRailsMinLengthTextBox
             // 
@@ -236,6 +333,16 @@
             this.uiRailsMinLengthTextBox.Text = "100";
             this.uiRailsMinLengthTextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(986, 24);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(25, 23);
+            this.button13.TabIndex = 35;
+            this.button13.Text = "+";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.uiShowRotateXUpButton_Click);
+            // 
             // uiRailsRadiusTextBox
             // 
             this.uiRailsRadiusTextBox.Location = new System.Drawing.Point(10, 199);
@@ -244,6 +351,16 @@
             this.uiRailsRadiusTextBox.TabIndex = 12;
             this.uiRailsRadiusTextBox.Text = "10";
             this.uiRailsRadiusTextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(986, 0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(25, 23);
+            this.button12.TabIndex = 34;
+            this.button12.Text = "-";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.uiShowRotateXDownButton_Click);
             // 
             // uiCardanHeightLabel
             // 
@@ -280,6 +397,32 @@
             this.uiCardanHeightTextBox.TabIndex = 8;
             this.uiCardanHeightTextBox.Text = "5";
             this.uiCardanHeightTextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.simpleOpenGlControl2);
+            this.groupBox1.Location = new System.Drawing.Point(905, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(75, 396);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox4";
+            // 
+            // simpleOpenGlControl2
+            // 
+            this.simpleOpenGlControl2.AccumBits = ((byte)(0));
+            this.simpleOpenGlControl2.AutoCheckErrors = false;
+            this.simpleOpenGlControl2.AutoFinish = false;
+            this.simpleOpenGlControl2.AutoMakeCurrent = true;
+            this.simpleOpenGlControl2.AutoSwapBuffers = true;
+            this.simpleOpenGlControl2.BackColor = System.Drawing.Color.Black;
+            this.simpleOpenGlControl2.ColorBits = ((byte)(32));
+            this.simpleOpenGlControl2.DepthBits = ((byte)(16));
+            this.simpleOpenGlControl2.Location = new System.Drawing.Point(6, 10);
+            this.simpleOpenGlControl2.Name = "simpleOpenGlControl2";
+            this.simpleOpenGlControl2.Size = new System.Drawing.Size(509, 380);
+            this.simpleOpenGlControl2.StencilBits = ((byte)(0));
+            this.simpleOpenGlControl2.TabIndex = 0;
             // 
             // uiCardanToCenterLenghtLabel
             // 
@@ -455,32 +598,6 @@
             this.uiTrackTimeLabel.TabIndex = 2;
             this.uiTrackTimeLabel.Text = "Время (сек.)";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.uiSimpleOpenGlControl);
-            this.groupBox4.Location = new System.Drawing.Point(471, 12);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(521, 396);
-            this.groupBox4.TabIndex = 19;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
-            // 
-            // uiSimpleOpenGlControl
-            // 
-            this.uiSimpleOpenGlControl.AccumBits = ((byte)(0));
-            this.uiSimpleOpenGlControl.AutoCheckErrors = false;
-            this.uiSimpleOpenGlControl.AutoFinish = false;
-            this.uiSimpleOpenGlControl.AutoMakeCurrent = true;
-            this.uiSimpleOpenGlControl.AutoSwapBuffers = true;
-            this.uiSimpleOpenGlControl.BackColor = System.Drawing.Color.Black;
-            this.uiSimpleOpenGlControl.ColorBits = ((byte)(32));
-            this.uiSimpleOpenGlControl.DepthBits = ((byte)(16));
-            this.uiSimpleOpenGlControl.Location = new System.Drawing.Point(6, 10);
-            this.uiSimpleOpenGlControl.Name = "uiSimpleOpenGlControl";
-            this.uiSimpleOpenGlControl.Size = new System.Drawing.Size(509, 380);
-            this.uiSimpleOpenGlControl.StencilBits = ((byte)(0));
-            this.uiSimpleOpenGlControl.TabIndex = 0;
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.uiTrackDataGridView);
@@ -496,6 +613,96 @@
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
+            // 
+            // uiTrackDataGridView
+            // 
+            this.uiTrackDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.uiTrackDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.uiTimeDataGridViewTextBoxColumn,
+            this.uiX0DataGridViewTextBoxColumn,
+            this.uiY0DataGridViewTextBoxColumn,
+            this.uiZ0DataGridViewTextBoxColumn,
+            this.uiFiDataGridViewTextBoxColumn,
+            this.uiThetaDataGridViewTextBoxColumn,
+            this.uiPsiDataGridViewTextBoxColumn,
+            this.uiCardan1DataGridViewTextBoxColumn,
+            this.uiCardan2DataGridViewTextBoxColumn,
+            this.uiCardan3DataGridViewTextBoxColumn,
+            this.uiCardan4DataGridViewTextBoxColumn,
+            this.uiCardan5DataGridViewTextBoxColumn,
+            this.uiCardan6DataGridViewTextBoxColumn});
+            this.uiTrackDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.uiTrackDataGridView.Location = new System.Drawing.Point(3, 16);
+            this.uiTrackDataGridView.Name = "uiTrackDataGridView";
+            this.uiTrackDataGridView.Size = new System.Drawing.Size(1078, 164);
+            this.uiTrackDataGridView.TabIndex = 4;
+            // 
+            // uiTimeDataGridViewTextBoxColumn
+            // 
+            this.uiTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.uiTimeDataGridViewTextBoxColumn.HeaderText = "time";
+            this.uiTimeDataGridViewTextBoxColumn.Name = "uiTimeDataGridViewTextBoxColumn";
+            this.uiTimeDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // uiX0DataGridViewTextBoxColumn
+            // 
+            this.uiX0DataGridViewTextBoxColumn.HeaderText = "X0";
+            this.uiX0DataGridViewTextBoxColumn.Name = "uiX0DataGridViewTextBoxColumn";
+            // 
+            // uiY0DataGridViewTextBoxColumn
+            // 
+            this.uiY0DataGridViewTextBoxColumn.HeaderText = "Y0";
+            this.uiY0DataGridViewTextBoxColumn.Name = "uiY0DataGridViewTextBoxColumn";
+            // 
+            // uiZ0DataGridViewTextBoxColumn
+            // 
+            this.uiZ0DataGridViewTextBoxColumn.HeaderText = "Z0";
+            this.uiZ0DataGridViewTextBoxColumn.Name = "uiZ0DataGridViewTextBoxColumn";
+            // 
+            // uiFiDataGridViewTextBoxColumn
+            // 
+            this.uiFiDataGridViewTextBoxColumn.HeaderText = "Fi";
+            this.uiFiDataGridViewTextBoxColumn.Name = "uiFiDataGridViewTextBoxColumn";
+            // 
+            // uiThetaDataGridViewTextBoxColumn
+            // 
+            this.uiThetaDataGridViewTextBoxColumn.HeaderText = "Theta";
+            this.uiThetaDataGridViewTextBoxColumn.Name = "uiThetaDataGridViewTextBoxColumn";
+            // 
+            // uiPsiDataGridViewTextBoxColumn
+            // 
+            this.uiPsiDataGridViewTextBoxColumn.HeaderText = "Psi";
+            this.uiPsiDataGridViewTextBoxColumn.Name = "uiPsiDataGridViewTextBoxColumn";
+            // 
+            // uiCardan1DataGridViewTextBoxColumn
+            // 
+            this.uiCardan1DataGridViewTextBoxColumn.HeaderText = "Cardan1";
+            this.uiCardan1DataGridViewTextBoxColumn.Name = "uiCardan1DataGridViewTextBoxColumn";
+            // 
+            // uiCardan2DataGridViewTextBoxColumn
+            // 
+            this.uiCardan2DataGridViewTextBoxColumn.HeaderText = "Cardan2";
+            this.uiCardan2DataGridViewTextBoxColumn.Name = "uiCardan2DataGridViewTextBoxColumn";
+            // 
+            // uiCardan3DataGridViewTextBoxColumn
+            // 
+            this.uiCardan3DataGridViewTextBoxColumn.HeaderText = "Cardan3";
+            this.uiCardan3DataGridViewTextBoxColumn.Name = "uiCardan3DataGridViewTextBoxColumn";
+            // 
+            // uiCardan4DataGridViewTextBoxColumn
+            // 
+            this.uiCardan4DataGridViewTextBoxColumn.HeaderText = "Cardan4";
+            this.uiCardan4DataGridViewTextBoxColumn.Name = "uiCardan4DataGridViewTextBoxColumn";
+            // 
+            // uiCardan5DataGridViewTextBoxColumn
+            // 
+            this.uiCardan5DataGridViewTextBoxColumn.HeaderText = "Cardan5";
+            this.uiCardan5DataGridViewTextBoxColumn.Name = "uiCardan5DataGridViewTextBoxColumn";
+            // 
+            // uiCardan6DataGridViewTextBoxColumn
+            // 
+            this.uiCardan6DataGridViewTextBoxColumn.HeaderText = "Cardan6";
+            this.uiCardan6DataGridViewTextBoxColumn.Name = "uiCardan6DataGridViewTextBoxColumn";
             // 
             // button5
             // 
@@ -937,206 +1144,224 @@
             this.uiInformateionLabel.TabIndex = 32;
             this.uiInformateionLabel.Text = "label2";
             // 
-            // uiShowRotateXDownButton
-            // 
-            this.uiShowRotateXDownButton.Location = new System.Drawing.Point(998, 12);
-            this.uiShowRotateXDownButton.Name = "uiShowRotateXDownButton";
-            this.uiShowRotateXDownButton.Size = new System.Drawing.Size(25, 23);
-            this.uiShowRotateXDownButton.TabIndex = 34;
-            this.uiShowRotateXDownButton.Text = "-";
-            this.uiShowRotateXDownButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateXDownButton.Click += new System.EventHandler(this.uiShowRotateXDownButton_Click);
-            // 
-            // uiShowRotateXUpButton
-            // 
-            this.uiShowRotateXUpButton.Location = new System.Drawing.Point(998, 36);
-            this.uiShowRotateXUpButton.Name = "uiShowRotateXUpButton";
-            this.uiShowRotateXUpButton.Size = new System.Drawing.Size(25, 23);
-            this.uiShowRotateXUpButton.TabIndex = 35;
-            this.uiShowRotateXUpButton.Text = "+";
-            this.uiShowRotateXUpButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateXUpButton.Click += new System.EventHandler(this.uiShowRotateXUpButton_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1029, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 13);
-            this.label2.TabIndex = 36;
-            this.label2.Text = "x";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1029, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(12, 13);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "y";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1029, 112);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(12, 13);
-            this.label4.TabIndex = 38;
-            this.label4.Text = "z";
-            // 
-            // uiShowRotateYDownButton
-            // 
-            this.uiShowRotateYDownButton.Location = new System.Drawing.Point(998, 62);
-            this.uiShowRotateYDownButton.Name = "uiShowRotateYDownButton";
-            this.uiShowRotateYDownButton.Size = new System.Drawing.Size(25, 23);
-            this.uiShowRotateYDownButton.TabIndex = 34;
-            this.uiShowRotateYDownButton.Text = "-";
-            this.uiShowRotateYDownButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateYDownButton.Click += new System.EventHandler(this.uiShowRotateYDownButton_Click);
-            // 
-            // uiShowRotateYUpButton
-            // 
-            this.uiShowRotateYUpButton.Location = new System.Drawing.Point(998, 86);
-            this.uiShowRotateYUpButton.Name = "uiShowRotateYUpButton";
-            this.uiShowRotateYUpButton.Size = new System.Drawing.Size(25, 23);
-            this.uiShowRotateYUpButton.TabIndex = 35;
-            this.uiShowRotateYUpButton.Text = "+";
-            this.uiShowRotateYUpButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateYUpButton.Click += new System.EventHandler(this.uiShowRotateYUpButton_Click);
-            // 
-            // uiShowRotateZDownButton
-            // 
-            this.uiShowRotateZDownButton.Location = new System.Drawing.Point(998, 112);
-            this.uiShowRotateZDownButton.Name = "uiShowRotateZDownButton";
-            this.uiShowRotateZDownButton.Size = new System.Drawing.Size(25, 23);
-            this.uiShowRotateZDownButton.TabIndex = 34;
-            this.uiShowRotateZDownButton.Text = "-";
-            this.uiShowRotateZDownButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateZDownButton.Click += new System.EventHandler(this.uiShowRotateZDownButton_Click);
-            // 
-            // uiShowRotateZUpButton
-            // 
-            this.uiShowRotateZUpButton.Location = new System.Drawing.Point(998, 139);
-            this.uiShowRotateZUpButton.Name = "uiShowRotateZUpButton";
-            this.uiShowRotateZUpButton.Size = new System.Drawing.Size(25, 23);
-            this.uiShowRotateZUpButton.TabIndex = 35;
-            this.uiShowRotateZUpButton.Text = "+";
-            this.uiShowRotateZUpButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateZUpButton.Click += new System.EventHandler(this.uiShowRotateZUpButton_Click);
-            // 
             // uiUpdateSceneTimer
             // 
             this.uiUpdateSceneTimer.Interval = 1;
             this.uiUpdateSceneTimer.Tick += new System.EventHandler(this.DrawHexapod);
             // 
-            // uiTrackDataGridView
+            // uiMainPanel
             // 
-            this.uiTrackDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.uiTrackDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.uiTimeDataGridViewTextBoxColumn,
-            this.uiX0DataGridViewTextBoxColumn,
-            this.uiY0DataGridViewTextBoxColumn,
-            this.uiZ0DataGridViewTextBoxColumn,
-            this.uiFiDataGridViewTextBoxColumn,
-            this.uiThetaDataGridViewTextBoxColumn,
-            this.uiPsiDataGridViewTextBoxColumn,
-            this.uiCardan1DataGridViewTextBoxColumn,
-            this.uiCardan2DataGridViewTextBoxColumn,
-            this.uiCardan3DataGridViewTextBoxColumn,
-            this.uiCardan4DataGridViewTextBoxColumn,
-            this.uiCardan5DataGridViewTextBoxColumn,
-            this.uiCardan6DataGridViewTextBoxColumn});
-            this.uiTrackDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
-            this.uiTrackDataGridView.Location = new System.Drawing.Point(3, 16);
-            this.uiTrackDataGridView.Name = "uiTrackDataGridView";
-            this.uiTrackDataGridView.Size = new System.Drawing.Size(1078, 164);
-            this.uiTrackDataGridView.TabIndex = 4;
+            this.uiMainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiMainPanel.Controls.Add(this.uiSettingsPanel);
+            this.uiMainPanel.Controls.Add(this.uiSimpleOpenGlControl);
+            this.uiMainPanel.Location = new System.Drawing.Point(471, 12);
+            this.uiMainPanel.Name = "uiMainPanel";
+            this.uiMainPanel.Size = new System.Drawing.Size(622, 302);
+            this.uiMainPanel.TabIndex = 52;
             // 
-            // uiTimeDataGridViewTextBoxColumn
+            // uiSettingsPanel
             // 
-            this.uiTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.uiTimeDataGridViewTextBoxColumn.HeaderText = "time";
-            this.uiTimeDataGridViewTextBoxColumn.Name = "uiTimeDataGridViewTextBoxColumn";
-            this.uiTimeDataGridViewTextBoxColumn.Width = 51;
+            this.uiSettingsPanel.Controls.Add(this.uiSettingsVisibleButton);
+            this.uiSettingsPanel.Controls.Add(this.uiMoveYUpButton);
+            this.uiSettingsPanel.Controls.Add(this.uiMoveXDownButton);
+            this.uiSettingsPanel.Controls.Add(this.uiShowRotateZUpButton);
+            this.uiSettingsPanel.Controls.Add(this.uiMoveXUpButton);
+            this.uiSettingsPanel.Controls.Add(this.uiShowRotateZDownButton);
+            this.uiSettingsPanel.Controls.Add(this.uiMoveYDownButton);
+            this.uiSettingsPanel.Controls.Add(this.uiShowRotateYUpButton);
+            this.uiSettingsPanel.Controls.Add(this.uiShowRotateYDownButton);
+            this.uiSettingsPanel.Controls.Add(this.uiMoveZDownButton);
+            this.uiSettingsPanel.Controls.Add(this.uiShowRotateXUpButton);
+            this.uiSettingsPanel.Controls.Add(this.uiMoveZUpButton);
+            this.uiSettingsPanel.Controls.Add(this.uiShowRotateXDownButton);
+            this.uiSettingsPanel.Controls.Add(this.uiShowZoomUpButton);
+            this.uiSettingsPanel.Controls.Add(this.uiShowZoomDownButton);
+            this.uiSettingsPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.uiSettingsPanel.Location = new System.Drawing.Point(502, 0);
+            this.uiSettingsPanel.Name = "uiSettingsPanel";
+            this.uiSettingsPanel.Size = new System.Drawing.Size(120, 302);
+            this.uiSettingsPanel.TabIndex = 52;
             // 
-            // uiX0DataGridViewTextBoxColumn
+            // uiSettingsVisibleButton
             // 
-            this.uiX0DataGridViewTextBoxColumn.HeaderText = "X0";
-            this.uiX0DataGridViewTextBoxColumn.Name = "uiX0DataGridViewTextBoxColumn";
+            this.uiSettingsVisibleButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.uiSettingsVisibleButton.Location = new System.Drawing.Point(3, 0);
+            this.uiSettingsVisibleButton.Name = "uiSettingsVisibleButton";
+            this.uiSettingsVisibleButton.Size = new System.Drawing.Size(12, 302);
+            this.uiSettingsVisibleButton.TabIndex = 54;
+            this.uiSettingsVisibleButton.Text = "...";
+            this.uiSettingsVisibleButton.UseVisualStyleBackColor = true;
+            this.uiSettingsVisibleButton.Click += new System.EventHandler(this.uiSettingsVisibleButton_Click);
             // 
-            // uiY0DataGridViewTextBoxColumn
+            // uiMoveYUpButton
             // 
-            this.uiY0DataGridViewTextBoxColumn.HeaderText = "Y0";
-            this.uiY0DataGridViewTextBoxColumn.Name = "uiY0DataGridViewTextBoxColumn";
+            this.uiMoveYUpButton.Location = new System.Drawing.Point(46, 140);
+            this.uiMoveYUpButton.Name = "uiMoveYUpButton";
+            this.uiMoveYUpButton.Size = new System.Drawing.Size(26, 23);
+            this.uiMoveYUpButton.TabIndex = 52;
+            this.uiMoveYUpButton.Text = "y+";
+            this.uiMoveYUpButton.UseVisualStyleBackColor = true;
+            this.uiMoveYUpButton.Click += new System.EventHandler(this.uiMoveYUpButton_Click);
             // 
-            // uiZ0DataGridViewTextBoxColumn
+            // uiMoveXDownButton
             // 
-            this.uiZ0DataGridViewTextBoxColumn.HeaderText = "Z0";
-            this.uiZ0DataGridViewTextBoxColumn.Name = "uiZ0DataGridViewTextBoxColumn";
+            this.uiMoveXDownButton.Location = new System.Drawing.Point(17, 116);
+            this.uiMoveXDownButton.Name = "uiMoveXDownButton";
+            this.uiMoveXDownButton.Size = new System.Drawing.Size(26, 23);
+            this.uiMoveXDownButton.TabIndex = 50;
+            this.uiMoveXDownButton.Text = "x-";
+            this.uiMoveXDownButton.UseVisualStyleBackColor = true;
+            this.uiMoveXDownButton.Click += new System.EventHandler(this.uiMoveXDownButton_Click);
             // 
-            // uiFiDataGridViewTextBoxColumn
+            // uiShowRotateZUpButton
             // 
-            this.uiFiDataGridViewTextBoxColumn.HeaderText = "Fi";
-            this.uiFiDataGridViewTextBoxColumn.Name = "uiFiDataGridViewTextBoxColumn";
+            this.uiShowRotateZUpButton.Location = new System.Drawing.Point(75, 29);
+            this.uiShowRotateZUpButton.Name = "uiShowRotateZUpButton";
+            this.uiShowRotateZUpButton.Size = new System.Drawing.Size(26, 23);
+            this.uiShowRotateZUpButton.TabIndex = 43;
+            this.uiShowRotateZUpButton.Text = "z+";
+            this.uiShowRotateZUpButton.UseVisualStyleBackColor = true;
+            this.uiShowRotateZUpButton.Click += new System.EventHandler(this.uiShowRotateZUpButton_Click);
             // 
-            // uiThetaDataGridViewTextBoxColumn
+            // uiMoveXUpButton
             // 
-            this.uiThetaDataGridViewTextBoxColumn.HeaderText = "Theta";
-            this.uiThetaDataGridViewTextBoxColumn.Name = "uiThetaDataGridViewTextBoxColumn";
+            this.uiMoveXUpButton.Location = new System.Drawing.Point(17, 140);
+            this.uiMoveXUpButton.Name = "uiMoveXUpButton";
+            this.uiMoveXUpButton.Size = new System.Drawing.Size(26, 23);
+            this.uiMoveXUpButton.TabIndex = 53;
+            this.uiMoveXUpButton.Text = "x+";
+            this.uiMoveXUpButton.UseVisualStyleBackColor = true;
+            this.uiMoveXUpButton.Click += new System.EventHandler(this.uiMoveXUpButton_Click);
             // 
-            // uiPsiDataGridViewTextBoxColumn
+            // uiShowRotateZDownButton
             // 
-            this.uiPsiDataGridViewTextBoxColumn.HeaderText = "Psi";
-            this.uiPsiDataGridViewTextBoxColumn.Name = "uiPsiDataGridViewTextBoxColumn";
+            this.uiShowRotateZDownButton.Location = new System.Drawing.Point(75, 5);
+            this.uiShowRotateZDownButton.Name = "uiShowRotateZDownButton";
+            this.uiShowRotateZDownButton.Size = new System.Drawing.Size(26, 23);
+            this.uiShowRotateZDownButton.TabIndex = 40;
+            this.uiShowRotateZDownButton.Text = "z-";
+            this.uiShowRotateZDownButton.UseVisualStyleBackColor = true;
+            this.uiShowRotateZDownButton.Click += new System.EventHandler(this.uiShowRotateYDownButton_Click);
             // 
-            // uiCardan1DataGridViewTextBoxColumn
+            // uiMoveYDownButton
             // 
-            this.uiCardan1DataGridViewTextBoxColumn.HeaderText = "Cardan1";
-            this.uiCardan1DataGridViewTextBoxColumn.Name = "uiCardan1DataGridViewTextBoxColumn";
+            this.uiMoveYDownButton.Location = new System.Drawing.Point(46, 116);
+            this.uiMoveYDownButton.Name = "uiMoveYDownButton";
+            this.uiMoveYDownButton.Size = new System.Drawing.Size(26, 23);
+            this.uiMoveYDownButton.TabIndex = 49;
+            this.uiMoveYDownButton.Text = "y-";
+            this.uiMoveYDownButton.UseVisualStyleBackColor = true;
+            this.uiMoveYDownButton.Click += new System.EventHandler(this.uiMoveYDownButton_Click);
             // 
-            // uiCardan2DataGridViewTextBoxColumn
+            // uiShowRotateYUpButton
             // 
-            this.uiCardan2DataGridViewTextBoxColumn.HeaderText = "Cardan2";
-            this.uiCardan2DataGridViewTextBoxColumn.Name = "uiCardan2DataGridViewTextBoxColumn";
+            this.uiShowRotateYUpButton.Location = new System.Drawing.Point(46, 29);
+            this.uiShowRotateYUpButton.Name = "uiShowRotateYUpButton";
+            this.uiShowRotateYUpButton.Size = new System.Drawing.Size(26, 23);
+            this.uiShowRotateYUpButton.TabIndex = 44;
+            this.uiShowRotateYUpButton.Text = "y+";
+            this.uiShowRotateYUpButton.UseVisualStyleBackColor = true;
+            this.uiShowRotateYUpButton.Click += new System.EventHandler(this.uiShowRotateYUpButton_Click);
             // 
-            // uiCardan3DataGridViewTextBoxColumn
+            // uiShowRotateYDownButton
             // 
-            this.uiCardan3DataGridViewTextBoxColumn.HeaderText = "Cardan3";
-            this.uiCardan3DataGridViewTextBoxColumn.Name = "uiCardan3DataGridViewTextBoxColumn";
+            this.uiShowRotateYDownButton.Location = new System.Drawing.Point(46, 5);
+            this.uiShowRotateYDownButton.Name = "uiShowRotateYDownButton";
+            this.uiShowRotateYDownButton.Size = new System.Drawing.Size(26, 23);
+            this.uiShowRotateYDownButton.TabIndex = 41;
+            this.uiShowRotateYDownButton.Text = "y-";
+            this.uiShowRotateYDownButton.UseVisualStyleBackColor = true;
+            this.uiShowRotateYDownButton.Click += new System.EventHandler(this.uiShowRotateYDownButton_Click);
             // 
-            // uiCardan4DataGridViewTextBoxColumn
+            // uiMoveZDownButton
             // 
-            this.uiCardan4DataGridViewTextBoxColumn.HeaderText = "Cardan4";
-            this.uiCardan4DataGridViewTextBoxColumn.Name = "uiCardan4DataGridViewTextBoxColumn";
+            this.uiMoveZDownButton.Location = new System.Drawing.Point(75, 116);
+            this.uiMoveZDownButton.Name = "uiMoveZDownButton";
+            this.uiMoveZDownButton.Size = new System.Drawing.Size(26, 23);
+            this.uiMoveZDownButton.TabIndex = 48;
+            this.uiMoveZDownButton.Text = "z-";
+            this.uiMoveZDownButton.UseVisualStyleBackColor = true;
+            this.uiMoveZDownButton.Click += new System.EventHandler(this.uiMoveZDownButton_Click);
             // 
-            // uiCardan5DataGridViewTextBoxColumn
+            // uiShowRotateXUpButton
             // 
-            this.uiCardan5DataGridViewTextBoxColumn.HeaderText = "Cardan5";
-            this.uiCardan5DataGridViewTextBoxColumn.Name = "uiCardan5DataGridViewTextBoxColumn";
+            this.uiShowRotateXUpButton.Location = new System.Drawing.Point(17, 29);
+            this.uiShowRotateXUpButton.Name = "uiShowRotateXUpButton";
+            this.uiShowRotateXUpButton.Size = new System.Drawing.Size(26, 23);
+            this.uiShowRotateXUpButton.TabIndex = 45;
+            this.uiShowRotateXUpButton.Text = "x+";
+            this.uiShowRotateXUpButton.UseVisualStyleBackColor = true;
+            this.uiShowRotateXUpButton.Click += new System.EventHandler(this.uiShowRotateXUpButton_Click);
             // 
-            // uiCardan6DataGridViewTextBoxColumn
+            // uiMoveZUpButton
             // 
-            this.uiCardan6DataGridViewTextBoxColumn.HeaderText = "Cardan6";
-            this.uiCardan6DataGridViewTextBoxColumn.Name = "uiCardan6DataGridViewTextBoxColumn";
+            this.uiMoveZUpButton.Location = new System.Drawing.Point(75, 140);
+            this.uiMoveZUpButton.Name = "uiMoveZUpButton";
+            this.uiMoveZUpButton.Size = new System.Drawing.Size(26, 23);
+            this.uiMoveZUpButton.TabIndex = 51;
+            this.uiMoveZUpButton.Text = "z+";
+            this.uiMoveZUpButton.UseVisualStyleBackColor = true;
+            this.uiMoveZUpButton.Click += new System.EventHandler(this.uiMoveZUpButton_Click);
+            // 
+            // uiShowRotateXDownButton
+            // 
+            this.uiShowRotateXDownButton.Location = new System.Drawing.Point(17, 5);
+            this.uiShowRotateXDownButton.Name = "uiShowRotateXDownButton";
+            this.uiShowRotateXDownButton.Size = new System.Drawing.Size(26, 23);
+            this.uiShowRotateXDownButton.TabIndex = 42;
+            this.uiShowRotateXDownButton.Text = "x-";
+            this.uiShowRotateXDownButton.UseVisualStyleBackColor = true;
+            this.uiShowRotateXDownButton.Click += new System.EventHandler(this.uiShowRotateXDownButton_Click);
+            // 
+            // uiShowZoomUpButton
+            // 
+            this.uiShowZoomUpButton.Location = new System.Drawing.Point(17, 58);
+            this.uiShowZoomUpButton.Name = "uiShowZoomUpButton";
+            this.uiShowZoomUpButton.Size = new System.Drawing.Size(55, 23);
+            this.uiShowZoomUpButton.TabIndex = 46;
+            this.uiShowZoomUpButton.Text = "zoom+";
+            this.uiShowZoomUpButton.UseVisualStyleBackColor = true;
+            this.uiShowZoomUpButton.Click += new System.EventHandler(this.uiShowZoomUpButton_Click);
+            // 
+            // uiShowZoomDownButton
+            // 
+            this.uiShowZoomDownButton.Location = new System.Drawing.Point(17, 87);
+            this.uiShowZoomDownButton.Name = "uiShowZoomDownButton";
+            this.uiShowZoomDownButton.Size = new System.Drawing.Size(55, 23);
+            this.uiShowZoomDownButton.TabIndex = 47;
+            this.uiShowZoomDownButton.Text = "zoom-";
+            this.uiShowZoomDownButton.UseVisualStyleBackColor = true;
+            this.uiShowZoomDownButton.Click += new System.EventHandler(this.uiShowZoomDownButton_Click);
+            // 
+            // uiSimpleOpenGlControl
+            // 
+            this.uiSimpleOpenGlControl.AccumBits = ((byte)(0));
+            this.uiSimpleOpenGlControl.AutoCheckErrors = false;
+            this.uiSimpleOpenGlControl.AutoFinish = false;
+            this.uiSimpleOpenGlControl.AutoMakeCurrent = true;
+            this.uiSimpleOpenGlControl.AutoSwapBuffers = true;
+            this.uiSimpleOpenGlControl.BackColor = System.Drawing.Color.Black;
+            this.uiSimpleOpenGlControl.ColorBits = ((byte)(32));
+            this.uiSimpleOpenGlControl.DepthBits = ((byte)(16));
+            this.uiSimpleOpenGlControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiSimpleOpenGlControl.Location = new System.Drawing.Point(0, 0);
+            this.uiSimpleOpenGlControl.Name = "uiSimpleOpenGlControl";
+            this.uiSimpleOpenGlControl.Size = new System.Drawing.Size(622, 302);
+            this.uiSimpleOpenGlControl.StencilBits = ((byte)(0));
+            this.uiSimpleOpenGlControl.TabIndex = 51;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 696);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.uiShowRotateZUpButton);
-            this.Controls.Add(this.uiShowRotateZDownButton);
-            this.Controls.Add(this.uiShowRotateYUpButton);
-            this.Controls.Add(this.uiShowRotateYDownButton);
-            this.Controls.Add(this.uiShowRotateXUpButton);
-            this.Controls.Add(this.uiShowRotateXDownButton);
+            this.Controls.Add(this.uiMainPanel);
             this.Controls.Add(this.uiInformateionLabel);
             this.Controls.Add(this.uiFinishPostionGroupBox);
             this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.uiSelectTrackGroupBox);
             this.Controls.Add(this.uiStartPositionGroupBox);
             this.Controls.Add(this.uiHexapodGroupBox);
@@ -1144,17 +1369,19 @@
             this.Text = "Form1";
             this.uiHexapodGroupBox.ResumeLayout(false);
             this.uiHexapodGroupBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.uiSelectTrackGroupBox.ResumeLayout(false);
             this.uiSelectTrackGroupBox.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiTrackDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.uiStartPositionGroupBox.ResumeLayout(false);
             this.uiStartPositionGroupBox.PerformLayout();
             this.uiFinishPostionGroupBox.ResumeLayout(false);
             this.uiFinishPostionGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uiTrackDataGridView)).EndInit();
+            this.uiMainPanel.ResumeLayout(false);
+            this.uiSettingsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1188,7 +1415,6 @@
         private System.Windows.Forms.RadioButton uiTrackSimultaneouslyRadioButton;
         private System.Windows.Forms.Label uiTrackStepCountLabel;
         private System.Windows.Forms.Label uiTrackTimeLabel;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
@@ -1238,16 +1464,6 @@
         public System.Windows.Forms.TextBox uiTrackTimeTextBox;
         public System.Windows.Forms.TextBox uiTrackStepCountTextBox;
         private System.Windows.Forms.Label uiInformateionLabel;
-        private Tao.Platform.Windows.SimpleOpenGlControl uiSimpleOpenGlControl;
-        private System.Windows.Forms.Button uiShowRotateXDownButton;
-        private System.Windows.Forms.Button uiShowRotateXUpButton;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button uiShowRotateYDownButton;
-        private System.Windows.Forms.Button uiShowRotateYUpButton;
-        private System.Windows.Forms.Button uiShowRotateZDownButton;
-        private System.Windows.Forms.Button uiShowRotateZUpButton;
         private System.Windows.Forms.Timer uiUpdateSceneTimer;
         public System.Windows.Forms.TextBox uiStartPositionPsiTextBox;
         private System.Windows.Forms.DataGridView uiTrackDataGridView;
@@ -1264,6 +1480,35 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn uiCardan4DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiCardan5DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiCardan6DataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Tao.Platform.Windows.SimpleOpenGlControl simpleOpenGlControl2;
+        private System.Windows.Forms.Panel uiMainPanel;
+        private System.Windows.Forms.Panel uiSettingsPanel;
+        private System.Windows.Forms.Button uiSettingsVisibleButton;
+        private System.Windows.Forms.Button uiMoveYUpButton;
+        private System.Windows.Forms.Button uiMoveXDownButton;
+        private System.Windows.Forms.Button uiShowRotateZUpButton;
+        private System.Windows.Forms.Button uiMoveXUpButton;
+        private System.Windows.Forms.Button uiShowRotateZDownButton;
+        private System.Windows.Forms.Button uiMoveYDownButton;
+        private System.Windows.Forms.Button uiShowRotateYUpButton;
+        private System.Windows.Forms.Button uiShowRotateYDownButton;
+        private System.Windows.Forms.Button uiMoveZDownButton;
+        private System.Windows.Forms.Button uiShowRotateXUpButton;
+        private System.Windows.Forms.Button uiMoveZUpButton;
+        private System.Windows.Forms.Button uiShowRotateXDownButton;
+        private System.Windows.Forms.Button uiShowZoomUpButton;
+        private System.Windows.Forms.Button uiShowZoomDownButton;
+        private Tao.Platform.Windows.SimpleOpenGlControl uiSimpleOpenGlControl;
     }
 }
 

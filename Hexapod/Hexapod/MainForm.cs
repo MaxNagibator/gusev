@@ -13,6 +13,12 @@ namespace Hexapod
         private int _sceneRotateY;
         private int _sceneRotateZ;
         private const int _rotateAngle = 10;
+        private int _sceneMoveX;
+        private int _sceneMoveY;
+        private int _sceneMoveZ = -200;
+        private float _sceneZoom = 0.3f;
+        private const int MOVE = 10;
+        private int _settingsPanelWidth;
         private int _time;
 
         public MainForm()
@@ -21,6 +27,13 @@ namespace Hexapod
             InitializeOpenGl();
             _hexapod.SetParameters(this);
             UpdateTrackInformation();
+            HideSettingsPanel();
+        }
+
+        private void HideSettingsPanel()
+        {
+            _settingsPanelWidth = uiSettingsPanel.Width;
+            uiSettingsPanel.Width = uiSettingsVisibleButton.Width + 3;
         }
 
         private void InitializeOpenGl()
@@ -103,11 +116,11 @@ namespace Hexapod
 
         private void SetSceneParameters()
         {
-            Gl.glTranslated(0, 0, -200);
+            Gl.glTranslated(_sceneMoveX, _sceneMoveY, _sceneMoveZ);
             Gl.glRotated(_sceneRotateX, 1, 0, 0);
             Gl.glRotated(_sceneRotateY, 0, 1, 0);
             Gl.glRotated(_sceneRotateZ, 0, 0, 1);
-            Gl.glScalef(0.3f, 0.3f, 0.3f);
+            Gl.glScalef(_sceneZoom, _sceneZoom, _sceneZoom);
         }
 
         private void DrawAxes()
@@ -197,6 +210,66 @@ namespace Hexapod
         {
             _sceneRotateZ += _rotateAngle;
             DrawHexapod(_hexapod.Track.Positions[_time]);
+        }
+
+        private void uiShowZoomUpButton_Click(object sender, EventArgs e)
+        {
+            _sceneZoom = _sceneZoom * 1.3f;
+            DrawHexapod(_hexapod.Track.Positions[_time]);
+        }
+
+        private void uiShowZoomDownButton_Click(object sender, EventArgs e)
+        {
+            _sceneZoom = _sceneZoom / 1.3f;
+            DrawHexapod(_hexapod.Track.Positions[_time]);
+        }
+
+        private void uiMoveXDownButton_Click(object sender, EventArgs e)
+        {
+            _sceneMoveX -= MOVE;
+            DrawHexapod(_hexapod.Track.Positions[_time]);
+        }
+
+        private void uiMoveYDownButton_Click(object sender, EventArgs e)
+        {
+            _sceneMoveY -= MOVE;
+            DrawHexapod(_hexapod.Track.Positions[_time]);
+        }
+
+        private void uiMoveZDownButton_Click(object sender, EventArgs e)
+        {
+            _sceneMoveZ -= MOVE;
+            DrawHexapod(_hexapod.Track.Positions[_time]);
+        }
+
+        private void uiMoveXUpButton_Click(object sender, EventArgs e)
+        {
+            _sceneMoveX += MOVE;
+            DrawHexapod(_hexapod.Track.Positions[_time]);
+        }
+
+        private void uiMoveYUpButton_Click(object sender, EventArgs e)
+        {
+            _sceneMoveY += MOVE;
+            DrawHexapod(_hexapod.Track.Positions[_time]);
+        }
+
+        private void uiMoveZUpButton_Click(object sender, EventArgs e)
+        {
+            _sceneMoveZ += MOVE;
+            DrawHexapod(_hexapod.Track.Positions[_time]);
+        }
+
+        private void uiSettingsVisibleButton_Click(object sender, EventArgs e)
+        {
+            if (uiSettingsPanel.Width == _settingsPanelWidth)
+            {
+                uiSettingsPanel.Width = uiSettingsVisibleButton.Width + 3;
+            }
+            else
+            {
+                uiSettingsPanel.Width = _settingsPanelWidth;
+            }
         }
     }
 }
