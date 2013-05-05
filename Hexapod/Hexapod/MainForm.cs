@@ -12,14 +12,14 @@ namespace Hexapod
         private int _sceneRotateX;
         private int _sceneRotateY;
         private int _sceneRotateZ;
-        private const int _rotateAngle = 10;
+        private const int ROTATE_ANGLE = 10;
         private int _sceneMoveX;
         private int _sceneMoveY;
         private int _sceneMoveZ = -200;
         private float _sceneZoom = 0.3f;
         private const int MOVE = 10;
         private int _settingsPanelWidth;
-        private int _time;
+        private bool _isPlayBack;
 
         public MainForm()
         {
@@ -52,33 +52,56 @@ namespace Hexapod
         private void UpdateTrackInformation()
         {
             uiTrackDataGridView.Rows.Clear();
-            foreach (var position in _hexapod.Track.Positions.Select(
-                position => new object[]
-                                {
-                                    position.Time, position.X0, position.Y0, position.Z0,
-                                    position.Fi, position.Theta, position.Psi,
-                                    position.Rail1Length, position.Rail2Length, position.Rail3Length,
-                                    position.Rail4Length, position.Rail5Length, position.Rail6Length
-                                }))
+            foreach (var position in _hexapod.Track.Positions
+                .Select(position => new object[]
+                                        {
+                                            Math.Round(position.Time, 5),
+                                            Math.Round(position.X0, 5),
+                                            Math.Round(position.Y0, 5),
+                                            Math.Round(position.Z0, 5),
+                                            Math.Round(position.Fi, 5),
+                                            Math.Round(position.Theta, 5),
+                                            Math.Round(position.Psi, 5),
+                                            Math.Round(position.Rail1Length, 5),
+                                            Math.Round(position.Rail2Length, 5),
+                                            Math.Round(position.Rail3Length, 5),
+                                            Math.Round(position.Rail4Length, 5),
+                                            Math.Round(position.Rail5Length, 5),
+                                            Math.Round(position.Rail6Length, 5)
+                                        }))
             {
                 uiTrackDataGridView.Rows.Add(position);
             }
-            
-            _time = 1;
-            uiUpdateSceneTimer.Interval = Convert.ToInt16(_hexapod.Track.Time * 1000 / _hexapod.Track.StepCount);
-            uiUpdateSceneTimer.Start();
+            uiUpdateSceneTimer.Interval = Convert.ToInt16(_hexapod.Track.Time*1000/_hexapod.Track.StepCount);
+            uiTrackTrackBar.Maximum = _hexapod.Track.Positions.Count - 1;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void DrawHexapod(object sender, EventArgs e)
         {
-            if (_time < _hexapod.Track.Positions.Count - 1)
+            if (_isPlayBack)
             {
-                _time++;
-                DrawHexapod(_hexapod.Track.Positions[_time]);
+                if (uiTrackTrackBar.Value >= 1)
+                {
+                    DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
+                    uiTrackTrackBar.Value--;
+                }
+                else
+                {
+                    uiUpdateSceneTimer.Stop();
+                }
             }
             else
             {
-                uiUpdateSceneTimer.Stop();
+                if (uiTrackTrackBar.Value <= uiTrackTrackBar.Maximum - 1)
+                {
+                    DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
+                    uiTrackTrackBar.Value++;
+                }
+                else
+                {
+                    uiUpdateSceneTimer.Stop();
+                }
             }
         }
 
@@ -178,86 +201,86 @@ namespace Hexapod
 
         private void uiShowRotateXDownButton_Click(object sender, EventArgs e)
         {
-            _sceneRotateX -= _rotateAngle;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            _sceneRotateX -= ROTATE_ANGLE;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiShowRotateXUpButton_Click(object sender, EventArgs e)
         {
-            _sceneRotateX += _rotateAngle;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            _sceneRotateX += ROTATE_ANGLE;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiShowRotateYDownButton_Click(object sender, EventArgs e)
         {
-            _sceneRotateY -= _rotateAngle;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            _sceneRotateY -= ROTATE_ANGLE;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiShowRotateYUpButton_Click(object sender, EventArgs e)
         {
-            _sceneRotateY += _rotateAngle;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            _sceneRotateY += ROTATE_ANGLE;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiShowRotateZDownButton_Click(object sender, EventArgs e)
         {
-            _sceneRotateZ -= _rotateAngle;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            _sceneRotateZ -= ROTATE_ANGLE;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiShowRotateZUpButton_Click(object sender, EventArgs e)
         {
-            _sceneRotateZ += _rotateAngle;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            _sceneRotateZ += ROTATE_ANGLE;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiShowZoomUpButton_Click(object sender, EventArgs e)
         {
             _sceneZoom = _sceneZoom * 1.3f;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiShowZoomDownButton_Click(object sender, EventArgs e)
         {
             _sceneZoom = _sceneZoom / 1.3f;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiMoveXDownButton_Click(object sender, EventArgs e)
         {
             _sceneMoveX -= MOVE;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiMoveYDownButton_Click(object sender, EventArgs e)
         {
             _sceneMoveY -= MOVE;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiMoveZDownButton_Click(object sender, EventArgs e)
         {
             _sceneMoveZ -= MOVE;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiMoveXUpButton_Click(object sender, EventArgs e)
         {
             _sceneMoveX += MOVE;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiMoveYUpButton_Click(object sender, EventArgs e)
         {
             _sceneMoveY += MOVE;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiMoveZUpButton_Click(object sender, EventArgs e)
         {
             _sceneMoveZ += MOVE;
-            DrawHexapod(_hexapod.Track.Positions[_time]);
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
         private void uiSettingsVisibleButton_Click(object sender, EventArgs e)
@@ -269,6 +292,63 @@ namespace Hexapod
             else
             {
                 uiSettingsPanel.Width = _settingsPanelWidth;
+            }
+        }
+
+        private void uiTrackStartButton_Click(object sender, EventArgs e)
+        {
+            _isPlayBack = false;
+            uiUpdateSceneTimer.Start(); 
+        }
+
+        private void uiTrackPauseToEndButton_Click(object sender, EventArgs e)
+        {
+            uiUpdateSceneTimer.Stop();
+        }
+
+        private void uiTrackBackStartButton_Click(object sender, EventArgs e)
+        {
+            _isPlayBack = true;
+            uiUpdateSceneTimer.Start(); 
+        }
+
+        private void uiTrackPlayToEndButton_Click(object sender, EventArgs e)
+        {
+            uiUpdateSceneTimer.Stop(); 
+            uiTrackTrackBar.Value = uiTrackTrackBar.Maximum;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
+        }
+
+        private void uiTrackPlayToStartButton_Click(object sender, EventArgs e)
+        {
+            uiUpdateSceneTimer.Stop(); 
+            uiTrackTrackBar.Value = 0;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
+        }
+
+        private void uiTrackTrackBar_Scroll(object sender, EventArgs e)
+        {
+            uiUpdateSceneTimer.Stop(); 
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
+        }
+
+        private void uiMainPanel_SizeChanged(object sender, EventArgs e)
+        {
+            //uiSimpleOpenGlControl.Width = uiMainPanel.Width - uiSettingsPanel.Width;
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
+            panel4.Location = new System.Drawing.Point(Width/2 - panel4.Width/2, panel4.Location.Y);
+        }
+
+        private void uiTrackDataGridView_SizeChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewColumn column in uiTrackDataGridView.Columns)
+            {
+                column.Width = (uiTrackDataGridView.Width-70)/uiTrackDataGridView.Columns.Count;
             }
         }
     }
