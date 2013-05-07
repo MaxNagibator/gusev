@@ -173,9 +173,9 @@ namespace Hexapod
 
         private Point GetPoint(double x, double y, double x0, double y0, double z0, double fiR, double thetaR, double psiR)
         {
-            var fi = fiR/180*Math.PI;
-            var theta = thetaR/180*Math.PI;
-            var psi = psiR/180*Math.PI;
+            var fi = fiR/180*Math.PI; //перевод в радианы
+            var theta = thetaR/180*Math.PI; //перевод в радианы
+            var psi = psiR/180*Math.PI; //перевод в радианы
             var p = new Point
                         {
                             X = x*(Math.Cos(psi)*Math.Cos(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Sin(fi)) +

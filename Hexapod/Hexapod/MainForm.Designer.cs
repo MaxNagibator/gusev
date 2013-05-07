@@ -765,7 +765,7 @@
             this.uiTrackPauseButton.Size = new System.Drawing.Size(25, 23);
             this.uiTrackPauseButton.TabIndex = 3;
             this.uiTrackPauseButton.UseVisualStyleBackColor = true;
-            this.uiTrackPauseButton.Click += new System.EventHandler(this.uiTrackPauseToEndButton_Click);
+            this.uiTrackPauseButton.Click += new System.EventHandler(this.uiTrackPauseButton_Click);
             // 
             // uiTrackBackStartButton
             // 
@@ -1180,7 +1180,7 @@
             // uiUpdateSceneTimer
             // 
             this.uiUpdateSceneTimer.Interval = 1;
-            this.uiUpdateSceneTimer.Tick += new System.EventHandler(this.DrawHexapod);
+            this.uiUpdateSceneTimer.Tick += new System.EventHandler(this.DrawHexapodTick);
             // 
             // uiMainPanel
             // 
