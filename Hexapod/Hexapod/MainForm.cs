@@ -26,14 +26,15 @@ namespace Hexapod
             InitializeComponent();
             InitializeOpenGl();
             _hexapod.SetParameters(this);
-            UpdateTrackInformation();
             HideSettingsPanel();
+            UpdateTrackInformation();
         }
 
         private void HideSettingsPanel()
         {
             _settingsPanelWidth = uiSettingsPanel.Width;
             uiSettingsPanel.Width = uiSettingsVisibleButton.Width + 3;
+            uiSimpleOpenGlControl.Width += _settingsPanelWidth;
         }
 
         private void InitializeOpenGl()
@@ -150,14 +151,17 @@ namespace Hexapod
         private void DrawAxes()
         {
             Gl.glBegin(Gl.GL_LINES);
-            Gl.glColor3f(0.0f, 0.0f, 0.0f);
+            Gl.glColor3f(255f,0,0);
             Gl.glVertex3f(0.0f, 0.0f, 0.0f);
             Gl.glVertex3f(100.0f, 0.0f, 0.0f);
+            Gl.glColor3f(0, 255f, 0);
             Gl.glVertex3f(0.0f, 0.0f, 0.0f);
             Gl.glVertex3f(0.0f, 100.0f, 0.0f);
+            Gl.glColor3f(0, 0, 255f);
             Gl.glVertex3f(0.0f, 0.0f, 0.0f);
             Gl.glVertex3f(0.0f, 0.0f, 100.0f);
             Gl.glEnd();
+            Gl.glColor3f(0, 0, 0);
         }
 
         private void DrawBasePlatform()
@@ -165,6 +169,7 @@ namespace Hexapod
             Gl.glPushMatrix();
             Gl.glTranslated(0, 0, -_hexapod.PlatformHeight);
             Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, _hexapod.PlatformHeight, 360, 360);
+            DrawBaseCardansRadius(_hexapod.A,_hexapod.B,_hexapod.C,_hexapod.D,_hexapod.E, _hexapod.F);
             Gl.glPopMatrix();
         }
 
@@ -195,6 +200,34 @@ namespace Hexapod
             Gl.glRotated(position.Theta, 1, 0, 0);
             Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, _hexapod.PlatformHeight, 360, 360);
             Gl.glPopMatrix();
+            Gl.glPopMatrix();
+        }
+
+        private void DrawBaseCardansRadius(Point p1, Point p2,Point p3,Point p4,Point p5,Point p6)
+        {
+            Gl.glPushMatrix();
+            Gl.glTranslated(p1.X, p1.Y, p1.Z);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
+            Gl.glPopMatrix();
+            Gl.glPushMatrix();
+            Gl.glTranslated(p2.X, p2.Y, p2.Z);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
+            Gl.glPopMatrix();
+            Gl.glPushMatrix();
+            Gl.glTranslated(p3.X, p3.Y, p3.Z);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
+            Gl.glPopMatrix();
+            Gl.glPushMatrix();
+            Gl.glTranslated(p4.X, p4.Y, p4.Z);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
+            Gl.glPopMatrix();
+            Gl.glPushMatrix();
+            Gl.glTranslated(p5.X, p5.Y, p5.Z);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
+            Gl.glPopMatrix();
+            Gl.glPushMatrix();
+            Gl.glTranslated(p6.X, p6.Y, p6.Z);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
             Gl.glPopMatrix();
         }
 
@@ -286,14 +319,15 @@ namespace Hexapod
         {
             if (uiSettingsPanel.Width == _settingsPanelWidth)
             {
-                //uiSimpleOpenGlControl.Width += uiSettingsVisibleButton.Width + 3;
                 uiSettingsPanel.Width = uiSettingsVisibleButton.Width + 3;
+                uiSimpleOpenGlControl.Width += _settingsPanelWidth;
             }
             else
             {
-                //uiSimpleOpenGlControl.Width -= uiSettingsVisibleButton.Width + 3;
                 uiSettingsPanel.Width = _settingsPanelWidth;
+                uiSimpleOpenGlControl.Width -= _settingsPanelWidth;
             }
+            UpdateTrackInformation();
         }
 
         private void uiTrackStartButton_Click(object sender, EventArgs e)
@@ -333,15 +367,10 @@ namespace Hexapod
             DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
-        private void MainForm_SizeChanged(object sender, EventArgs e)
-        {
-            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
-        }
-
         private void uiMainPanel_SizeChanged(object sender, EventArgs e)
         {
             DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
-            panel4.Location = new System.Drawing.Point(Width/2 - panel4.Width/2, panel4.Location.Y);
+            uiPlayButtonsPanel.Location = new System.Drawing.Point(Width/2 - uiPlayButtonsPanel.Width/2, uiPlayButtonsPanel.Location.Y);
         }
 
         private void uiTrackDataGridView_SizeChanged(object sender, EventArgs e)

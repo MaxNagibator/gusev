@@ -11,9 +11,9 @@ namespace Hexapod
         public double CardanHeight { get; set; }
         public double CardanLocationRadius { get; set; }
         public double CardanAngle { get; set; }
-        public double CardansRadius { get; set; }
-        public double CardansMinLength { get; set; }
-        public double CardansMaxLength { get; set; }
+        public double RailsRadius { get; set; }
+        public double RailsMinLength { get; set; }
+        public double RailsMaxLength { get; set; }
         public Point A { get; set; }
         public Point B { get; set; }
         public Point C { get; set; }
@@ -32,9 +32,9 @@ namespace Hexapod
             CardanHeight = Convert.ToInt32(mainForm.uiCardanHeightTextBox.Text);
             CardanRadius = Convert.ToInt32(mainForm.uiCardanRadiusTextBox.Text);
             CardanLocationRadius = Convert.ToInt32(mainForm.uiCardanToCenterLenghtTextBox.Text);
-            CardansRadius = Convert.ToInt32(mainForm.uiRailsRadiusTextBox.Text);
-            CardansMinLength = Convert.ToInt32(mainForm.uiRailsMinLengthTextBox.Text);
-            CardansMaxLength = Convert.ToInt32(mainForm.uiRailsMaxLengthTextBox.Text);
+            RailsRadius = Convert.ToInt32(mainForm.uiRailsRadiusTextBox.Text);
+            RailsMinLength = Convert.ToInt32(mainForm.uiRailsMinLengthTextBox.Text);
+            RailsMaxLength = Convert.ToInt32(mainForm.uiRailsMaxLengthTextBox.Text);
             StartPosition = new Position
                                 {
                                     X0 = Convert.ToInt32(mainForm.uiStartPositionX0TextBox.Text),
