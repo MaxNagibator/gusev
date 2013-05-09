@@ -64,47 +64,47 @@ namespace Hexapod
                             Time = Convert.ToInt32(mainForm.uiTrackTimeTextBox.Text),
                             StepCount = Convert.ToInt32(mainForm.uiTrackStepCountTextBox.Text)
                         };
-            CalculatePoints();
+            CalculateBasePoints();
             CalculateTrack();
         }
 
-        private void CalculatePoints()
+        private void CalculateBasePoints()
         {
             A = new Point
                     {
                         X = CardanLocationRadius*Math.Cos(CardanAngle/2/180*Math.PI),
                         Y = CardanLocationRadius*Math.Sin(CardanAngle/2/180*Math.PI),
-                        Z = 0
+                        Z = CardanHeight
                     };
             B = new Point
                     {
                         X = CardanLocationRadius*Math.Cos(CardanAngle/2/180*Math.PI),
                         Y = -CardanLocationRadius*Math.Sin(CardanAngle/2/180*Math.PI),
-                        Z = 0
+                        Z = CardanHeight
                     };
             C = new Point
                     {
                         X = CardanLocationRadius*Math.Cos((120 - CardanAngle/2)/180*Math.PI),
                         Y = -CardanLocationRadius*Math.Sin((120 - CardanAngle/2)/180*Math.PI),
-                        Z = 0
+                        Z = CardanHeight
                     };
             D = new Point
                     {
                         X = CardanLocationRadius*Math.Cos((120 + CardanAngle/2)/180*Math.PI),
                         Y = -CardanLocationRadius*Math.Sin((120 + CardanAngle/2)/180*Math.PI),
-                        Z = 0
+                        Z = CardanHeight
                     };
             E = new Point
                     {
                         X = CardanLocationRadius*Math.Cos((120 + CardanAngle/2)/180*Math.PI),
                         Y = CardanLocationRadius*Math.Sin((120 + CardanAngle/2)/180*Math.PI),
-                        Z = 0
+                        Z = CardanHeight
                     };
             F = new Point
                     {
                         X = CardanLocationRadius*Math.Cos((120 - CardanAngle/2)/180*Math.PI),
                         Y = CardanLocationRadius*Math.Sin((120 - CardanAngle/2)/180*Math.PI),
-                        Z = 0
+                        Z = CardanHeight
                     };
         }
 
@@ -183,14 +183,18 @@ namespace Hexapod
             var fi = fiR/180*Math.PI; //перевод в радианы
             var theta = thetaR/180*Math.PI; //перевод в радианы
             var psi = psiR/180*Math.PI; //перевод в радианы
+            var z = -CardanHeight;
             var p = new Point
                         {
                             X = x*(Math.Cos(psi)*Math.Cos(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Sin(fi)) +
-                                y*(-Math.Cos(psi)*Math.Sin(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Cos(fi)),
+                                y*(-Math.Cos(psi)*Math.Sin(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Cos(fi)) +
+                                z*(Math.Sin(psi)*Math.Sin(theta)),
                             Y = x*(Math.Sin(psi)*Math.Cos(fi) + Math.Cos(psi)*Math.Cos(theta)*Math.Sin(fi)) +
-                                y*(-Math.Sin(psi)*Math.Sin(fi) + Math.Cos(psi)*Math.Cos(theta)*Math.Cos(fi)),
+                                y*(-Math.Sin(psi)*Math.Sin(fi) + Math.Cos(psi)*Math.Cos(theta)*Math.Cos(fi)) +
+                                z*(-Math.Cos(psi)*Math.Sin(theta)),
                             Z = x*(Math.Sin(theta)*Math.Sin(fi)) +
-                                y*(Math.Sin(theta)*Math.Cos(fi))
+                                y*(Math.Sin(theta)*Math.Cos(fi)) +
+                                z*(Math.Cos(theta))
                         };
             p.X += center.X;
             p.Y += center.Y;

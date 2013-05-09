@@ -1303,6 +1303,7 @@
             this.Controls.Add(this.uiHexapodPanel);
             this.Controls.Add(this.uiMainPanel);
             this.Controls.Add(this.uiPlayDataGroupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
             this.Text = "Гексапод";

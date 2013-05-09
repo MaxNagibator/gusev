@@ -12,7 +12,7 @@ namespace Hexapod
         private int _sceneRotateX = 120;
         private int _sceneRotateY = 180;
         private int _sceneRotateZ = 45;
-        private const int ROTATE_ANGLE = 10;
+        private const int ROTATE_ANGLE = 15;
         private int _sceneMoveX;
         private int _sceneMoveY;
         private int _sceneMoveZ = -200;
@@ -133,11 +133,13 @@ namespace Hexapod
         private void DrawAllComponents(Position position)
         {
             SetSceneParameters();
-            DrawAxes();
+            DrawAxes(150f);
+            DrawPlatformWay();
             DrawCardans(position);
             DrawBasePlatform();
             DrawPlatform(position);
         }
+
 
         private void SetSceneParameters()
         {
@@ -148,20 +150,66 @@ namespace Hexapod
             Gl.glScalef(_sceneZoom, _sceneZoom, _sceneZoom);
         }
 
-        private void DrawAxes()
+        private void DrawAxes(double axeLength)
         {
+            double axeWidth = axeLength / 10;
             Gl.glBegin(Gl.GL_LINES);
-            Gl.glColor3f(255f,0,0);
-            Gl.glVertex3f(0.0f, 0.0f, 0.0f);
-            Gl.glVertex3f(1000.0f, 0.0f, 0.0f);
-            Gl.glColor3f(0, 255f, 0);
-            Gl.glVertex3f(0.0f, 0.0f, 0.0f);
-            Gl.glVertex3f(0.0f, 1000.0f, 0.0f);
-            Gl.glColor3f(0, 0, 255f);
-            Gl.glVertex3f(0.0f, 0.0f, 0.0f);
-            Gl.glVertex3f(0.0f, 0.0f, 1000.0f);
+            DrawAxeX(axeLength, axeWidth);
+            DrawAxeY(axeLength, axeWidth);
+            DrawAxeZ(axeLength, axeWidth);
             Gl.glEnd();
             Gl.glColor3f(0, 0, 0);
+        }
+
+        private void DrawAxeX(double axeLength, double axeWidth)
+        {
+            Gl.glColor3f(255, 0, 0);
+            Gl.glVertex3d(0, 0, 0);
+            Gl.glVertex3d(axeLength, 0, 0);
+            Gl.glVertex3d(axeLength, 0, 0);
+            Gl.glVertex3d(axeLength - axeWidth, axeWidth / 2, 0);
+            Gl.glVertex3d(axeLength, 0, 0);
+            Gl.glVertex3d(axeLength - axeWidth, -axeWidth / 2, 0);
+        }
+
+        private void DrawAxeY(double axeLength, double axeWidth)
+        {
+            Gl.glColor3f(0, 255, 0);
+            Gl.glVertex3d(0, 0, 0);
+            Gl.glVertex3d(0, axeLength, 0);
+            Gl.glVertex3d(0, axeLength, 0);
+            Gl.glVertex3d(axeWidth/2, axeLength - axeWidth, 0);
+            Gl.glVertex3d(0, axeLength, 0);
+            Gl.glVertex3d(-axeWidth/2, axeLength - axeWidth, 0);
+        }
+
+        private void DrawAxeZ(double axeLength, double axeWidth)
+        {
+            Gl.glColor3f(0, 0, 255);
+            Gl.glVertex3d(0, 0, 0);
+            Gl.glVertex3d(0, 0, axeLength);
+            Gl.glVertex3d(0, 0, axeLength);
+            Gl.glVertex3d(axeWidth / 2, 0, axeLength - axeWidth);
+            Gl.glVertex3d(0, 0, axeLength);
+            Gl.glVertex3d(-axeWidth / 2, 0, axeLength - axeWidth);
+        }
+
+        private void DrawPlatformWay()
+        {
+            foreach (var position in _hexapod.Track.Positions)
+            {
+                Gl.glPushMatrix();
+                Gl.glTranslated(position.Center.X, position.Center.Y, position.Center.Z);
+                Gl.glRotated(position.Psi, 0, 0, 1);
+                Gl.glPushMatrix();
+                Gl.glRotated(position.Theta, 1, 0, 0);
+                Gl.glPushMatrix();
+                Gl.glRotated(position.Fi, 0, 0, 1);
+                DrawAxes(_hexapod.PlatformRadius);
+                Gl.glPopMatrix();
+                Gl.glPopMatrix();
+                Gl.glPopMatrix();
+            }
         }
 
         private void DrawCardans(Position position)
@@ -223,7 +271,7 @@ namespace Hexapod
         private void DrawCardanRadius(Point p)
         {
             Gl.glPushMatrix();
-            Gl.glTranslated(p.X, p.Y, p.Z);
+            Gl.glTranslated(p.X, p.Y, p.Z - _hexapod.CardanHeight);
             Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.CardanHeight,
                             360, 360);
             Gl.glPopMatrix();
