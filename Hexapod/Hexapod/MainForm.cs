@@ -134,7 +134,7 @@ namespace Hexapod
             SetSceneParameters();
             DrawAxes();
             DrawBasePlatform();
-            DrawRails(position);
+            DrawCardans(position);
             DrawPlatform(position);
         }
 
@@ -163,12 +163,12 @@ namespace Hexapod
         private void DrawBasePlatform()
         {
             Gl.glPushMatrix();
-            Gl.glTranslated(0, 0, -10);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, 10f, 360, 360);
+            Gl.glTranslated(0, 0, -_hexapod.PlatformHeight);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, _hexapod.PlatformHeight, 360, 360);
             Gl.glPopMatrix();
         }
 
-        private void DrawRails(Position position)
+        private void DrawCardans(Position position)
         {
             Gl.glBegin(Gl.GL_LINES);
             Gl.glVertex3d(_hexapod.A.X, _hexapod.A.Y, _hexapod.A.Z);
@@ -193,7 +193,7 @@ namespace Hexapod
             Gl.glRotated(position.Psi, 0, 0, 1);
             Gl.glPushMatrix();
             Gl.glRotated(position.Theta, 1, 0, 0);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, 10f, 360, 360);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, _hexapod.PlatformHeight, 360, 360);
             Gl.glPopMatrix();
             Gl.glPopMatrix();
         }
