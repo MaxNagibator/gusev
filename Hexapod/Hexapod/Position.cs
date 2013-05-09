@@ -3,9 +3,7 @@
     public class Position
     {
         public double Time { get; set; }
-        public double X0 { get; set; }
-        public double Y0 { get; set; }
-        public double Z0 { get; set; }
+        public Point Center { get; set; }
         public double Fi { get; set; }
         public double Theta { get; set; }
         public double Psi { get; set; }

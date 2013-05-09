@@ -9,9 +9,9 @@ namespace Hexapod
     public partial class MainForm : Form
     {
         private readonly Hexapod _hexapod = new Hexapod();
-        private int _sceneRotateX;
-        private int _sceneRotateY;
-        private int _sceneRotateZ;
+        private int _sceneRotateX = 120;
+        private int _sceneRotateY = 180;
+        private int _sceneRotateZ = 45;
         private const int ROTATE_ANGLE = 10;
         private int _sceneMoveX;
         private int _sceneMoveY;
@@ -58,9 +58,9 @@ namespace Hexapod
                 .Select(position => new object[]
                                         {
                                             Math.Round(position.Time, 5),
-                                            Math.Round(position.X0, 5),
-                                            Math.Round(position.Y0, 5),
-                                            Math.Round(position.Z0, 5),
+                                            Math.Round(position.Center.X, 5),
+                                            Math.Round(position.Center.Y, 5),
+                                            Math.Round(position.Center.Z, 5),
                                             Math.Round(position.Fi, 5),
                                             Math.Round(position.Theta, 5),
                                             Math.Round(position.Psi, 5),
@@ -134,8 +134,8 @@ namespace Hexapod
         {
             SetSceneParameters();
             DrawAxes();
-            DrawBasePlatform();
             DrawCardans(position);
+            DrawBasePlatform();
             DrawPlatform(position);
         }
 
@@ -153,24 +153,15 @@ namespace Hexapod
             Gl.glBegin(Gl.GL_LINES);
             Gl.glColor3f(255f,0,0);
             Gl.glVertex3f(0.0f, 0.0f, 0.0f);
-            Gl.glVertex3f(100.0f, 0.0f, 0.0f);
+            Gl.glVertex3f(1000.0f, 0.0f, 0.0f);
             Gl.glColor3f(0, 255f, 0);
             Gl.glVertex3f(0.0f, 0.0f, 0.0f);
-            Gl.glVertex3f(0.0f, 100.0f, 0.0f);
+            Gl.glVertex3f(0.0f, 1000.0f, 0.0f);
             Gl.glColor3f(0, 0, 255f);
             Gl.glVertex3f(0.0f, 0.0f, 0.0f);
-            Gl.glVertex3f(0.0f, 0.0f, 100.0f);
+            Gl.glVertex3f(0.0f, 0.0f, 1000.0f);
             Gl.glEnd();
             Gl.glColor3f(0, 0, 0);
-        }
-
-        private void DrawBasePlatform()
-        {
-            Gl.glPushMatrix();
-            Gl.glTranslated(0, 0, -_hexapod.PlatformHeight);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, _hexapod.PlatformHeight, 360, 360);
-            DrawBaseCardansRadius(_hexapod.A,_hexapod.B,_hexapod.C,_hexapod.D,_hexapod.E, _hexapod.F);
-            Gl.glPopMatrix();
         }
 
         private void DrawCardans(Position position)
@@ -191,43 +182,50 @@ namespace Hexapod
             Gl.glEnd();
         }
 
+        private void DrawBasePlatform()
+        {
+            Gl.glPushMatrix();
+            Gl.glTranslated(0, 0, -_hexapod.PlatformHeight);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, _hexapod.PlatformHeight, 360, 360);
+            Gl.glPopMatrix();
+            DrawCardansRadius();
+        }
+
         private void DrawPlatform(Position position)
         {
             Gl.glPushMatrix();
-            Gl.glTranslated(position.X0, position.Y0, position.Z0);
+            Gl.glTranslated(position.Center.X, position.Center.Y, position.Center.Z);
             Gl.glRotated(position.Psi, 0, 0, 1);
             Gl.glPushMatrix();
             Gl.glRotated(position.Theta, 1, 0, 0);
+            Gl.glPushMatrix();
+            Gl.glRotated(position.Fi, 0, 0, 1);
             Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, _hexapod.PlatformHeight, 360, 360);
+            Gl.glPushMatrix();
+            Gl.glTranslated(0, 0, -_hexapod.CardanHeight);
+            DrawCardansRadius();
+            Gl.glPopMatrix();
+            Gl.glPopMatrix();
             Gl.glPopMatrix();
             Gl.glPopMatrix();
         }
 
-        private void DrawBaseCardansRadius(Point p1, Point p2,Point p3,Point p4,Point p5,Point p6)
+        private void DrawCardansRadius()
+        {
+            DrawCardanRadius(_hexapod.A);
+            DrawCardanRadius(_hexapod.B);
+            DrawCardanRadius(_hexapod.C);
+            DrawCardanRadius(_hexapod.D);
+            DrawCardanRadius(_hexapod.E);
+            DrawCardanRadius(_hexapod.F);
+        }
+
+        private void DrawCardanRadius(Point p)
         {
             Gl.glPushMatrix();
-            Gl.glTranslated(p1.X, p1.Y, p1.Z);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
-            Gl.glPopMatrix();
-            Gl.glPushMatrix();
-            Gl.glTranslated(p2.X, p2.Y, p2.Z);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
-            Gl.glPopMatrix();
-            Gl.glPushMatrix();
-            Gl.glTranslated(p3.X, p3.Y, p3.Z);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
-            Gl.glPopMatrix();
-            Gl.glPushMatrix();
-            Gl.glTranslated(p4.X, p4.Y, p4.Z);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
-            Gl.glPopMatrix();
-            Gl.glPushMatrix();
-            Gl.glTranslated(p5.X, p5.Y, p5.Z);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
-            Gl.glPopMatrix();
-            Gl.glPushMatrix();
-            Gl.glTranslated(p6.X, p6.Y, p6.Z);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.PlatformHeight, 360, 360);
+            Gl.glTranslated(p.X, p.Y, p.Z);
+            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.CardanHeight,
+                            360, 360);
             Gl.glPopMatrix();
         }
 
