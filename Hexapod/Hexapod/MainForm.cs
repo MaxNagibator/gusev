@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
 using Tao.OpenGl;
 using Tao.FreeGlut;
@@ -54,25 +54,33 @@ namespace Hexapod
         private void UpdateTrackInformation()
         {
             uiTrackDataGridView.Rows.Clear();
-            foreach (var position in _hexapod.Track.Positions
-                .Select(position => new object[]
-                                        {
-                                            Math.Round(position.Time, 5),
-                                            Math.Round(position.Center.X, 5),
-                                            Math.Round(position.Center.Y, 5),
-                                            Math.Round(position.Center.Z, 5),
-                                            Math.Round(position.Fi, 5),
-                                            Math.Round(position.Theta, 5),
-                                            Math.Round(position.Psi, 5),
-                                            Math.Round(position.Rail1Length, 5),
-                                            Math.Round(position.Rail2Length, 5),
-                                            Math.Round(position.Rail3Length, 5),
-                                            Math.Round(position.Rail4Length, 5),
-                                            Math.Round(position.Rail5Length, 5),
-                                            Math.Round(position.Rail6Length, 5)
-                                        }))
+            foreach (var position in _hexapod.Track.Positions)
             {
-                uiTrackDataGridView.Rows.Add(position);
+                var row = new DataGridViewRow();
+                row.CreateCells(uiTrackDataGridView);
+                row.Cells[0].Value = Math.Round(position.Time, 5);
+                row.Cells[1].Value = Math.Round(position.Center.X, 5);
+                row.Cells[2].Value = Math.Round(position.Center.Y, 5);
+                row.Cells[3].Value = Math.Round(position.Center.Z, 5);
+                row.Cells[4].Value = Math.Round(position.Fi, 5);
+                row.Cells[5].Value = Math.Round(position.Theta, 5);
+                row.Cells[6].Value = Math.Round(position.Psi, 5);
+                row.Cells[7].Value = Math.Round(position.Rail1Length, 5);
+                row.Cells[8].Value = Math.Round(position.Rail2Length, 5);
+                row.Cells[9].Value = Math.Round(position.Rail3Length, 5);
+                row.Cells[10].Value = Math.Round(position.Rail4Length, 5);
+                row.Cells[11].Value = Math.Round(position.Rail5Length, 5);
+                row.Cells[12].Value = Math.Round(position.Rail6Length, 5);
+                if (position.Rail1Length > _hexapod.RailsMaxLength || position.Rail1Length < _hexapod.RailsMinLength ||
+                    position.Rail2Length > _hexapod.RailsMaxLength || position.Rail2Length < _hexapod.RailsMinLength ||
+                    position.Rail3Length > _hexapod.RailsMaxLength || position.Rail3Length < _hexapod.RailsMinLength ||
+                    position.Rail4Length > _hexapod.RailsMaxLength || position.Rail4Length < _hexapod.RailsMinLength ||
+                    position.Rail5Length > _hexapod.RailsMaxLength || position.Rail5Length < _hexapod.RailsMinLength ||
+                    position.Rail6Length > _hexapod.RailsMaxLength || position.Rail6Length < _hexapod.RailsMinLength)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                }
+                uiTrackDataGridView.Rows.Add(row);
             }
             uiUpdateSceneTimer.Interval = Convert.ToInt16(_hexapod.Track.Time*1000/_hexapod.Track.StepCount);
             uiTrackTrackBar.Maximum = _hexapod.Track.Positions.Count - 1;
@@ -135,8 +143,8 @@ namespace Hexapod
             SetSceneParameters();
             DrawAxes(150f);
             DrawPlatformWay();
-            DrawCardans(position);
             DrawBasePlatform();
+            DrawRails(position);
             DrawPlatform(position);
         }
 
@@ -152,7 +160,7 @@ namespace Hexapod
 
         private void DrawAxes(double axeLength)
         {
-            double axeWidth = axeLength / 10;
+            var axeWidth = axeLength / 10;
             Gl.glBegin(Gl.GL_LINES);
             DrawAxeX(axeLength, axeWidth);
             DrawAxeY(axeLength, axeWidth);
@@ -196,6 +204,7 @@ namespace Hexapod
 
         private void DrawPlatformWay()
         {
+            if (!uiShowWayCheckBox.Checked) return;
             foreach (var position in _hexapod.Track.Positions)
             {
                 Gl.glPushMatrix();
@@ -212,21 +221,31 @@ namespace Hexapod
             }
         }
 
-        private void DrawCardans(Position position)
+        private void DrawRails(Position position)
+        {
+            DrawRail(_hexapod.A, position.G);
+            DrawRail(_hexapod.B, position.H);
+            DrawRail(_hexapod.C, position.I);
+            DrawRail(_hexapod.D, position.J);
+            DrawRail(_hexapod.E, position.K);
+            DrawRail(_hexapod.F, position.L);
+            Gl.glColor3f(0, 0, 0);
+        }
+
+        private void DrawRail(Point point1, Point point2)
         {
             Gl.glBegin(Gl.GL_LINES);
-            Gl.glVertex3d(_hexapod.A.X, _hexapod.A.Y, _hexapod.A.Z);
-            Gl.glVertex3d(position.G.X, position.G.Y, position.G.Z);
-            Gl.glVertex3d(_hexapod.B.X, _hexapod.B.Y, _hexapod.B.Z);
-            Gl.glVertex3d(position.H.X, position.H.Y, position.H.Z);
-            Gl.glVertex3d(_hexapod.C.X, _hexapod.C.Y, _hexapod.C.Z);
-            Gl.glVertex3d(position.I.X, position.I.Y, position.I.Z);
-            Gl.glVertex3d(_hexapod.D.X, _hexapod.D.Y, _hexapod.D.Z);
-            Gl.glVertex3d(position.J.X, position.J.Y, position.J.Z);
-            Gl.glVertex3d(_hexapod.E.X, _hexapod.E.Y, _hexapod.E.Z);
-            Gl.glVertex3d(position.K.X, position.K.Y, position.K.Z);
-            Gl.glVertex3d(_hexapod.F.X, _hexapod.F.Y, _hexapod.F.Z);
-            Gl.glVertex3d(position.L.X, position.L.Y, position.L.Z);
+            var lenght = Hexapod.GetRailLength(point1, point2);
+            if (lenght > _hexapod.RailsMaxLength || lenght < _hexapod.RailsMinLength)
+            {
+                Gl.glColor3f(255, 0, 0);
+            }
+            else
+            {
+                Gl.glColor3f(0, 0, 0);
+            }
+            Gl.glVertex3d(point1.X, point1.Y, point1.Z);
+            Gl.glVertex3d(point2.X, point2.Y, point2.Z);
             Gl.glEnd();
         }
 
@@ -236,11 +255,24 @@ namespace Hexapod
             Gl.glTranslated(0, 0, -_hexapod.PlatformHeight);
             Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, _hexapod.PlatformHeight, 360, 360);
             Gl.glPopMatrix();
-            DrawCardansRadius();
+            DrawCardans();
         }
 
         private void DrawPlatform(Position position)
         {
+            if (position.Rail1Length > _hexapod.RailsMaxLength || position.Rail1Length < _hexapod.RailsMinLength ||
+                position.Rail2Length > _hexapod.RailsMaxLength || position.Rail2Length < _hexapod.RailsMinLength ||
+                position.Rail3Length > _hexapod.RailsMaxLength || position.Rail3Length < _hexapod.RailsMinLength ||
+                position.Rail4Length > _hexapod.RailsMaxLength || position.Rail4Length < _hexapod.RailsMinLength ||
+                position.Rail5Length > _hexapod.RailsMaxLength || position.Rail5Length < _hexapod.RailsMinLength ||
+                position.Rail6Length > _hexapod.RailsMaxLength || position.Rail6Length < _hexapod.RailsMinLength)
+            {
+                Gl.glColor3f(255, 0, 0);
+            }
+            else
+            {
+                Gl.glColor3f(0, 0, 0);
+            }
             Gl.glPushMatrix();
             Gl.glTranslated(position.Center.X, position.Center.Y, position.Center.Z);
             Gl.glRotated(position.Psi, 0, 0, 1);
@@ -251,24 +283,24 @@ namespace Hexapod
             Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius, _hexapod.PlatformHeight, 360, 360);
             Gl.glPushMatrix();
             Gl.glTranslated(0, 0, -_hexapod.CardanHeight);
-            DrawCardansRadius();
+            DrawCardans();
             Gl.glPopMatrix();
             Gl.glPopMatrix();
             Gl.glPopMatrix();
             Gl.glPopMatrix();
         }
 
-        private void DrawCardansRadius()
+        private void DrawCardans()
         {
-            DrawCardanRadius(_hexapod.A);
-            DrawCardanRadius(_hexapod.B);
-            DrawCardanRadius(_hexapod.C);
-            DrawCardanRadius(_hexapod.D);
-            DrawCardanRadius(_hexapod.E);
-            DrawCardanRadius(_hexapod.F);
+            DrawCardan(_hexapod.A);
+            DrawCardan(_hexapod.B);
+            DrawCardan(_hexapod.C);
+            DrawCardan(_hexapod.D);
+            DrawCardan(_hexapod.E);
+            DrawCardan(_hexapod.F);
         }
 
-        private void DrawCardanRadius(Point p)
+        private void DrawCardan(Point p)
         {
             Gl.glPushMatrix();
             Gl.glTranslated(p.X, p.Y, p.Z - _hexapod.CardanHeight);
@@ -425,6 +457,21 @@ namespace Hexapod
             {
                 column.Width = (uiTrackDataGridView.Width-70)/uiTrackDataGridView.Columns.Count;
             }
+        }
+
+        private void uiShowWayCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
+        }
+
+        private void uiTrackTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in uiTrackDataGridView.Rows)
+            {
+                row.Selected = false;
+            }
+            uiTrackDataGridView.Rows[uiTrackTrackBar.Value].Selected = true;
+            uiTrackDataGridView.FirstDisplayedCell = uiTrackDataGridView.Rows[uiTrackTrackBar.Value].Cells[0];
         }
     }
 }

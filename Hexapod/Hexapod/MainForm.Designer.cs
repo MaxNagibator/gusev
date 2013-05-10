@@ -69,6 +69,19 @@
             this.uiTrackPauseButton = new System.Windows.Forms.Button();
             this.uiTrackTrackBar = new System.Windows.Forms.TrackBar();
             this.uiTrackDataGridView = new System.Windows.Forms.DataGridView();
+            this.uiTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiX0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiY0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiZ0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiFiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiThetaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiPsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiRail1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiRail2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiRail3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiRail4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiRail5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiRail6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiStartPositionX0TextBox = new System.Windows.Forms.TextBox();
             this.uiStartPositionX0Label = new System.Windows.Forms.Label();
             this.uiStartPositionY0TextBox = new System.Windows.Forms.TextBox();
@@ -129,19 +142,7 @@
             this.uiPlatformPositionPanel = new System.Windows.Forms.Panel();
             this.uiHexapodPanel = new System.Windows.Forms.Panel();
             this.uiSelectTrackPanel = new System.Windows.Forms.Panel();
-            this.uiTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiX0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiY0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiZ0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiFiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiThetaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiPsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiRail1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiRail2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiRail3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiRail4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiRail5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uiRail6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uiShowWayCheckBox = new System.Windows.Forms.CheckBox();
             this.uiHexapodGroupBox.SuspendLayout();
             this.uiSelectTrackGroupBox.SuspendLayout();
             this.uiPlayDataGroupBox.SuspendLayout();
@@ -555,6 +556,7 @@
             this.uiTrackTrackBar.Size = new System.Drawing.Size(778, 45);
             this.uiTrackTrackBar.TabIndex = 1;
             this.uiTrackTrackBar.Scroll += new System.EventHandler(this.uiTrackTrackBar_Scroll);
+            this.uiTrackTrackBar.ValueChanged += new System.EventHandler(this.uiTrackTrackBar_ValueChanged);
             // 
             // uiTrackDataGridView
             // 
@@ -582,6 +584,97 @@
             this.uiTrackDataGridView.Size = new System.Drawing.Size(778, 216);
             this.uiTrackDataGridView.TabIndex = 4;
             this.uiTrackDataGridView.SizeChanged += new System.EventHandler(this.uiTrackDataGridView_SizeChanged);
+            // 
+            // uiTimeDataGridViewTextBoxColumn
+            // 
+            this.uiTimeDataGridViewTextBoxColumn.HeaderText = "time";
+            this.uiTimeDataGridViewTextBoxColumn.Name = "uiTimeDataGridViewTextBoxColumn";
+            this.uiTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiTimeDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // uiX0DataGridViewTextBoxColumn
+            // 
+            this.uiX0DataGridViewTextBoxColumn.HeaderText = "X0";
+            this.uiX0DataGridViewTextBoxColumn.Name = "uiX0DataGridViewTextBoxColumn";
+            this.uiX0DataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiX0DataGridViewTextBoxColumn.Width = 45;
+            // 
+            // uiY0DataGridViewTextBoxColumn
+            // 
+            this.uiY0DataGridViewTextBoxColumn.HeaderText = "Y0";
+            this.uiY0DataGridViewTextBoxColumn.Name = "uiY0DataGridViewTextBoxColumn";
+            this.uiY0DataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiY0DataGridViewTextBoxColumn.Width = 45;
+            // 
+            // uiZ0DataGridViewTextBoxColumn
+            // 
+            this.uiZ0DataGridViewTextBoxColumn.HeaderText = "Z0";
+            this.uiZ0DataGridViewTextBoxColumn.Name = "uiZ0DataGridViewTextBoxColumn";
+            this.uiZ0DataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiZ0DataGridViewTextBoxColumn.Width = 45;
+            // 
+            // uiFiDataGridViewTextBoxColumn
+            // 
+            this.uiFiDataGridViewTextBoxColumn.HeaderText = "Fi";
+            this.uiFiDataGridViewTextBoxColumn.Name = "uiFiDataGridViewTextBoxColumn";
+            this.uiFiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiFiDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // uiThetaDataGridViewTextBoxColumn
+            // 
+            this.uiThetaDataGridViewTextBoxColumn.HeaderText = "Theta";
+            this.uiThetaDataGridViewTextBoxColumn.Name = "uiThetaDataGridViewTextBoxColumn";
+            this.uiThetaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiThetaDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // uiPsiDataGridViewTextBoxColumn
+            // 
+            this.uiPsiDataGridViewTextBoxColumn.HeaderText = "Psi";
+            this.uiPsiDataGridViewTextBoxColumn.Name = "uiPsiDataGridViewTextBoxColumn";
+            this.uiPsiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiPsiDataGridViewTextBoxColumn.Width = 46;
+            // 
+            // uiRail1DataGridViewTextBoxColumn
+            // 
+            this.uiRail1DataGridViewTextBoxColumn.HeaderText = "Rail1";
+            this.uiRail1DataGridViewTextBoxColumn.Name = "uiRail1DataGridViewTextBoxColumn";
+            this.uiRail1DataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiRail1DataGridViewTextBoxColumn.Width = 72;
+            // 
+            // uiRail2DataGridViewTextBoxColumn
+            // 
+            this.uiRail2DataGridViewTextBoxColumn.HeaderText = "Rail2";
+            this.uiRail2DataGridViewTextBoxColumn.Name = "uiRail2DataGridViewTextBoxColumn";
+            this.uiRail2DataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiRail2DataGridViewTextBoxColumn.Width = 72;
+            // 
+            // uiRail3DataGridViewTextBoxColumn
+            // 
+            this.uiRail3DataGridViewTextBoxColumn.HeaderText = "Rail3";
+            this.uiRail3DataGridViewTextBoxColumn.Name = "uiRail3DataGridViewTextBoxColumn";
+            this.uiRail3DataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiRail3DataGridViewTextBoxColumn.Width = 72;
+            // 
+            // uiRail4DataGridViewTextBoxColumn
+            // 
+            this.uiRail4DataGridViewTextBoxColumn.HeaderText = "Rail4";
+            this.uiRail4DataGridViewTextBoxColumn.Name = "uiRail4DataGridViewTextBoxColumn";
+            this.uiRail4DataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiRail4DataGridViewTextBoxColumn.Width = 72;
+            // 
+            // uiRail5DataGridViewTextBoxColumn
+            // 
+            this.uiRail5DataGridViewTextBoxColumn.HeaderText = "Rail5";
+            this.uiRail5DataGridViewTextBoxColumn.Name = "uiRail5DataGridViewTextBoxColumn";
+            this.uiRail5DataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiRail5DataGridViewTextBoxColumn.Width = 72;
+            // 
+            // uiRail6DataGridViewTextBoxColumn
+            // 
+            this.uiRail6DataGridViewTextBoxColumn.HeaderText = "Rail6";
+            this.uiRail6DataGridViewTextBoxColumn.Name = "uiRail6DataGridViewTextBoxColumn";
+            this.uiRail6DataGridViewTextBoxColumn.ReadOnly = true;
+            this.uiRail6DataGridViewTextBoxColumn.Width = 72;
             // 
             // uiStartPositionX0TextBox
             // 
@@ -982,6 +1075,7 @@
             // 
             // uiSettingsPanel
             // 
+            this.uiSettingsPanel.Controls.Add(this.uiShowWayCheckBox);
             this.uiSettingsPanel.Controls.Add(this.uiSettingsVisibleButton);
             this.uiSettingsPanel.Controls.Add(this.uiMoveYUpButton);
             this.uiSettingsPanel.Controls.Add(this.uiMoveXDownButton);
@@ -1202,96 +1296,18 @@
             this.uiSelectTrackPanel.Size = new System.Drawing.Size(120, 267);
             this.uiSelectTrackPanel.TabIndex = 22;
             // 
-            // uiTimeDataGridViewTextBoxColumn
+            // uiShowWayCheckBox
             // 
-            this.uiTimeDataGridViewTextBoxColumn.HeaderText = "time";
-            this.uiTimeDataGridViewTextBoxColumn.Name = "uiTimeDataGridViewTextBoxColumn";
-            this.uiTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiTimeDataGridViewTextBoxColumn.Width = 51;
-            // 
-            // uiX0DataGridViewTextBoxColumn
-            // 
-            this.uiX0DataGridViewTextBoxColumn.HeaderText = "X0";
-            this.uiX0DataGridViewTextBoxColumn.Name = "uiX0DataGridViewTextBoxColumn";
-            this.uiX0DataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiX0DataGridViewTextBoxColumn.Width = 45;
-            // 
-            // uiY0DataGridViewTextBoxColumn
-            // 
-            this.uiY0DataGridViewTextBoxColumn.HeaderText = "Y0";
-            this.uiY0DataGridViewTextBoxColumn.Name = "uiY0DataGridViewTextBoxColumn";
-            this.uiY0DataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiY0DataGridViewTextBoxColumn.Width = 45;
-            // 
-            // uiZ0DataGridViewTextBoxColumn
-            // 
-            this.uiZ0DataGridViewTextBoxColumn.HeaderText = "Z0";
-            this.uiZ0DataGridViewTextBoxColumn.Name = "uiZ0DataGridViewTextBoxColumn";
-            this.uiZ0DataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiZ0DataGridViewTextBoxColumn.Width = 45;
-            // 
-            // uiFiDataGridViewTextBoxColumn
-            // 
-            this.uiFiDataGridViewTextBoxColumn.HeaderText = "Fi";
-            this.uiFiDataGridViewTextBoxColumn.Name = "uiFiDataGridViewTextBoxColumn";
-            this.uiFiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiFiDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // uiThetaDataGridViewTextBoxColumn
-            // 
-            this.uiThetaDataGridViewTextBoxColumn.HeaderText = "Theta";
-            this.uiThetaDataGridViewTextBoxColumn.Name = "uiThetaDataGridViewTextBoxColumn";
-            this.uiThetaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiThetaDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // uiPsiDataGridViewTextBoxColumn
-            // 
-            this.uiPsiDataGridViewTextBoxColumn.HeaderText = "Psi";
-            this.uiPsiDataGridViewTextBoxColumn.Name = "uiPsiDataGridViewTextBoxColumn";
-            this.uiPsiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiPsiDataGridViewTextBoxColumn.Width = 46;
-            // 
-            // uiRail1DataGridViewTextBoxColumn
-            // 
-            this.uiRail1DataGridViewTextBoxColumn.HeaderText = "Rail1";
-            this.uiRail1DataGridViewTextBoxColumn.Name = "uiRail1DataGridViewTextBoxColumn";
-            this.uiRail1DataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiRail1DataGridViewTextBoxColumn.Width = 72;
-            // 
-            // uiRail2DataGridViewTextBoxColumn
-            // 
-            this.uiRail2DataGridViewTextBoxColumn.HeaderText = "Rail2";
-            this.uiRail2DataGridViewTextBoxColumn.Name = "uiRail2DataGridViewTextBoxColumn";
-            this.uiRail2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiRail2DataGridViewTextBoxColumn.Width = 72;
-            // 
-            // uiRail3DataGridViewTextBoxColumn
-            // 
-            this.uiRail3DataGridViewTextBoxColumn.HeaderText = "Rail3";
-            this.uiRail3DataGridViewTextBoxColumn.Name = "uiRail3DataGridViewTextBoxColumn";
-            this.uiRail3DataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiRail3DataGridViewTextBoxColumn.Width = 72;
-            // 
-            // uiRail4DataGridViewTextBoxColumn
-            // 
-            this.uiRail4DataGridViewTextBoxColumn.HeaderText = "Rail4";
-            this.uiRail4DataGridViewTextBoxColumn.Name = "uiRail4DataGridViewTextBoxColumn";
-            this.uiRail4DataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiRail4DataGridViewTextBoxColumn.Width = 72;
-            // 
-            // uiRail5DataGridViewTextBoxColumn
-            // 
-            this.uiRail5DataGridViewTextBoxColumn.HeaderText = "Rail5";
-            this.uiRail5DataGridViewTextBoxColumn.Name = "uiRail5DataGridViewTextBoxColumn";
-            this.uiRail5DataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiRail5DataGridViewTextBoxColumn.Width = 72;
-            // 
-            // uiRail6DataGridViewTextBoxColumn
-            // 
-            this.uiRail6DataGridViewTextBoxColumn.HeaderText = "Rail6";
-            this.uiRail6DataGridViewTextBoxColumn.Name = "uiRail6DataGridViewTextBoxColumn";
-            this.uiRail6DataGridViewTextBoxColumn.ReadOnly = true;
-            this.uiRail6DataGridViewTextBoxColumn.Width = 72;
+            this.uiShowWayCheckBox.AutoSize = true;
+            this.uiShowWayCheckBox.Checked = true;
+            this.uiShowWayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.uiShowWayCheckBox.Location = new System.Drawing.Point(17, 169);
+            this.uiShowWayCheckBox.Name = "uiShowWayCheckBox";
+            this.uiShowWayCheckBox.Size = new System.Drawing.Size(100, 17);
+            this.uiShowWayCheckBox.TabIndex = 55;
+            this.uiShowWayCheckBox.Text = "Показать путь";
+            this.uiShowWayCheckBox.UseVisualStyleBackColor = true;
+            this.uiShowWayCheckBox.CheckedChanged += new System.EventHandler(this.uiShowWayCheckBox_CheckedChanged);
             // 
             // MainForm
             // 
@@ -1322,6 +1338,7 @@
             this.uiFinishPostionGroupBox.PerformLayout();
             this.uiMainPanel.ResumeLayout(false);
             this.uiSettingsPanel.ResumeLayout(false);
+            this.uiSettingsPanel.PerformLayout();
             this.uiPlatformPositionPanel.ResumeLayout(false);
             this.uiHexapodPanel.ResumeLayout(false);
             this.uiSelectTrackPanel.ResumeLayout(false);
@@ -1443,6 +1460,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn uiRail4DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiRail5DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiRail6DataGridViewTextBoxColumn;
+        private System.Windows.Forms.CheckBox uiShowWayCheckBox;
     }
 }
 

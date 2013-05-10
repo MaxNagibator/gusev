@@ -202,7 +202,7 @@ namespace Hexapod
             return p;
         }
 
-        private double GetRailLength(Point p0, Point p1)
+        public static double GetRailLength(Point p0, Point p1)
         {
             return Math.Sqrt(Math.Pow(p0.X - p1.X, 2) + Math.Pow(p0.Y - p1.Y, 2) + Math.Pow(p0.Z - p1.Z, 2));
         }
