@@ -123,27 +123,35 @@
             this.uiUpdateSceneTimer = new System.Windows.Forms.Timer(this.components);
             this.uiMainPanel = new System.Windows.Forms.Panel();
             this.uiSettingsPanel = new System.Windows.Forms.Panel();
+            this.uiSceneRotateZNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.uiSceneRotateZhScrollBar = new System.Windows.Forms.HScrollBar();
+            this.uiSceneRotateYNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.uiSceneRotateYhScrollBar = new System.Windows.Forms.HScrollBar();
+            this.uiSceneRotateXNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.uiSceneRotateXhScrollBar = new System.Windows.Forms.HScrollBar();
+            this.uiShowWayCheckBox = new System.Windows.Forms.CheckBox();
             this.uiSettingsVisibleButton = new System.Windows.Forms.Button();
-            this.uiMoveYUpButton = new System.Windows.Forms.Button();
-            this.uiMoveXDownButton = new System.Windows.Forms.Button();
-            this.uiShowRotateZUpButton = new System.Windows.Forms.Button();
-            this.uiMoveXUpButton = new System.Windows.Forms.Button();
-            this.uiShowRotateZDownButton = new System.Windows.Forms.Button();
-            this.uiMoveYDownButton = new System.Windows.Forms.Button();
-            this.uiShowRotateYUpButton = new System.Windows.Forms.Button();
-            this.uiShowRotateYDownButton = new System.Windows.Forms.Button();
-            this.uiMoveZDownButton = new System.Windows.Forms.Button();
-            this.uiShowRotateXUpButton = new System.Windows.Forms.Button();
-            this.uiMoveZUpButton = new System.Windows.Forms.Button();
-            this.uiShowRotateXDownButton = new System.Windows.Forms.Button();
             this.uiShowZoomUpButton = new System.Windows.Forms.Button();
             this.uiShowZoomDownButton = new System.Windows.Forms.Button();
             this.uiSimpleOpenGlControl = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.uiPlatformPositionPanel = new System.Windows.Forms.Panel();
             this.uiHexapodPanel = new System.Windows.Forms.Panel();
             this.uiSelectTrackPanel = new System.Windows.Forms.Panel();
-            this.uiShowWayCheckBox = new System.Windows.Forms.CheckBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.uiDirectionCosineToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.uiSceneRotateXLabel = new System.Windows.Forms.Label();
+            this.uiSceneRotateYLabel = new System.Windows.Forms.Label();
+            this.uiSceneRotateZLabel = new System.Windows.Forms.Label();
+            this.uiSceneRotateLabel = new System.Windows.Forms.Label();
+            this.uiSceneMoveLabel = new System.Windows.Forms.Label();
+            this.uiSceneMoveZLabel = new System.Windows.Forms.Label();
+            this.uiSceneMoveYLabel = new System.Windows.Forms.Label();
+            this.uiSceneMoveXLabel = new System.Windows.Forms.Label();
+            this.uiSceneMoveZNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.uiSceneMoveZhScrollBar = new System.Windows.Forms.HScrollBar();
+            this.uiSceneMoveYNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.uiSceneMoveYhScrollBar = new System.Windows.Forms.HScrollBar();
+            this.uiSceneMoveXNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.uiSceneMoveXhScrollBar = new System.Windows.Forms.HScrollBar();
             this.uiHexapodGroupBox.SuspendLayout();
             this.uiSelectTrackGroupBox.SuspendLayout();
             this.uiPlayDataGroupBox.SuspendLayout();
@@ -154,10 +162,15 @@
             this.uiFinishPostionGroupBox.SuspendLayout();
             this.uiMainPanel.SuspendLayout();
             this.uiSettingsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneRotateZNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneRotateYNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneRotateXNumericUpDown)).BeginInit();
             this.uiPlatformPositionPanel.SuspendLayout();
             this.uiHexapodPanel.SuspendLayout();
             this.uiSelectTrackPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneMoveZNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneMoveYNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneMoveXNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // uiHexapodGroupBox
@@ -482,7 +495,7 @@
             this.uiPlayDataGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPlayDataGroupBox.Location = new System.Drawing.Point(0, 267);
             this.uiPlayDataGroupBox.Name = "uiPlayDataGroupBox";
-            this.uiPlayDataGroupBox.Size = new System.Drawing.Size(784, 295);
+            this.uiPlayDataGroupBox.Size = new System.Drawing.Size(984, 295);
             this.uiPlayDataGroupBox.TabIndex = 20;
             this.uiPlayDataGroupBox.TabStop = false;
             this.uiPlayDataGroupBox.Text = "groupBox5";
@@ -555,7 +568,7 @@
             this.uiTrackTrackBar.Location = new System.Drawing.Point(3, 232);
             this.uiTrackTrackBar.Maximum = 508;
             this.uiTrackTrackBar.Name = "uiTrackTrackBar";
-            this.uiTrackTrackBar.Size = new System.Drawing.Size(778, 45);
+            this.uiTrackTrackBar.Size = new System.Drawing.Size(978, 45);
             this.uiTrackTrackBar.TabIndex = 1;
             this.uiTrackTrackBar.Scroll += new System.EventHandler(this.uiTrackTrackBar_Scroll);
             this.uiTrackTrackBar.ValueChanged += new System.EventHandler(this.uiTrackTrackBar_ValueChanged);
@@ -583,7 +596,7 @@
             this.uiTrackDataGridView.Location = new System.Drawing.Point(3, 16);
             this.uiTrackDataGridView.Name = "uiTrackDataGridView";
             this.uiTrackDataGridView.ReadOnly = true;
-            this.uiTrackDataGridView.Size = new System.Drawing.Size(778, 216);
+            this.uiTrackDataGridView.Size = new System.Drawing.Size(978, 216);
             this.uiTrackDataGridView.TabIndex = 4;
             this.uiTrackDataGridView.SizeChanged += new System.EventHandler(this.uiTrackDataGridView_SizeChanged);
             // 
@@ -767,7 +780,10 @@
             this.uiStartPositionDirectionCosineZValueLabel.Name = "uiStartPositionDirectionCosineZValueLabel";
             this.uiStartPositionDirectionCosineZValueLabel.Size = new System.Drawing.Size(10, 13);
             this.uiStartPositionDirectionCosineZValueLabel.TabIndex = 29;
+            this.uiStartPositionDirectionCosineZValueLabel.Tag = "Z cos(k,k\')";
             this.uiStartPositionDirectionCosineZValueLabel.Text = "-";
+            this.uiStartPositionDirectionCosineZValueLabel.MouseEnter += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseEnter);
+            this.uiStartPositionDirectionCosineZValueLabel.MouseLeave += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseLeave);
             // 
             // uiStartPositionDirectionCosineYValueLabel
             // 
@@ -776,7 +792,10 @@
             this.uiStartPositionDirectionCosineYValueLabel.Name = "uiStartPositionDirectionCosineYValueLabel";
             this.uiStartPositionDirectionCosineYValueLabel.Size = new System.Drawing.Size(10, 13);
             this.uiStartPositionDirectionCosineYValueLabel.TabIndex = 28;
+            this.uiStartPositionDirectionCosineYValueLabel.Tag = "Y cos(j,j\')";
             this.uiStartPositionDirectionCosineYValueLabel.Text = "-";
+            this.uiStartPositionDirectionCosineYValueLabel.MouseEnter += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseEnter);
+            this.uiStartPositionDirectionCosineYValueLabel.MouseLeave += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseLeave);
             // 
             // uiStartPositionDirectionCosineXValueLabel
             // 
@@ -785,7 +804,10 @@
             this.uiStartPositionDirectionCosineXValueLabel.Name = "uiStartPositionDirectionCosineXValueLabel";
             this.uiStartPositionDirectionCosineXValueLabel.Size = new System.Drawing.Size(10, 13);
             this.uiStartPositionDirectionCosineXValueLabel.TabIndex = 27;
+            this.uiStartPositionDirectionCosineXValueLabel.Tag = "X cos(i,i\')";
             this.uiStartPositionDirectionCosineXValueLabel.Text = "-";
+            this.uiStartPositionDirectionCosineXValueLabel.MouseEnter += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseEnter);
+            this.uiStartPositionDirectionCosineXValueLabel.MouseLeave += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseLeave);
             // 
             // uiStartPositionDirectionCosineZLabel
             // 
@@ -903,7 +925,10 @@
             this.uiFinishPositionDirectionCosineZValueLabel.Name = "uiFinishPositionDirectionCosineZValueLabel";
             this.uiFinishPositionDirectionCosineZValueLabel.Size = new System.Drawing.Size(10, 13);
             this.uiFinishPositionDirectionCosineZValueLabel.TabIndex = 29;
+            this.uiFinishPositionDirectionCosineZValueLabel.Tag = "Z cos(k,k\')";
             this.uiFinishPositionDirectionCosineZValueLabel.Text = "-";
+            this.uiFinishPositionDirectionCosineZValueLabel.MouseEnter += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseEnter);
+            this.uiFinishPositionDirectionCosineZValueLabel.MouseLeave += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseLeave);
             // 
             // uiFinishPositionDirectionCosineYValueLabel
             // 
@@ -912,7 +937,10 @@
             this.uiFinishPositionDirectionCosineYValueLabel.Name = "uiFinishPositionDirectionCosineYValueLabel";
             this.uiFinishPositionDirectionCosineYValueLabel.Size = new System.Drawing.Size(10, 13);
             this.uiFinishPositionDirectionCosineYValueLabel.TabIndex = 28;
+            this.uiFinishPositionDirectionCosineYValueLabel.Tag = "Y cos(j,j\')";
             this.uiFinishPositionDirectionCosineYValueLabel.Text = "-";
+            this.uiFinishPositionDirectionCosineYValueLabel.MouseEnter += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseEnter);
+            this.uiFinishPositionDirectionCosineYValueLabel.MouseLeave += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseLeave);
             // 
             // uiFinishPositionDirectionCosineXValueLabel
             // 
@@ -921,7 +949,10 @@
             this.uiFinishPositionDirectionCosineXValueLabel.Name = "uiFinishPositionDirectionCosineXValueLabel";
             this.uiFinishPositionDirectionCosineXValueLabel.Size = new System.Drawing.Size(10, 13);
             this.uiFinishPositionDirectionCosineXValueLabel.TabIndex = 27;
+            this.uiFinishPositionDirectionCosineXValueLabel.Tag = "X cos(i,i\')";
             this.uiFinishPositionDirectionCosineXValueLabel.Text = "-";
+            this.uiFinishPositionDirectionCosineXValueLabel.MouseEnter += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseEnter);
+            this.uiFinishPositionDirectionCosineXValueLabel.MouseLeave += new System.EventHandler(this.uiDirectionCosineValueLabels_MouseLeave);
             // 
             // uiFinishPositionDirectionCosineZLabel
             // 
@@ -1071,34 +1102,153 @@
             this.uiMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiMainPanel.Location = new System.Drawing.Point(0, 0);
             this.uiMainPanel.Name = "uiMainPanel";
-            this.uiMainPanel.Size = new System.Drawing.Size(784, 267);
+            this.uiMainPanel.Size = new System.Drawing.Size(984, 267);
             this.uiMainPanel.TabIndex = 52;
             this.uiMainPanel.SizeChanged += new System.EventHandler(this.uiMainPanel_SizeChanged);
             // 
             // uiSettingsPanel
             // 
-            this.uiSettingsPanel.Controls.Add(this.trackBar1);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveLabel);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveZLabel);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveYLabel);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveXLabel);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveZNumericUpDown);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveZhScrollBar);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveYNumericUpDown);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveYhScrollBar);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveXNumericUpDown);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneMoveXhScrollBar);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateLabel);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateZLabel);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateYLabel);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateXLabel);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateZNumericUpDown);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateZhScrollBar);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateYNumericUpDown);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateYhScrollBar);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateXNumericUpDown);
+            this.uiSettingsPanel.Controls.Add(this.uiSceneRotateXhScrollBar);
             this.uiSettingsPanel.Controls.Add(this.uiShowWayCheckBox);
             this.uiSettingsPanel.Controls.Add(this.uiSettingsVisibleButton);
-            this.uiSettingsPanel.Controls.Add(this.uiMoveYUpButton);
-            this.uiSettingsPanel.Controls.Add(this.uiMoveXDownButton);
-            this.uiSettingsPanel.Controls.Add(this.uiShowRotateZUpButton);
-            this.uiSettingsPanel.Controls.Add(this.uiMoveXUpButton);
-            this.uiSettingsPanel.Controls.Add(this.uiShowRotateZDownButton);
-            this.uiSettingsPanel.Controls.Add(this.uiMoveYDownButton);
-            this.uiSettingsPanel.Controls.Add(this.uiShowRotateYUpButton);
-            this.uiSettingsPanel.Controls.Add(this.uiShowRotateYDownButton);
-            this.uiSettingsPanel.Controls.Add(this.uiMoveZDownButton);
-            this.uiSettingsPanel.Controls.Add(this.uiShowRotateXUpButton);
-            this.uiSettingsPanel.Controls.Add(this.uiMoveZUpButton);
-            this.uiSettingsPanel.Controls.Add(this.uiShowRotateXDownButton);
             this.uiSettingsPanel.Controls.Add(this.uiShowZoomUpButton);
             this.uiSettingsPanel.Controls.Add(this.uiShowZoomDownButton);
             this.uiSettingsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.uiSettingsPanel.Location = new System.Drawing.Point(664, 0);
+            this.uiSettingsPanel.Location = new System.Drawing.Point(761, 0);
             this.uiSettingsPanel.Name = "uiSettingsPanel";
-            this.uiSettingsPanel.Size = new System.Drawing.Size(120, 267);
+            this.uiSettingsPanel.Size = new System.Drawing.Size(223, 267);
             this.uiSettingsPanel.TabIndex = 52;
+            // 
+            // uiSceneRotateZNumericUpDown
+            // 
+            this.uiSceneRotateZNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.uiSceneRotateZNumericUpDown.Location = new System.Drawing.Point(155, 59);
+            this.uiSceneRotateZNumericUpDown.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.uiSceneRotateZNumericUpDown.Name = "uiSceneRotateZNumericUpDown";
+            this.uiSceneRotateZNumericUpDown.Size = new System.Drawing.Size(65, 20);
+            this.uiSceneRotateZNumericUpDown.TabIndex = 61;
+            this.uiSceneRotateZNumericUpDown.Value = new decimal(new int[] {
+            45,
+            0,
+            0,
+            0});
+            this.uiSceneRotateZNumericUpDown.ValueChanged += new System.EventHandler(this.uiSceneRotateZNumericUpDown_ValueChanged);
+            // 
+            // uiSceneRotateZhScrollBar
+            // 
+            this.uiSceneRotateZhScrollBar.Location = new System.Drawing.Point(38, 59);
+            this.uiSceneRotateZhScrollBar.Maximum = 360;
+            this.uiSceneRotateZhScrollBar.Name = "uiSceneRotateZhScrollBar";
+            this.uiSceneRotateZhScrollBar.Size = new System.Drawing.Size(114, 20);
+            this.uiSceneRotateZhScrollBar.TabIndex = 60;
+            this.uiSceneRotateZhScrollBar.Value = 45;
+            this.uiSceneRotateZhScrollBar.ValueChanged += new System.EventHandler(this.uiSceneRotateZhScrollBar_ValueChanged);
+            // 
+            // uiSceneRotateYNumericUpDown
+            // 
+            this.uiSceneRotateYNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.uiSceneRotateYNumericUpDown.Location = new System.Drawing.Point(155, 37);
+            this.uiSceneRotateYNumericUpDown.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.uiSceneRotateYNumericUpDown.Name = "uiSceneRotateYNumericUpDown";
+            this.uiSceneRotateYNumericUpDown.Size = new System.Drawing.Size(65, 20);
+            this.uiSceneRotateYNumericUpDown.TabIndex = 59;
+            this.uiSceneRotateYNumericUpDown.Value = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.uiSceneRotateYNumericUpDown.ValueChanged += new System.EventHandler(this.uiSceneRotateYNumericUpDown_ValueChanged);
+            // 
+            // uiSceneRotateYhScrollBar
+            // 
+            this.uiSceneRotateYhScrollBar.Location = new System.Drawing.Point(38, 37);
+            this.uiSceneRotateYhScrollBar.Maximum = 360;
+            this.uiSceneRotateYhScrollBar.Name = "uiSceneRotateYhScrollBar";
+            this.uiSceneRotateYhScrollBar.Size = new System.Drawing.Size(114, 20);
+            this.uiSceneRotateYhScrollBar.TabIndex = 58;
+            this.uiSceneRotateYhScrollBar.Value = 180;
+            this.uiSceneRotateYhScrollBar.ValueChanged += new System.EventHandler(this.uiSceneRotateYhScrollBar_ValueChanged);
+            // 
+            // uiSceneRotateXNumericUpDown
+            // 
+            this.uiSceneRotateXNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.uiSceneRotateXNumericUpDown.Location = new System.Drawing.Point(155, 15);
+            this.uiSceneRotateXNumericUpDown.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.uiSceneRotateXNumericUpDown.Name = "uiSceneRotateXNumericUpDown";
+            this.uiSceneRotateXNumericUpDown.Size = new System.Drawing.Size(65, 20);
+            this.uiSceneRotateXNumericUpDown.TabIndex = 57;
+            this.uiSceneRotateXNumericUpDown.Value = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.uiSceneRotateXNumericUpDown.ValueChanged += new System.EventHandler(this.uiSceneRotateXNumericUpDown_ValueChanged);
+            // 
+            // uiSceneRotateXhScrollBar
+            // 
+            this.uiSceneRotateXhScrollBar.Location = new System.Drawing.Point(38, 15);
+            this.uiSceneRotateXhScrollBar.Maximum = 360;
+            this.uiSceneRotateXhScrollBar.Name = "uiSceneRotateXhScrollBar";
+            this.uiSceneRotateXhScrollBar.Size = new System.Drawing.Size(114, 20);
+            this.uiSceneRotateXhScrollBar.TabIndex = 56;
+            this.uiSceneRotateXhScrollBar.Value = 90;
+            this.uiSceneRotateXhScrollBar.ValueChanged += new System.EventHandler(this.uiSceneRotateXhScrollBar_ValueChanged);
+            // 
+            // uiShowWayCheckBox
+            // 
+            this.uiShowWayCheckBox.AutoSize = true;
+            this.uiShowWayCheckBox.Checked = true;
+            this.uiShowWayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.uiShowWayCheckBox.Location = new System.Drawing.Point(21, 161);
+            this.uiShowWayCheckBox.Name = "uiShowWayCheckBox";
+            this.uiShowWayCheckBox.Size = new System.Drawing.Size(100, 17);
+            this.uiShowWayCheckBox.TabIndex = 55;
+            this.uiShowWayCheckBox.Text = "Показать путь";
+            this.uiShowWayCheckBox.UseVisualStyleBackColor = true;
+            this.uiShowWayCheckBox.CheckedChanged += new System.EventHandler(this.uiShowWayCheckBox_CheckedChanged);
             // 
             // uiSettingsVisibleButton
             // 
@@ -1112,129 +1262,9 @@
             this.uiSettingsVisibleButton.UseVisualStyleBackColor = true;
             this.uiSettingsVisibleButton.Click += new System.EventHandler(this.uiSettingsVisibleButton_Click);
             // 
-            // uiMoveYUpButton
-            // 
-            this.uiMoveYUpButton.Location = new System.Drawing.Point(46, 140);
-            this.uiMoveYUpButton.Name = "uiMoveYUpButton";
-            this.uiMoveYUpButton.Size = new System.Drawing.Size(26, 23);
-            this.uiMoveYUpButton.TabIndex = 52;
-            this.uiMoveYUpButton.Text = "y+";
-            this.uiMoveYUpButton.UseVisualStyleBackColor = true;
-            this.uiMoveYUpButton.Click += new System.EventHandler(this.uiMoveYUpButton_Click);
-            // 
-            // uiMoveXDownButton
-            // 
-            this.uiMoveXDownButton.Location = new System.Drawing.Point(17, 116);
-            this.uiMoveXDownButton.Name = "uiMoveXDownButton";
-            this.uiMoveXDownButton.Size = new System.Drawing.Size(26, 23);
-            this.uiMoveXDownButton.TabIndex = 50;
-            this.uiMoveXDownButton.Text = "x-";
-            this.uiMoveXDownButton.UseVisualStyleBackColor = true;
-            this.uiMoveXDownButton.Click += new System.EventHandler(this.uiMoveXDownButton_Click);
-            // 
-            // uiShowRotateZUpButton
-            // 
-            this.uiShowRotateZUpButton.Location = new System.Drawing.Point(75, 29);
-            this.uiShowRotateZUpButton.Name = "uiShowRotateZUpButton";
-            this.uiShowRotateZUpButton.Size = new System.Drawing.Size(26, 23);
-            this.uiShowRotateZUpButton.TabIndex = 43;
-            this.uiShowRotateZUpButton.Text = "z+";
-            this.uiShowRotateZUpButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateZUpButton.Click += new System.EventHandler(this.uiShowRotateZUpButton_Click);
-            // 
-            // uiMoveXUpButton
-            // 
-            this.uiMoveXUpButton.Location = new System.Drawing.Point(17, 140);
-            this.uiMoveXUpButton.Name = "uiMoveXUpButton";
-            this.uiMoveXUpButton.Size = new System.Drawing.Size(26, 23);
-            this.uiMoveXUpButton.TabIndex = 53;
-            this.uiMoveXUpButton.Text = "x+";
-            this.uiMoveXUpButton.UseVisualStyleBackColor = true;
-            this.uiMoveXUpButton.Click += new System.EventHandler(this.uiMoveXUpButton_Click);
-            // 
-            // uiShowRotateZDownButton
-            // 
-            this.uiShowRotateZDownButton.Location = new System.Drawing.Point(75, 5);
-            this.uiShowRotateZDownButton.Name = "uiShowRotateZDownButton";
-            this.uiShowRotateZDownButton.Size = new System.Drawing.Size(26, 23);
-            this.uiShowRotateZDownButton.TabIndex = 40;
-            this.uiShowRotateZDownButton.Text = "z-";
-            this.uiShowRotateZDownButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateZDownButton.Click += new System.EventHandler(this.uiShowRotateZDownButton_Click);
-            // 
-            // uiMoveYDownButton
-            // 
-            this.uiMoveYDownButton.Location = new System.Drawing.Point(46, 116);
-            this.uiMoveYDownButton.Name = "uiMoveYDownButton";
-            this.uiMoveYDownButton.Size = new System.Drawing.Size(26, 23);
-            this.uiMoveYDownButton.TabIndex = 49;
-            this.uiMoveYDownButton.Text = "y-";
-            this.uiMoveYDownButton.UseVisualStyleBackColor = true;
-            this.uiMoveYDownButton.Click += new System.EventHandler(this.uiMoveYDownButton_Click);
-            // 
-            // uiShowRotateYUpButton
-            // 
-            this.uiShowRotateYUpButton.Location = new System.Drawing.Point(46, 29);
-            this.uiShowRotateYUpButton.Name = "uiShowRotateYUpButton";
-            this.uiShowRotateYUpButton.Size = new System.Drawing.Size(26, 23);
-            this.uiShowRotateYUpButton.TabIndex = 44;
-            this.uiShowRotateYUpButton.Text = "y+";
-            this.uiShowRotateYUpButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateYUpButton.Click += new System.EventHandler(this.uiShowRotateYUpButton_Click);
-            // 
-            // uiShowRotateYDownButton
-            // 
-            this.uiShowRotateYDownButton.Location = new System.Drawing.Point(46, 5);
-            this.uiShowRotateYDownButton.Name = "uiShowRotateYDownButton";
-            this.uiShowRotateYDownButton.Size = new System.Drawing.Size(26, 23);
-            this.uiShowRotateYDownButton.TabIndex = 41;
-            this.uiShowRotateYDownButton.Text = "y-";
-            this.uiShowRotateYDownButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateYDownButton.Click += new System.EventHandler(this.uiShowRotateYDownButton_Click);
-            // 
-            // uiMoveZDownButton
-            // 
-            this.uiMoveZDownButton.Location = new System.Drawing.Point(75, 116);
-            this.uiMoveZDownButton.Name = "uiMoveZDownButton";
-            this.uiMoveZDownButton.Size = new System.Drawing.Size(26, 23);
-            this.uiMoveZDownButton.TabIndex = 48;
-            this.uiMoveZDownButton.Text = "z-";
-            this.uiMoveZDownButton.UseVisualStyleBackColor = true;
-            this.uiMoveZDownButton.Click += new System.EventHandler(this.uiMoveZDownButton_Click);
-            // 
-            // uiShowRotateXUpButton
-            // 
-            this.uiShowRotateXUpButton.Location = new System.Drawing.Point(17, 29);
-            this.uiShowRotateXUpButton.Name = "uiShowRotateXUpButton";
-            this.uiShowRotateXUpButton.Size = new System.Drawing.Size(26, 23);
-            this.uiShowRotateXUpButton.TabIndex = 45;
-            this.uiShowRotateXUpButton.Text = "x+";
-            this.uiShowRotateXUpButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateXUpButton.Click += new System.EventHandler(this.uiShowRotateXUpButton_Click);
-            // 
-            // uiMoveZUpButton
-            // 
-            this.uiMoveZUpButton.Location = new System.Drawing.Point(75, 140);
-            this.uiMoveZUpButton.Name = "uiMoveZUpButton";
-            this.uiMoveZUpButton.Size = new System.Drawing.Size(26, 23);
-            this.uiMoveZUpButton.TabIndex = 51;
-            this.uiMoveZUpButton.Text = "z+";
-            this.uiMoveZUpButton.UseVisualStyleBackColor = true;
-            this.uiMoveZUpButton.Click += new System.EventHandler(this.uiMoveZUpButton_Click);
-            // 
-            // uiShowRotateXDownButton
-            // 
-            this.uiShowRotateXDownButton.Location = new System.Drawing.Point(17, 5);
-            this.uiShowRotateXDownButton.Name = "uiShowRotateXDownButton";
-            this.uiShowRotateXDownButton.Size = new System.Drawing.Size(26, 23);
-            this.uiShowRotateXDownButton.TabIndex = 42;
-            this.uiShowRotateXDownButton.Text = "x-";
-            this.uiShowRotateXDownButton.UseVisualStyleBackColor = true;
-            this.uiShowRotateXDownButton.Click += new System.EventHandler(this.uiShowRotateXDownButton_Click);
-            // 
             // uiShowZoomUpButton
             // 
-            this.uiShowZoomUpButton.Location = new System.Drawing.Point(17, 58);
+            this.uiShowZoomUpButton.Location = new System.Drawing.Point(155, 199);
             this.uiShowZoomUpButton.Name = "uiShowZoomUpButton";
             this.uiShowZoomUpButton.Size = new System.Drawing.Size(55, 23);
             this.uiShowZoomUpButton.TabIndex = 46;
@@ -1244,7 +1274,7 @@
             // 
             // uiShowZoomDownButton
             // 
-            this.uiShowZoomDownButton.Location = new System.Drawing.Point(17, 87);
+            this.uiShowZoomDownButton.Location = new System.Drawing.Point(97, 205);
             this.uiShowZoomDownButton.Name = "uiShowZoomDownButton";
             this.uiShowZoomDownButton.Size = new System.Drawing.Size(55, 23);
             this.uiShowZoomDownButton.TabIndex = 47;
@@ -1267,7 +1297,7 @@
             this.uiSimpleOpenGlControl.DepthBits = ((byte)(16));
             this.uiSimpleOpenGlControl.Location = new System.Drawing.Point(454, 0);
             this.uiSimpleOpenGlControl.Name = "uiSimpleOpenGlControl";
-            this.uiSimpleOpenGlControl.Size = new System.Drawing.Size(207, 267);
+            this.uiSimpleOpenGlControl.Size = new System.Drawing.Size(407, 267);
             this.uiSimpleOpenGlControl.StencilBits = ((byte)(0));
             this.uiSimpleOpenGlControl.TabIndex = 51;
             // 
@@ -1299,31 +1329,161 @@
             this.uiSelectTrackPanel.Size = new System.Drawing.Size(120, 267);
             this.uiSelectTrackPanel.TabIndex = 22;
             // 
-            // uiShowWayCheckBox
+            // uiSceneRotateXLabel
             // 
-            this.uiShowWayCheckBox.AutoSize = true;
-            this.uiShowWayCheckBox.Checked = true;
-            this.uiShowWayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.uiShowWayCheckBox.Location = new System.Drawing.Point(17, 169);
-            this.uiShowWayCheckBox.Name = "uiShowWayCheckBox";
-            this.uiShowWayCheckBox.Size = new System.Drawing.Size(100, 17);
-            this.uiShowWayCheckBox.TabIndex = 55;
-            this.uiShowWayCheckBox.Text = "Показать путь";
-            this.uiShowWayCheckBox.UseVisualStyleBackColor = true;
-            this.uiShowWayCheckBox.CheckedChanged += new System.EventHandler(this.uiShowWayCheckBox_CheckedChanged);
+            this.uiSceneRotateXLabel.AutoSize = true;
+            this.uiSceneRotateXLabel.Location = new System.Drawing.Point(21, 17);
+            this.uiSceneRotateXLabel.Name = "uiSceneRotateXLabel";
+            this.uiSceneRotateXLabel.Size = new System.Drawing.Size(14, 13);
+            this.uiSceneRotateXLabel.TabIndex = 62;
+            this.uiSceneRotateXLabel.Text = "X";
             // 
-            // trackBar1
+            // uiSceneRotateYLabel
             // 
-            this.trackBar1.Location = new System.Drawing.Point(13, 219);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 45);
-            this.trackBar1.TabIndex = 56;
+            this.uiSceneRotateYLabel.AutoSize = true;
+            this.uiSceneRotateYLabel.Location = new System.Drawing.Point(21, 39);
+            this.uiSceneRotateYLabel.Name = "uiSceneRotateYLabel";
+            this.uiSceneRotateYLabel.Size = new System.Drawing.Size(14, 13);
+            this.uiSceneRotateYLabel.TabIndex = 63;
+            this.uiSceneRotateYLabel.Text = "Y";
+            // 
+            // uiSceneRotateZLabel
+            // 
+            this.uiSceneRotateZLabel.AutoSize = true;
+            this.uiSceneRotateZLabel.Location = new System.Drawing.Point(21, 61);
+            this.uiSceneRotateZLabel.Name = "uiSceneRotateZLabel";
+            this.uiSceneRotateZLabel.Size = new System.Drawing.Size(14, 13);
+            this.uiSceneRotateZLabel.TabIndex = 64;
+            this.uiSceneRotateZLabel.Text = "Z";
+            // 
+            // uiSceneRotateLabel
+            // 
+            this.uiSceneRotateLabel.AutoSize = true;
+            this.uiSceneRotateLabel.Location = new System.Drawing.Point(35, 2);
+            this.uiSceneRotateLabel.Name = "uiSceneRotateLabel";
+            this.uiSceneRotateLabel.Size = new System.Drawing.Size(88, 13);
+            this.uiSceneRotateLabel.TabIndex = 65;
+            this.uiSceneRotateLabel.Text = "Поворот сцены:";
+            // 
+            // uiSceneMoveLabel
+            // 
+            this.uiSceneMoveLabel.AutoSize = true;
+            this.uiSceneMoveLabel.Location = new System.Drawing.Point(35, 81);
+            this.uiSceneMoveLabel.Name = "uiSceneMoveLabel";
+            this.uiSceneMoveLabel.Size = new System.Drawing.Size(99, 13);
+            this.uiSceneMoveLabel.TabIndex = 75;
+            this.uiSceneMoveLabel.Text = "Смещение сцены:";
+            // 
+            // uiSceneMoveZLabel
+            // 
+            this.uiSceneMoveZLabel.AutoSize = true;
+            this.uiSceneMoveZLabel.Location = new System.Drawing.Point(21, 140);
+            this.uiSceneMoveZLabel.Name = "uiSceneMoveZLabel";
+            this.uiSceneMoveZLabel.Size = new System.Drawing.Size(14, 13);
+            this.uiSceneMoveZLabel.TabIndex = 74;
+            this.uiSceneMoveZLabel.Text = "Z";
+            // 
+            // uiSceneMoveYLabel
+            // 
+            this.uiSceneMoveYLabel.AutoSize = true;
+            this.uiSceneMoveYLabel.Location = new System.Drawing.Point(21, 118);
+            this.uiSceneMoveYLabel.Name = "uiSceneMoveYLabel";
+            this.uiSceneMoveYLabel.Size = new System.Drawing.Size(14, 13);
+            this.uiSceneMoveYLabel.TabIndex = 73;
+            this.uiSceneMoveYLabel.Text = "Y";
+            // 
+            // uiSceneMoveXLabel
+            // 
+            this.uiSceneMoveXLabel.AutoSize = true;
+            this.uiSceneMoveXLabel.Location = new System.Drawing.Point(21, 96);
+            this.uiSceneMoveXLabel.Name = "uiSceneMoveXLabel";
+            this.uiSceneMoveXLabel.Size = new System.Drawing.Size(14, 13);
+            this.uiSceneMoveXLabel.TabIndex = 72;
+            this.uiSceneMoveXLabel.Text = "X";
+            // 
+            // uiSceneMoveZNumericUpDown
+            // 
+            this.uiSceneMoveZNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.uiSceneMoveZNumericUpDown.Location = new System.Drawing.Point(155, 138);
+            this.uiSceneMoveZNumericUpDown.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.uiSceneMoveZNumericUpDown.Name = "uiSceneMoveZNumericUpDown";
+            this.uiSceneMoveZNumericUpDown.Size = new System.Drawing.Size(65, 20);
+            this.uiSceneMoveZNumericUpDown.TabIndex = 71;
+            // 
+            // uiSceneMoveZhScrollBar
+            // 
+            this.uiSceneMoveZhScrollBar.Location = new System.Drawing.Point(38, 138);
+            this.uiSceneMoveZhScrollBar.Maximum = 360;
+            this.uiSceneMoveZhScrollBar.Name = "uiSceneMoveZhScrollBar";
+            this.uiSceneMoveZhScrollBar.Size = new System.Drawing.Size(114, 20);
+            this.uiSceneMoveZhScrollBar.TabIndex = 70;
+            this.uiSceneMoveZhScrollBar.Value = 45;
+            // 
+            // uiSceneMoveYNumericUpDown
+            // 
+            this.uiSceneMoveYNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.uiSceneMoveYNumericUpDown.Location = new System.Drawing.Point(155, 116);
+            this.uiSceneMoveYNumericUpDown.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.uiSceneMoveYNumericUpDown.Name = "uiSceneMoveYNumericUpDown";
+            this.uiSceneMoveYNumericUpDown.Size = new System.Drawing.Size(65, 20);
+            this.uiSceneMoveYNumericUpDown.TabIndex = 69;
+            // 
+            // uiSceneMoveYhScrollBar
+            // 
+            this.uiSceneMoveYhScrollBar.Location = new System.Drawing.Point(38, 116);
+            this.uiSceneMoveYhScrollBar.Maximum = 360;
+            this.uiSceneMoveYhScrollBar.Name = "uiSceneMoveYhScrollBar";
+            this.uiSceneMoveYhScrollBar.Size = new System.Drawing.Size(114, 20);
+            this.uiSceneMoveYhScrollBar.TabIndex = 68;
+            this.uiSceneMoveYhScrollBar.Value = 180;
+            // 
+            // uiSceneMoveXNumericUpDown
+            // 
+            this.uiSceneMoveXNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.uiSceneMoveXNumericUpDown.Location = new System.Drawing.Point(155, 94);
+            this.uiSceneMoveXNumericUpDown.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.uiSceneMoveXNumericUpDown.Name = "uiSceneMoveXNumericUpDown";
+            this.uiSceneMoveXNumericUpDown.Size = new System.Drawing.Size(65, 20);
+            this.uiSceneMoveXNumericUpDown.TabIndex = 67;
+            // 
+            // uiSceneMoveXhScrollBar
+            // 
+            this.uiSceneMoveXhScrollBar.Location = new System.Drawing.Point(38, 94);
+            this.uiSceneMoveXhScrollBar.Maximum = 360;
+            this.uiSceneMoveXhScrollBar.Name = "uiSceneMoveXhScrollBar";
+            this.uiSceneMoveXhScrollBar.Size = new System.Drawing.Size(114, 20);
+            this.uiSceneMoveXhScrollBar.TabIndex = 66;
+            this.uiSceneMoveXhScrollBar.Value = 90;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(984, 562);
             this.Controls.Add(this.uiSelectTrackPanel);
             this.Controls.Add(this.uiPlatformPositionPanel);
             this.Controls.Add(this.uiHexapodPanel);
@@ -1349,10 +1509,15 @@
             this.uiMainPanel.ResumeLayout(false);
             this.uiSettingsPanel.ResumeLayout(false);
             this.uiSettingsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneRotateZNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneRotateYNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneRotateXNumericUpDown)).EndInit();
             this.uiPlatformPositionPanel.ResumeLayout(false);
             this.uiHexapodPanel.ResumeLayout(false);
             this.uiSelectTrackPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneMoveZNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneMoveYNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiSceneMoveXNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1439,18 +1604,6 @@
         private System.Windows.Forms.Panel uiMainPanel;
         private System.Windows.Forms.Panel uiSettingsPanel;
         private System.Windows.Forms.Button uiSettingsVisibleButton;
-        private System.Windows.Forms.Button uiMoveYUpButton;
-        private System.Windows.Forms.Button uiMoveXDownButton;
-        private System.Windows.Forms.Button uiShowRotateZUpButton;
-        private System.Windows.Forms.Button uiMoveXUpButton;
-        private System.Windows.Forms.Button uiShowRotateZDownButton;
-        private System.Windows.Forms.Button uiMoveYDownButton;
-        private System.Windows.Forms.Button uiShowRotateYUpButton;
-        private System.Windows.Forms.Button uiShowRotateYDownButton;
-        private System.Windows.Forms.Button uiMoveZDownButton;
-        private System.Windows.Forms.Button uiShowRotateXUpButton;
-        private System.Windows.Forms.Button uiMoveZUpButton;
-        private System.Windows.Forms.Button uiShowRotateXDownButton;
         private System.Windows.Forms.Button uiShowZoomUpButton;
         private System.Windows.Forms.Button uiShowZoomDownButton;
         private Tao.Platform.Windows.SimpleOpenGlControl uiSimpleOpenGlControl;
@@ -1472,7 +1625,27 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn uiRail5DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiRail6DataGridViewTextBoxColumn;
         private System.Windows.Forms.CheckBox uiShowWayCheckBox;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.ToolTip uiDirectionCosineToolTip;
+        private System.Windows.Forms.HScrollBar uiSceneRotateXhScrollBar;
+        private System.Windows.Forms.NumericUpDown uiSceneRotateXNumericUpDown;
+        private System.Windows.Forms.NumericUpDown uiSceneRotateYNumericUpDown;
+        private System.Windows.Forms.HScrollBar uiSceneRotateYhScrollBar;
+        private System.Windows.Forms.NumericUpDown uiSceneRotateZNumericUpDown;
+        private System.Windows.Forms.HScrollBar uiSceneRotateZhScrollBar;
+        private System.Windows.Forms.Label uiSceneRotateLabel;
+        private System.Windows.Forms.Label uiSceneRotateZLabel;
+        private System.Windows.Forms.Label uiSceneRotateYLabel;
+        private System.Windows.Forms.Label uiSceneRotateXLabel;
+        private System.Windows.Forms.Label uiSceneMoveLabel;
+        private System.Windows.Forms.Label uiSceneMoveZLabel;
+        private System.Windows.Forms.Label uiSceneMoveYLabel;
+        private System.Windows.Forms.Label uiSceneMoveXLabel;
+        private System.Windows.Forms.NumericUpDown uiSceneMoveZNumericUpDown;
+        private System.Windows.Forms.HScrollBar uiSceneMoveZhScrollBar;
+        private System.Windows.Forms.NumericUpDown uiSceneMoveYNumericUpDown;
+        private System.Windows.Forms.HScrollBar uiSceneMoveYhScrollBar;
+        private System.Windows.Forms.NumericUpDown uiSceneMoveXNumericUpDown;
+        private System.Windows.Forms.HScrollBar uiSceneMoveXhScrollBar;
     }
 }
 
