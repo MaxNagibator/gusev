@@ -144,11 +144,11 @@ namespace Hexapod
             var h = GetPoint(CardanLocationRadius*Math.Cos(CardanAngle/2/180*Math.PI),
                              -CardanLocationRadius*Math.Sin(CardanAngle/2/180*Math.PI), 0, center, fi, theta, psi);
             var i = GetPoint(CardanLocationRadius*Math.Cos((120 - CardanAngle/2)/180*Math.PI),
-                             -CardanLocationRadius*Math.Sin((120 - CardanAngle/2)/180*Math.PI), 0, center, fi, theta,
-                             psi);
+                             -CardanLocationRadius*Math.Sin((120 - CardanAngle/2)/180*Math.PI),
+                             0, center, fi, theta, psi);
             var j = GetPoint(CardanLocationRadius*Math.Cos((120 + CardanAngle/2)/180*Math.PI),
-                             -CardanLocationRadius*Math.Sin((120 + CardanAngle/2)/180*Math.PI), 0, center, fi, theta,
-                             psi);
+                             -CardanLocationRadius*Math.Sin((120 + CardanAngle/2)/180*Math.PI),
+                             0, center, fi, theta, psi);
             var k = GetPoint(CardanLocationRadius*Math.Cos((120 + CardanAngle/2)/180*Math.PI),
                              CardanLocationRadius*Math.Sin((120 + CardanAngle/2)/180*Math.PI), 0, center, fi, theta, psi);
             var l = GetPoint(CardanLocationRadius*Math.Cos((120 - CardanAngle/2)/180*Math.PI),
@@ -186,9 +186,9 @@ namespace Hexapod
 
         private Point GetPoint(double x, double y, double z, Point center, double fiR, double thetaR, double psiR)
         {
-            var fi = fiR/180*Math.PI; //перевод в радианы
-            var theta = thetaR/180*Math.PI; //перевод в радианы
-            var psi = psiR/180*Math.PI; //перевод в радианы
+            var fi = fiR/180*Math.PI;
+            var theta = thetaR/180*Math.PI;
+            var psi = psiR/180*Math.PI;
             z += -CardanHeight;
             var p = new Point
                         {
