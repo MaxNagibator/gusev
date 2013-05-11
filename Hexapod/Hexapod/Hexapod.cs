@@ -66,6 +66,8 @@ namespace Hexapod
                         };
             CalculateBasePoints();
             CalculateTrack();
+            StartPosition = Track.Positions[0];
+            FinishPosition = Track.Positions[Track.Positions.Count - 1];
         }
 
         private void CalculateBasePoints()
@@ -111,9 +113,9 @@ namespace Hexapod
         private void CalculateTrack()
         {
             var positions = new List<Position>();
-            var dX = (FinishPosition.Center.X - StartPosition.Center.X) / Track.StepCount;
-            var dY = (FinishPosition.Center.Y - StartPosition.Center.Y) / Track.StepCount;
-            var dZ = (FinishPosition.Center.Z - StartPosition.Center.Z) / Track.StepCount;
+            var dX = (FinishPosition.Center.X - StartPosition.Center.X)/Track.StepCount;
+            var dY = (FinishPosition.Center.Y - StartPosition.Center.Y)/Track.StepCount;
+            var dZ = (FinishPosition.Center.Z - StartPosition.Center.Z)/Track.StepCount;
             var dFi = (FinishPosition.Fi - StartPosition.Fi)/Track.StepCount;
             var dTheta = (FinishPosition.Theta - StartPosition.Theta)/Track.StepCount;
             var dPsi = (FinishPosition.Psi - StartPosition.Psi)/Track.StepCount;
@@ -130,35 +132,33 @@ namespace Hexapod
         {
             var center = new Point
                              {
-                                 X = StartPosition.Center.X + stepNumber * dX,
-                                 Y = StartPosition.Center.Y + stepNumber * dY,
-                                 Z = StartPosition.Center.Z + stepNumber * dZ
+                                 X = StartPosition.Center.X + stepNumber*dX,
+                                 Y = StartPosition.Center.Y + stepNumber*dY,
+                                 Z = StartPosition.Center.Z + stepNumber*dZ
                              };
             var fi = StartPosition.Fi + stepNumber*dFi;
             var theta = StartPosition.Theta + stepNumber*dTheta;
             var psi = StartPosition.Psi + stepNumber*dPsi;
             var g = GetPoint(CardanLocationRadius*Math.Cos(CardanAngle/2/180*Math.PI),
-                             CardanLocationRadius*Math.Sin(CardanAngle/2/180*Math.PI),center, fi, theta, psi);
- 
+                             CardanLocationRadius*Math.Sin(CardanAngle/2/180*Math.PI), 0, center, fi, theta, psi);
             var h = GetPoint(CardanLocationRadius*Math.Cos(CardanAngle/2/180*Math.PI),
-                             -CardanLocationRadius * Math.Sin(CardanAngle / 2 / 180 * Math.PI), center, fi, theta, psi);
-
+                             -CardanLocationRadius*Math.Sin(CardanAngle/2/180*Math.PI), 0, center, fi, theta, psi);
             var i = GetPoint(CardanLocationRadius*Math.Cos((120 - CardanAngle/2)/180*Math.PI),
-                             -CardanLocationRadius * Math.Sin((120 - CardanAngle / 2) / 180 * Math.PI), center, fi, theta, psi);
-
+                             -CardanLocationRadius*Math.Sin((120 - CardanAngle/2)/180*Math.PI), 0, center, fi, theta,
+                             psi);
             var j = GetPoint(CardanLocationRadius*Math.Cos((120 + CardanAngle/2)/180*Math.PI),
-                             -CardanLocationRadius * Math.Sin((120 + CardanAngle / 2) / 180 * Math.PI), center, fi, theta, psi);
-
+                             -CardanLocationRadius*Math.Sin((120 + CardanAngle/2)/180*Math.PI), 0, center, fi, theta,
+                             psi);
             var k = GetPoint(CardanLocationRadius*Math.Cos((120 + CardanAngle/2)/180*Math.PI),
-                             CardanLocationRadius * Math.Sin((120 + CardanAngle / 2) / 180 * Math.PI), center, fi, theta, psi);
-
+                             CardanLocationRadius*Math.Sin((120 + CardanAngle/2)/180*Math.PI), 0, center, fi, theta, psi);
             var l = GetPoint(CardanLocationRadius*Math.Cos((120 - CardanAngle/2)/180*Math.PI),
-                             CardanLocationRadius * Math.Sin((120 - CardanAngle / 2) / 180 * Math.PI), center, fi, theta, psi);
-
-
+                             CardanLocationRadius*Math.Sin((120 - CardanAngle/2)/180*Math.PI), 0, center, fi, theta, psi);
+            var x = GetPoint(1, 0, 0 + CardanHeight, center, fi, theta, psi);
+            var y = GetPoint(0, 1, 0 + CardanHeight, center, fi, theta, psi);
+            var z = GetPoint(0, 0, 1 + CardanHeight, center, fi, theta, psi);
             return new Position
                        {
-                           Time = dTime * stepNumber,
+                           Time = dTime*stepNumber,
                            Center = center,
                            Fi = fi,
                            Theta = theta,
@@ -169,6 +169,12 @@ namespace Hexapod
                            J = j,
                            K = k,
                            L = l,
+                           X = x,
+                           Y = y,
+                           Z = z,
+                           DirectionCosineX = Math.Round((x.X - center.X), 5),
+                           DirectionCosineY = Math.Round((y.Y - center.Y), 5),
+                           DirectionCosineZ = Math.Round((z.Z - center.Z), 5),
                            Rail1Length = GetRailLength(A, g),
                            Rail2Length = GetRailLength(B, h),
                            Rail3Length = GetRailLength(C, i),
@@ -178,12 +184,12 @@ namespace Hexapod
                        };
         }
 
-        private Point GetPoint(double x, double y, Point center, double fiR, double thetaR, double psiR)
+        private Point GetPoint(double x, double y, double z, Point center, double fiR, double thetaR, double psiR)
         {
             var fi = fiR/180*Math.PI; //перевод в радианы
             var theta = thetaR/180*Math.PI; //перевод в радианы
             var psi = psiR/180*Math.PI; //перевод в радианы
-            var z = -CardanHeight;
+            z += -CardanHeight;
             var p = new Point
                         {
                             X = x*(Math.Cos(psi)*Math.Cos(fi) - Math.Sin(psi)*Math.Cos(theta)*Math.Sin(fi)) +

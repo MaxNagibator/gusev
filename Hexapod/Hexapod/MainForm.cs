@@ -14,7 +14,7 @@ namespace Hexapod
         private int _sceneRotateZ = 45;
         private const int ROTATE_ANGLE = 15;
         private int _sceneMoveX;
-        private int _sceneMoveY;
+        private int _sceneMoveY= -40;
         private int _sceneMoveZ = -200;
         private float _sceneZoom = 0.3f;
         private const int MOVE = 10;
@@ -53,6 +53,8 @@ namespace Hexapod
 
         private void UpdateTrackInformation()
         {
+            SetStartDirectionCosine();
+            SetFinishDirectionCosine();
             uiTrackDataGridView.Rows.Clear();
             foreach (var position in _hexapod.Track.Positions)
             {
@@ -85,6 +87,20 @@ namespace Hexapod
             uiUpdateSceneTimer.Interval = Convert.ToInt16(_hexapod.Track.Time*1000/_hexapod.Track.StepCount);
             uiTrackTrackBar.Maximum = _hexapod.Track.Positions.Count - 1;
             DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
+        }
+
+        private void SetFinishDirectionCosine()
+        {
+            uiStartPositionDirectionCosineXValueLabel.Text =_hexapod.StartPosition.DirectionCosineX.ToString();
+            uiStartPositionDirectionCosineYValueLabel.Text = _hexapod.StartPosition.DirectionCosineY.ToString();
+            uiStartPositionDirectionCosineZValueLabel.Text = _hexapod.StartPosition.DirectionCosineZ.ToString();
+        }
+
+        private void SetStartDirectionCosine()
+        {
+            uiFinishPositionDirectionCosineXValueLabel.Text = _hexapod.FinishPosition.DirectionCosineX.ToString();
+            uiFinishPositionDirectionCosineYValueLabel.Text = _hexapod.FinishPosition.DirectionCosineY.ToString();
+            uiFinishPositionDirectionCosineZValueLabel.Text = _hexapod.FinishPosition.DirectionCosineZ.ToString();
         }
 
         private void DrawHexapodTick(object sender, EventArgs e)

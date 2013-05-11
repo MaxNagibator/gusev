@@ -89,12 +89,12 @@
             this.uiStartPositionZ0TextBox = new System.Windows.Forms.TextBox();
             this.uiStartPositionZ0Label = new System.Windows.Forms.Label();
             this.uiStartPositionGroupBox = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.uiStartPositionDirectionCosineZValueLabel = new System.Windows.Forms.Label();
+            this.uiStartPositionDirectionCosineYValueLabel = new System.Windows.Forms.Label();
+            this.uiStartPositionDirectionCosineXValueLabel = new System.Windows.Forms.Label();
+            this.uiStartPositionDirectionCosineZLabel = new System.Windows.Forms.Label();
+            this.uiStartPositionDirectionCosineYLabel = new System.Windows.Forms.Label();
+            this.uiStartPositionDirectionCosineXLabel = new System.Windows.Forms.Label();
             this.uiStartPositionPsiLabel = new System.Windows.Forms.Label();
             this.uiStartPositionPsiTextBox = new System.Windows.Forms.TextBox();
             this.uiStartPositionThetaLabel = new System.Windows.Forms.Label();
@@ -102,12 +102,12 @@
             this.uiStartPositionFiLabel = new System.Windows.Forms.Label();
             this.uiStartPositionFiTextBox = new System.Windows.Forms.TextBox();
             this.uiFinishPostionGroupBox = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.uiFinishPositionDirectionCosineZValueLabel = new System.Windows.Forms.Label();
+            this.uiFinishPositionDirectionCosineYValueLabel = new System.Windows.Forms.Label();
+            this.uiFinishPositionDirectionCosineXValueLabel = new System.Windows.Forms.Label();
+            this.uiFinishPositionDirectionCosineZLabel = new System.Windows.Forms.Label();
+            this.uiFinishPositionDirectionCosineYLabel = new System.Windows.Forms.Label();
+            this.uiFinishPositionDirectionCosineXLabel = new System.Windows.Forms.Label();
             this.uiFinishPositionPsiLabel = new System.Windows.Forms.Label();
             this.uiFinishPositionPsiTextBox = new System.Windows.Forms.TextBox();
             this.uiFinishPositionThetaLabel = new System.Windows.Forms.Label();
@@ -143,6 +143,7 @@
             this.uiHexapodPanel = new System.Windows.Forms.Panel();
             this.uiSelectTrackPanel = new System.Windows.Forms.Panel();
             this.uiShowWayCheckBox = new System.Windows.Forms.CheckBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.uiHexapodGroupBox.SuspendLayout();
             this.uiSelectTrackGroupBox.SuspendLayout();
             this.uiPlayDataGroupBox.SuspendLayout();
@@ -156,6 +157,7 @@
             this.uiPlatformPositionPanel.SuspendLayout();
             this.uiHexapodPanel.SuspendLayout();
             this.uiSelectTrackPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // uiHexapodGroupBox
@@ -732,12 +734,12 @@
             // 
             // uiStartPositionGroupBox
             // 
-            this.uiStartPositionGroupBox.Controls.Add(this.label8);
-            this.uiStartPositionGroupBox.Controls.Add(this.label9);
-            this.uiStartPositionGroupBox.Controls.Add(this.label11);
-            this.uiStartPositionGroupBox.Controls.Add(this.label5);
-            this.uiStartPositionGroupBox.Controls.Add(this.label6);
-            this.uiStartPositionGroupBox.Controls.Add(this.label7);
+            this.uiStartPositionGroupBox.Controls.Add(this.uiStartPositionDirectionCosineZValueLabel);
+            this.uiStartPositionGroupBox.Controls.Add(this.uiStartPositionDirectionCosineYValueLabel);
+            this.uiStartPositionGroupBox.Controls.Add(this.uiStartPositionDirectionCosineXValueLabel);
+            this.uiStartPositionGroupBox.Controls.Add(this.uiStartPositionDirectionCosineZLabel);
+            this.uiStartPositionGroupBox.Controls.Add(this.uiStartPositionDirectionCosineYLabel);
+            this.uiStartPositionGroupBox.Controls.Add(this.uiStartPositionDirectionCosineXLabel);
             this.uiStartPositionGroupBox.Controls.Add(this.uiStartPositionPsiLabel);
             this.uiStartPositionGroupBox.Controls.Add(this.uiStartPositionPsiTextBox);
             this.uiStartPositionGroupBox.Controls.Add(this.uiStartPositionThetaLabel);
@@ -758,59 +760,59 @@
             this.uiStartPositionGroupBox.TabStop = false;
             this.uiStartPositionGroupBox.Text = "Начальное положение";
             // 
-            // label8
+            // uiStartPositionDirectionCosineZValueLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(119, 114);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(10, 13);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "-";
+            this.uiStartPositionDirectionCosineZValueLabel.AutoSize = true;
+            this.uiStartPositionDirectionCosineZValueLabel.Location = new System.Drawing.Point(119, 114);
+            this.uiStartPositionDirectionCosineZValueLabel.Name = "uiStartPositionDirectionCosineZValueLabel";
+            this.uiStartPositionDirectionCosineZValueLabel.Size = new System.Drawing.Size(10, 13);
+            this.uiStartPositionDirectionCosineZValueLabel.TabIndex = 29;
+            this.uiStartPositionDirectionCosineZValueLabel.Text = "-";
             // 
-            // label9
+            // uiStartPositionDirectionCosineYValueLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(61, 114);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(10, 13);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "-";
+            this.uiStartPositionDirectionCosineYValueLabel.AutoSize = true;
+            this.uiStartPositionDirectionCosineYValueLabel.Location = new System.Drawing.Point(61, 114);
+            this.uiStartPositionDirectionCosineYValueLabel.Name = "uiStartPositionDirectionCosineYValueLabel";
+            this.uiStartPositionDirectionCosineYValueLabel.Size = new System.Drawing.Size(10, 13);
+            this.uiStartPositionDirectionCosineYValueLabel.TabIndex = 28;
+            this.uiStartPositionDirectionCosineYValueLabel.Text = "-";
             // 
-            // label11
+            // uiStartPositionDirectionCosineXValueLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 114);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(10, 13);
-            this.label11.TabIndex = 27;
-            this.label11.Text = "-";
+            this.uiStartPositionDirectionCosineXValueLabel.AutoSize = true;
+            this.uiStartPositionDirectionCosineXValueLabel.Location = new System.Drawing.Point(4, 114);
+            this.uiStartPositionDirectionCosineXValueLabel.Name = "uiStartPositionDirectionCosineXValueLabel";
+            this.uiStartPositionDirectionCosineXValueLabel.Size = new System.Drawing.Size(10, 13);
+            this.uiStartPositionDirectionCosineXValueLabel.TabIndex = 27;
+            this.uiStartPositionDirectionCosineXValueLabel.Text = "-";
             // 
-            // label5
+            // uiStartPositionDirectionCosineZLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(133, 94);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "cos(k,k\')";
+            this.uiStartPositionDirectionCosineZLabel.AutoSize = true;
+            this.uiStartPositionDirectionCosineZLabel.Location = new System.Drawing.Point(133, 94);
+            this.uiStartPositionDirectionCosineZLabel.Name = "uiStartPositionDirectionCosineZLabel";
+            this.uiStartPositionDirectionCosineZLabel.Size = new System.Drawing.Size(47, 13);
+            this.uiStartPositionDirectionCosineZLabel.TabIndex = 26;
+            this.uiStartPositionDirectionCosineZLabel.Text = "cos(k,k\')";
             // 
-            // label6
+            // uiStartPositionDirectionCosineYLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 94);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 13);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "cos(j,j\')";
+            this.uiStartPositionDirectionCosineYLabel.AutoSize = true;
+            this.uiStartPositionDirectionCosineYLabel.Location = new System.Drawing.Point(75, 94);
+            this.uiStartPositionDirectionCosineYLabel.Name = "uiStartPositionDirectionCosineYLabel";
+            this.uiStartPositionDirectionCosineYLabel.Size = new System.Drawing.Size(39, 13);
+            this.uiStartPositionDirectionCosineYLabel.TabIndex = 25;
+            this.uiStartPositionDirectionCosineYLabel.Text = "cos(j,j\')";
             // 
-            // label7
+            // uiStartPositionDirectionCosineXLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 94);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "cos(i,i\')";
+            this.uiStartPositionDirectionCosineXLabel.AutoSize = true;
+            this.uiStartPositionDirectionCosineXLabel.Location = new System.Drawing.Point(18, 94);
+            this.uiStartPositionDirectionCosineXLabel.Name = "uiStartPositionDirectionCosineXLabel";
+            this.uiStartPositionDirectionCosineXLabel.Size = new System.Drawing.Size(39, 13);
+            this.uiStartPositionDirectionCosineXLabel.TabIndex = 24;
+            this.uiStartPositionDirectionCosineXLabel.Text = "cos(i,i\')";
             // 
             // uiStartPositionPsiLabel
             // 
@@ -868,12 +870,12 @@
             // 
             // uiFinishPostionGroupBox
             // 
-            this.uiFinishPostionGroupBox.Controls.Add(this.label12);
-            this.uiFinishPostionGroupBox.Controls.Add(this.label13);
-            this.uiFinishPostionGroupBox.Controls.Add(this.label14);
-            this.uiFinishPostionGroupBox.Controls.Add(this.label18);
-            this.uiFinishPostionGroupBox.Controls.Add(this.label19);
-            this.uiFinishPostionGroupBox.Controls.Add(this.label20);
+            this.uiFinishPostionGroupBox.Controls.Add(this.uiFinishPositionDirectionCosineZValueLabel);
+            this.uiFinishPostionGroupBox.Controls.Add(this.uiFinishPositionDirectionCosineYValueLabel);
+            this.uiFinishPostionGroupBox.Controls.Add(this.uiFinishPositionDirectionCosineXValueLabel);
+            this.uiFinishPostionGroupBox.Controls.Add(this.uiFinishPositionDirectionCosineZLabel);
+            this.uiFinishPostionGroupBox.Controls.Add(this.uiFinishPositionDirectionCosineYLabel);
+            this.uiFinishPostionGroupBox.Controls.Add(this.uiFinishPositionDirectionCosineXLabel);
             this.uiFinishPostionGroupBox.Controls.Add(this.uiFinishPositionPsiLabel);
             this.uiFinishPostionGroupBox.Controls.Add(this.uiFinishPositionPsiTextBox);
             this.uiFinishPostionGroupBox.Controls.Add(this.uiFinishPositionThetaLabel);
@@ -894,59 +896,59 @@
             this.uiFinishPostionGroupBox.TabStop = false;
             this.uiFinishPostionGroupBox.Text = "Конечное положение";
             // 
-            // label12
+            // uiFinishPositionDirectionCosineZValueLabel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(119, 114);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(10, 13);
-            this.label12.TabIndex = 29;
-            this.label12.Text = "-";
+            this.uiFinishPositionDirectionCosineZValueLabel.AutoSize = true;
+            this.uiFinishPositionDirectionCosineZValueLabel.Location = new System.Drawing.Point(119, 114);
+            this.uiFinishPositionDirectionCosineZValueLabel.Name = "uiFinishPositionDirectionCosineZValueLabel";
+            this.uiFinishPositionDirectionCosineZValueLabel.Size = new System.Drawing.Size(10, 13);
+            this.uiFinishPositionDirectionCosineZValueLabel.TabIndex = 29;
+            this.uiFinishPositionDirectionCosineZValueLabel.Text = "-";
             // 
-            // label13
+            // uiFinishPositionDirectionCosineYValueLabel
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(61, 114);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(10, 13);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "-";
+            this.uiFinishPositionDirectionCosineYValueLabel.AutoSize = true;
+            this.uiFinishPositionDirectionCosineYValueLabel.Location = new System.Drawing.Point(61, 114);
+            this.uiFinishPositionDirectionCosineYValueLabel.Name = "uiFinishPositionDirectionCosineYValueLabel";
+            this.uiFinishPositionDirectionCosineYValueLabel.Size = new System.Drawing.Size(10, 13);
+            this.uiFinishPositionDirectionCosineYValueLabel.TabIndex = 28;
+            this.uiFinishPositionDirectionCosineYValueLabel.Text = "-";
             // 
-            // label14
+            // uiFinishPositionDirectionCosineXValueLabel
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 114);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(10, 13);
-            this.label14.TabIndex = 27;
-            this.label14.Text = "-";
+            this.uiFinishPositionDirectionCosineXValueLabel.AutoSize = true;
+            this.uiFinishPositionDirectionCosineXValueLabel.Location = new System.Drawing.Point(4, 114);
+            this.uiFinishPositionDirectionCosineXValueLabel.Name = "uiFinishPositionDirectionCosineXValueLabel";
+            this.uiFinishPositionDirectionCosineXValueLabel.Size = new System.Drawing.Size(10, 13);
+            this.uiFinishPositionDirectionCosineXValueLabel.TabIndex = 27;
+            this.uiFinishPositionDirectionCosineXValueLabel.Text = "-";
             // 
-            // label18
+            // uiFinishPositionDirectionCosineZLabel
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(133, 94);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(47, 13);
-            this.label18.TabIndex = 26;
-            this.label18.Text = "cos(k,k\')";
+            this.uiFinishPositionDirectionCosineZLabel.AutoSize = true;
+            this.uiFinishPositionDirectionCosineZLabel.Location = new System.Drawing.Point(133, 94);
+            this.uiFinishPositionDirectionCosineZLabel.Name = "uiFinishPositionDirectionCosineZLabel";
+            this.uiFinishPositionDirectionCosineZLabel.Size = new System.Drawing.Size(47, 13);
+            this.uiFinishPositionDirectionCosineZLabel.TabIndex = 26;
+            this.uiFinishPositionDirectionCosineZLabel.Text = "cos(k,k\')";
             // 
-            // label19
+            // uiFinishPositionDirectionCosineYLabel
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(75, 94);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(39, 13);
-            this.label19.TabIndex = 25;
-            this.label19.Text = "cos(j,j\')";
+            this.uiFinishPositionDirectionCosineYLabel.AutoSize = true;
+            this.uiFinishPositionDirectionCosineYLabel.Location = new System.Drawing.Point(75, 94);
+            this.uiFinishPositionDirectionCosineYLabel.Name = "uiFinishPositionDirectionCosineYLabel";
+            this.uiFinishPositionDirectionCosineYLabel.Size = new System.Drawing.Size(39, 13);
+            this.uiFinishPositionDirectionCosineYLabel.TabIndex = 25;
+            this.uiFinishPositionDirectionCosineYLabel.Text = "cos(j,j\')";
             // 
-            // label20
+            // uiFinishPositionDirectionCosineXLabel
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(18, 94);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(39, 13);
-            this.label20.TabIndex = 24;
-            this.label20.Text = "cos(i,i\')";
+            this.uiFinishPositionDirectionCosineXLabel.AutoSize = true;
+            this.uiFinishPositionDirectionCosineXLabel.Location = new System.Drawing.Point(18, 94);
+            this.uiFinishPositionDirectionCosineXLabel.Name = "uiFinishPositionDirectionCosineXLabel";
+            this.uiFinishPositionDirectionCosineXLabel.Size = new System.Drawing.Size(39, 13);
+            this.uiFinishPositionDirectionCosineXLabel.TabIndex = 24;
+            this.uiFinishPositionDirectionCosineXLabel.Text = "cos(i,i\')";
             // 
             // uiFinishPositionPsiLabel
             // 
@@ -1075,6 +1077,7 @@
             // 
             // uiSettingsPanel
             // 
+            this.uiSettingsPanel.Controls.Add(this.trackBar1);
             this.uiSettingsPanel.Controls.Add(this.uiShowWayCheckBox);
             this.uiSettingsPanel.Controls.Add(this.uiSettingsVisibleButton);
             this.uiSettingsPanel.Controls.Add(this.uiMoveYUpButton);
@@ -1309,6 +1312,13 @@
             this.uiShowWayCheckBox.UseVisualStyleBackColor = true;
             this.uiShowWayCheckBox.CheckedChanged += new System.EventHandler(this.uiShowWayCheckBox_CheckedChanged);
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(13, 219);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.TabIndex = 56;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1342,6 +1352,7 @@
             this.uiPlatformPositionPanel.ResumeLayout(false);
             this.uiHexapodPanel.ResumeLayout(false);
             this.uiSelectTrackPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1389,24 +1400,24 @@
         public System.Windows.Forms.TextBox uiStartPositionZ0TextBox;
         private System.Windows.Forms.Label uiStartPositionZ0Label;
         private System.Windows.Forms.GroupBox uiStartPositionGroupBox;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label uiStartPositionDirectionCosineZValueLabel;
+        private System.Windows.Forms.Label uiStartPositionDirectionCosineYValueLabel;
+        private System.Windows.Forms.Label uiStartPositionDirectionCosineXValueLabel;
+        private System.Windows.Forms.Label uiStartPositionDirectionCosineZLabel;
+        private System.Windows.Forms.Label uiStartPositionDirectionCosineYLabel;
+        private System.Windows.Forms.Label uiStartPositionDirectionCosineXLabel;
         private System.Windows.Forms.Label uiStartPositionPsiLabel;
         private System.Windows.Forms.Label uiStartPositionThetaLabel;
         public System.Windows.Forms.TextBox uiStartPositionThetaTextBox;
         private System.Windows.Forms.Label uiStartPositionFiLabel;
         public System.Windows.Forms.TextBox uiStartPositionFiTextBox;
         private System.Windows.Forms.GroupBox uiFinishPostionGroupBox;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label uiFinishPositionDirectionCosineZValueLabel;
+        private System.Windows.Forms.Label uiFinishPositionDirectionCosineYValueLabel;
+        private System.Windows.Forms.Label uiFinishPositionDirectionCosineXValueLabel;
+        private System.Windows.Forms.Label uiFinishPositionDirectionCosineZLabel;
+        private System.Windows.Forms.Label uiFinishPositionDirectionCosineYLabel;
+        private System.Windows.Forms.Label uiFinishPositionDirectionCosineXLabel;
         private System.Windows.Forms.Label uiFinishPositionPsiLabel;
         public System.Windows.Forms.TextBox uiFinishPositionPsiTextBox;
         private System.Windows.Forms.Label uiFinishPositionThetaLabel;
@@ -1461,6 +1472,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn uiRail5DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uiRail6DataGridViewTextBoxColumn;
         private System.Windows.Forms.CheckBox uiShowWayCheckBox;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 
