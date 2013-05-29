@@ -55,9 +55,6 @@
             this.uiSelectTrackGroupBox = new System.Windows.Forms.GroupBox();
             this.uiTrackTimeTextBox = new System.Windows.Forms.TextBox();
             this.uiTrackStepCountTextBox = new System.Windows.Forms.TextBox();
-            this.uiTrackAxeComboBox = new System.Windows.Forms.ComboBox();
-            this.uiTrackByTurnRadioButton = new System.Windows.Forms.RadioButton();
-            this.uiTrackSimultaneouslyRadioButton = new System.Windows.Forms.RadioButton();
             this.uiTrackStepCountLabel = new System.Windows.Forms.Label();
             this.uiTrackTimeLabel = new System.Windows.Forms.Label();
             this.uiPlayDataGroupBox = new System.Windows.Forms.GroupBox();
@@ -123,6 +120,7 @@
             this.uiUpdateSceneTimer = new System.Windows.Forms.Timer(this.components);
             this.uiMainPanel = new System.Windows.Forms.Panel();
             this.uiSettingsPanel = new System.Windows.Forms.Panel();
+            this.uiShowHexapodCheckBox = new System.Windows.Forms.CheckBox();
             this.uiSceneZoomLabel = new System.Windows.Forms.Label();
             this.uiSceneZoomNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.uiSceneZoomhScrollBar = new System.Windows.Forms.HScrollBar();
@@ -153,7 +151,6 @@
             this.uiHexapodPanel = new System.Windows.Forms.Panel();
             this.uiSelectTrackPanel = new System.Windows.Forms.Panel();
             this.uiDirectionCosineToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.uiShowHexapodCheckBox = new System.Windows.Forms.CheckBox();
             this.uiHexapodGroupBox.SuspendLayout();
             this.uiSelectTrackGroupBox.SuspendLayout();
             this.uiPlayDataGroupBox.SuspendLayout();
@@ -402,9 +399,6 @@
             // 
             this.uiSelectTrackGroupBox.Controls.Add(this.uiTrackTimeTextBox);
             this.uiSelectTrackGroupBox.Controls.Add(this.uiTrackStepCountTextBox);
-            this.uiSelectTrackGroupBox.Controls.Add(this.uiTrackAxeComboBox);
-            this.uiSelectTrackGroupBox.Controls.Add(this.uiTrackByTurnRadioButton);
-            this.uiSelectTrackGroupBox.Controls.Add(this.uiTrackSimultaneouslyRadioButton);
             this.uiSelectTrackGroupBox.Controls.Add(this.uiTrackStepCountLabel);
             this.uiSelectTrackGroupBox.Controls.Add(this.uiTrackTimeLabel);
             this.uiSelectTrackGroupBox.Location = new System.Drawing.Point(0, 0);
@@ -412,11 +406,11 @@
             this.uiSelectTrackGroupBox.Size = new System.Drawing.Size(120, 267);
             this.uiSelectTrackGroupBox.TabIndex = 18;
             this.uiSelectTrackGroupBox.TabStop = false;
-            this.uiSelectTrackGroupBox.Text = "Выбор траектории";
+            this.uiSelectTrackGroupBox.Text = "Параметры шагов";
             // 
             // uiTrackTimeTextBox
             // 
-            this.uiTrackTimeTextBox.Location = new System.Drawing.Point(6, 105);
+            this.uiTrackTimeTextBox.Location = new System.Drawing.Point(6, 32);
             this.uiTrackTimeTextBox.Name = "uiTrackTimeTextBox";
             this.uiTrackTimeTextBox.Size = new System.Drawing.Size(102, 20);
             this.uiTrackTimeTextBox.TabIndex = 21;
@@ -425,57 +419,17 @@
             // 
             // uiTrackStepCountTextBox
             // 
-            this.uiTrackStepCountTextBox.Location = new System.Drawing.Point(6, 144);
+            this.uiTrackStepCountTextBox.Location = new System.Drawing.Point(6, 71);
             this.uiTrackStepCountTextBox.Name = "uiTrackStepCountTextBox";
             this.uiTrackStepCountTextBox.Size = new System.Drawing.Size(102, 20);
             this.uiTrackStepCountTextBox.TabIndex = 10;
             this.uiTrackStepCountTextBox.Text = "20";
             this.uiTrackStepCountTextBox.TextChanged += new System.EventHandler(this.uiParameters_TextChanged);
             // 
-            // uiTrackAxeComboBox
-            // 
-            this.uiTrackAxeComboBox.Enabled = false;
-            this.uiTrackAxeComboBox.FormattingEnabled = true;
-            this.uiTrackAxeComboBox.Items.AddRange(new object[] {
-            "X0",
-            "Y0",
-            "Z0",
-            "Fi",
-            "Theta",
-            "Psi"});
-            this.uiTrackAxeComboBox.Location = new System.Drawing.Point(6, 65);
-            this.uiTrackAxeComboBox.Name = "uiTrackAxeComboBox";
-            this.uiTrackAxeComboBox.Size = new System.Drawing.Size(102, 21);
-            this.uiTrackAxeComboBox.TabIndex = 9;
-            // 
-            // uiTrackByTurnRadioButton
-            // 
-            this.uiTrackByTurnRadioButton.AutoSize = true;
-            this.uiTrackByTurnRadioButton.Enabled = false;
-            this.uiTrackByTurnRadioButton.Location = new System.Drawing.Point(9, 42);
-            this.uiTrackByTurnRadioButton.Name = "uiTrackByTurnRadioButton";
-            this.uiTrackByTurnRadioButton.Size = new System.Drawing.Size(81, 17);
-            this.uiTrackByTurnRadioButton.TabIndex = 6;
-            this.uiTrackByTurnRadioButton.Text = "по очереди";
-            this.uiTrackByTurnRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // uiTrackSimultaneouslyRadioButton
-            // 
-            this.uiTrackSimultaneouslyRadioButton.AutoSize = true;
-            this.uiTrackSimultaneouslyRadioButton.Checked = true;
-            this.uiTrackSimultaneouslyRadioButton.Enabled = false;
-            this.uiTrackSimultaneouslyRadioButton.Location = new System.Drawing.Point(9, 19);
-            this.uiTrackSimultaneouslyRadioButton.Name = "uiTrackSimultaneouslyRadioButton";
-            this.uiTrackSimultaneouslyRadioButton.Size = new System.Drawing.Size(99, 17);
-            this.uiTrackSimultaneouslyRadioButton.TabIndex = 5;
-            this.uiTrackSimultaneouslyRadioButton.TabStop = true;
-            this.uiTrackSimultaneouslyRadioButton.Text = "одновременно";
-            this.uiTrackSimultaneouslyRadioButton.UseVisualStyleBackColor = true;
-            // 
             // uiTrackStepCountLabel
             // 
             this.uiTrackStepCountLabel.AutoSize = true;
-            this.uiTrackStepCountLabel.Location = new System.Drawing.Point(12, 128);
+            this.uiTrackStepCountLabel.Location = new System.Drawing.Point(12, 55);
             this.uiTrackStepCountLabel.Name = "uiTrackStepCountLabel";
             this.uiTrackStepCountLabel.Size = new System.Drawing.Size(100, 13);
             this.uiTrackStepCountLabel.TabIndex = 3;
@@ -484,7 +438,7 @@
             // uiTrackTimeLabel
             // 
             this.uiTrackTimeLabel.AutoSize = true;
-            this.uiTrackTimeLabel.Location = new System.Drawing.Point(12, 89);
+            this.uiTrackTimeLabel.Location = new System.Drawing.Point(12, 16);
             this.uiTrackTimeLabel.Name = "uiTrackTimeLabel";
             this.uiTrackTimeLabel.Size = new System.Drawing.Size(70, 13);
             this.uiTrackTimeLabel.TabIndex = 2;
@@ -1143,6 +1097,19 @@
             this.uiSettingsPanel.Size = new System.Drawing.Size(223, 267);
             this.uiSettingsPanel.TabIndex = 52;
             // 
+            // uiShowHexapodCheckBox
+            // 
+            this.uiShowHexapodCheckBox.AutoSize = true;
+            this.uiShowHexapodCheckBox.Checked = true;
+            this.uiShowHexapodCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.uiShowHexapodCheckBox.Location = new System.Drawing.Point(18, 231);
+            this.uiShowHexapodCheckBox.Name = "uiShowHexapodCheckBox";
+            this.uiShowHexapodCheckBox.Size = new System.Drawing.Size(125, 17);
+            this.uiShowHexapodCheckBox.TabIndex = 80;
+            this.uiShowHexapodCheckBox.Text = "Показать гексапод";
+            this.uiShowHexapodCheckBox.UseVisualStyleBackColor = true;
+            this.uiShowHexapodCheckBox.CheckedChanged += new System.EventHandler(this.uiShowHexapodCheckBox_CheckedChanged);
+            // 
             // uiSceneZoomLabel
             // 
             this.uiSceneZoomLabel.AutoSize = true;
@@ -1539,19 +1506,6 @@
             this.uiSelectTrackPanel.Size = new System.Drawing.Size(120, 267);
             this.uiSelectTrackPanel.TabIndex = 22;
             // 
-            // uiShowHexapodCheckBox
-            // 
-            this.uiShowHexapodCheckBox.AutoSize = true;
-            this.uiShowHexapodCheckBox.Checked = true;
-            this.uiShowHexapodCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.uiShowHexapodCheckBox.Location = new System.Drawing.Point(18, 231);
-            this.uiShowHexapodCheckBox.Name = "uiShowHexapodCheckBox";
-            this.uiShowHexapodCheckBox.Size = new System.Drawing.Size(125, 17);
-            this.uiShowHexapodCheckBox.TabIndex = 80;
-            this.uiShowHexapodCheckBox.Text = "Показать гексапод";
-            this.uiShowHexapodCheckBox.UseVisualStyleBackColor = true;
-            this.uiShowHexapodCheckBox.CheckedChanged += new System.EventHandler(this.uiShowHexapodCheckBox_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1620,8 +1574,6 @@
         private System.Windows.Forms.Label uiСardanLabel;
         private System.Windows.Forms.Label uiRailsLabel;
         private System.Windows.Forms.GroupBox uiSelectTrackGroupBox;
-        private System.Windows.Forms.RadioButton uiTrackByTurnRadioButton;
-        private System.Windows.Forms.RadioButton uiTrackSimultaneouslyRadioButton;
         private System.Windows.Forms.Label uiTrackStepCountLabel;
         private System.Windows.Forms.Label uiTrackTimeLabel;
         private System.Windows.Forms.GroupBox uiPlayDataGroupBox;
@@ -1669,7 +1621,6 @@
         public System.Windows.Forms.TextBox uiFinishPositionY0TextBox;
         private System.Windows.Forms.Label uiFinishPositionX0Label;
         public System.Windows.Forms.TextBox uiFinishPositionX0TextBox;
-        private System.Windows.Forms.ComboBox uiTrackAxeComboBox;
         public System.Windows.Forms.TextBox uiTrackTimeTextBox;
         public System.Windows.Forms.TextBox uiTrackStepCountTextBox;
         private System.Windows.Forms.Timer uiUpdateSceneTimer;
