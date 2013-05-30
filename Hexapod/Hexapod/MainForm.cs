@@ -88,14 +88,14 @@ namespace Hexapod
             DrawHexapod(_hexapod.Track.Positions[uiTrackTrackBar.Value]);
         }
 
-        private void SetFinishDirectionCosine()
+        private void SetFinishDirectionCosine() //отобразить на формочке значения направляющих косинусов
         {
             uiStartPositionDirectionCosineXValueLabel.Text = _hexapod.StartPosition.DirectionCosineX.ToString();
             uiStartPositionDirectionCosineYValueLabel.Text = _hexapod.StartPosition.DirectionCosineY.ToString();
             uiStartPositionDirectionCosineZValueLabel.Text = _hexapod.StartPosition.DirectionCosineZ.ToString();
         }
 
-        private void SetStartDirectionCosine()
+        private void SetStartDirectionCosine() //отобразить на формочке значения направляющих косинусов
         {
             uiFinishPositionDirectionCosineXValueLabel.Text = _hexapod.FinishPosition.DirectionCosineX.ToString();
             uiFinishPositionDirectionCosineYValueLabel.Text = _hexapod.FinishPosition.DirectionCosineY.ToString();
@@ -147,7 +147,7 @@ namespace Hexapod
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
             Gl.glLoadIdentity();
             Gl.glPushMatrix();
-            DrawAllComponents(position);
+            DrawAllComponents(position); //главный метод отрисовки в котором всё рисуемтся
             Gl.glPopMatrix();
             Gl.glPopMatrix();
             Gl.glFlush();
@@ -156,53 +156,53 @@ namespace Hexapod
 
         private void DrawAllComponents(Position position)
         {
-            SetSceneParameters();
+            SetSceneParameters(); //установить параметры отображения
             Gl.glPushMatrix();
             DrawAxes(150f);
-            DrawPlatformWay();
-            if (uiShowHexapodCheckBox.Checked)
+            DrawPlatformWay(); //нарисовать путь платформы
+            if (uiShowHexapodCheckBox.Checked) // если нажата галочка показать гексапод
             {
-                DrawBasePlatform();
-                DrawRails(position);
-                DrawPlatform(position);
+                DrawBasePlatform(); //нарисовать основание
+                DrawRails(position); //нарисовать штанги
+                DrawPlatform(position); //нарисовать движ. платформу
             }
             Gl.glPopMatrix();
         }
 
         private void SetSceneParameters()
         {
-            Gl.glTranslated(_sceneMoveX, _sceneMoveY, _sceneMoveZ);
-            Gl.glRotated(_sceneRotateX, 1, 0, 0);
+            Gl.glTranslated(_sceneMoveX, _sceneMoveY, _sceneMoveZ); //перемещение сцены
+            Gl.glRotated(_sceneRotateX, 1, 0, 0); //повороты вокруг осей Х У Z
             Gl.glRotated(_sceneRotateY, 0, 1, 0);
             Gl.glRotated(_sceneRotateZ, 0, 0, 1);
-            Gl.glScaled(_sceneZoom, _sceneZoom, _sceneZoom);
+            Gl.glScaled(_sceneZoom, _sceneZoom, _sceneZoom); //приближение удаление сцены
         }
 
-        private void DrawAxes(double axeLength)
+        private void DrawAxes(double axeLength) //сама отрисовка осей  axeLength-длина оси
         {
-            var axeWidth = axeLength/10;
+            var axeWidth = axeLength/10; 
             Gl.glBegin(Gl.GL_LINES);
-            DrawAxeX(axeLength, axeWidth);
-            DrawAxeY(axeLength, axeWidth);
-            DrawAxeZ(axeLength, axeWidth);
+            DrawAxeX(axeLength, axeWidth); //рисуем ось X
+            DrawAxeY(axeLength, axeWidth);//рисуем ось Y
+            DrawAxeZ(axeLength, axeWidth);//рисуем ось Z
             Gl.glEnd();
             Gl.glColor3f(0, 0, 0);
         }
 
         private void DrawAxeX(double axeLength, double axeWidth)
-        {
-            Gl.glColor3f(255, 0, 0);
-            Gl.glVertex3d(0, 0, 0);
-            Gl.glVertex3d(axeLength, 0, 0);
-            Gl.glVertex3d(axeLength, 0, 0);
-            Gl.glVertex3d(axeLength - axeWidth, axeWidth/2, 0);
-            Gl.glVertex3d(axeLength, 0, 0);
-            Gl.glVertex3d(axeLength - axeWidth, -axeWidth/2, 0);
+        {//рисуем ось X
+            Gl.glColor3f(255, 0, 0); // cvet osi X - krasniy
+            Gl.glVertex3d(0, 0, 0);         //пары строк, это координаты соединяемых точек
+            Gl.glVertex3d(axeLength, 0, 0); //пары строк, это координаты соединяемых точек
+            Gl.glVertex3d(axeLength, 0, 0);                         //2para
+            Gl.glVertex3d(axeLength - axeWidth, axeWidth / 2, 0);//2para
+            Gl.glVertex3d(axeLength, 0, 0);                     //3para
+            Gl.glVertex3d(axeLength - axeWidth, -axeWidth / 2, 0);//3para
         }
 
-        private void DrawAxeY(double axeLength, double axeWidth)
+        private void DrawAxeY(double axeLength, double axeWidth)//рисуем ось Y
         {
-            Gl.glColor3f(0, 255, 0);
+            Gl.glColor3f(0, 255, 0); // cvet osi Y - zeleniy
             Gl.glVertex3d(0, 0, 0);
             Gl.glVertex3d(0, axeLength, 0);
             Gl.glVertex3d(0, axeLength, 0);
@@ -211,9 +211,9 @@ namespace Hexapod
             Gl.glVertex3d(-axeWidth/2, axeLength - axeWidth, 0);
         }
 
-        private void DrawAxeZ(double axeLength, double axeWidth)
+        private void DrawAxeZ(double axeLength, double axeWidth) // risuem os' Z
         {
-            Gl.glColor3f(0, 0, 255);
+            Gl.glColor3f(0, 0, 255); // cvet osi Z - siniy
             Gl.glVertex3d(0, 0, 0);
             Gl.glVertex3d(0, 0, axeLength);
             Gl.glVertex3d(0, 0, axeLength);
@@ -222,49 +222,49 @@ namespace Hexapod
             Gl.glVertex3d(-axeWidth/2, 0, axeLength - axeWidth);
         }
 
-        private void DrawPlatformWay()
+        private void DrawPlatformWay() // отрисовка осей платформы для всех её позиций
         {
-            if (!uiShowWayCheckBox.Checked) return;
-            foreach (var position in _hexapod.Track.Positions)
+            if (!uiShowWayCheckBox.Checked) return; // если не нажата галочка отображения пути платформы то не рисуем
+            foreach (var position in _hexapod.Track.Positions) //для каждой позиции движущейся платформы, рисуем оси.
             {
                 Gl.glPushMatrix();
-                Gl.glTranslated(position.Center.X, position.Center.Y, position.Center.Z);
-                Gl.glRotated(position.Psi, 0, 0, 1);
+                Gl.glTranslated(position.Center.X, position.Center.Y, position.Center.Z); //выбираем точку откуда будем рисовать
+                Gl.glRotated(position.Psi, 0, 0, 1); 
                 Gl.glPushMatrix();
                 Gl.glRotated(position.Theta, 1, 0, 0);
                 Gl.glPushMatrix();
-                Gl.glRotated(position.Fi, 0, 0, 1);
-                DrawAxes(_hexapod.PlatformRadius);
+                Gl.glRotated(position.Fi, 0, 0, 1); //пять строчек сверху, это поворот по углам эйлера
+                DrawAxes(_hexapod.PlatformRadius); //сама отрисовка осей 
                 Gl.glPopMatrix();
                 Gl.glPopMatrix();
                 Gl.glPopMatrix();
             }
         }
 
-        private void DrawRails(Position position)
+        private void DrawRails(Position position) //рисуем штанги платформы
         {
-            DrawRail(_hexapod.A, position.G);
-            DrawRail(_hexapod.B, position.H);
-            DrawRail(_hexapod.C, position.I);
-            DrawRail(_hexapod.D, position.J);
-            DrawRail(_hexapod.E, position.K);
-            DrawRail(_hexapod.F, position.L);
+            DrawRail(_hexapod.A, position.G);       //рисуем штангу соединяющую 2 соответствующие точки
+            DrawRail(_hexapod.B, position.H);       //рисуем штангу соединяющую 2 соответствующие точки
+            DrawRail(_hexapod.C, position.I);       //рисуем штангу соединяющую 2 соответствующие точки
+            DrawRail(_hexapod.D, position.J);       //рисуем штангу соединяющую 2 соответствующие точки
+            DrawRail(_hexapod.E, position.K);       //рисуем штангу соединяющую 2 соответствующие точки
+            DrawRail(_hexapod.F, position.L);       //рисуем штангу соединяющую 2 соответствующие точки
             Gl.glColor3f(0, 0, 0);
         }
 
-        private void DrawRail(Point point1, Point point2)
+        private void DrawRail(Point point1, Point point2) //рисуем штангу соединяющую 2 соответствующие точки
         {
             Gl.glBegin(Gl.GL_LINES);
             var lenght = Hexapod.GetRailLength(point1, point2);
-            if (lenght > _hexapod.RailsMaxLength || lenght < _hexapod.RailsMinLength)
+            if (lenght > _hexapod.RailsMaxLength || lenght < _hexapod.RailsMinLength) //если длина штанги больше максимума или меньше минимума то красим её
             {
-                Gl.glColor3f(255, 0, 0);
+                Gl.glColor3f(255, 0, 0); //в красный
             }
             else
             {
-                Gl.glColor3f(0, 0, 0);
+                Gl.glColor3f(0, 0, 0);//всё норм - чёрный
             }
-            Gl.glVertex3d(point1.X, point1.Y, point1.Z);
+            Gl.glVertex3d(point1.X, point1.Y, point1.Z); //соединяем две пары точек
             Gl.glVertex3d(point2.X, point2.Y, point2.Z);
             Gl.glEnd();
         }
@@ -274,9 +274,9 @@ namespace Hexapod
             Gl.glPushMatrix();
             Gl.glTranslated(0, 0, -_hexapod.PlatformHeight);
             Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius,
-                            _hexapod.PlatformHeight, 360, 360);
+                            _hexapod.PlatformHeight, 360, 360); //отрисовка цилиндра для самой платформы(неподвижной)
             Gl.glPopMatrix();
-            DrawCardans();
+            DrawCardans(); //нарисовать карданы у неподжвижной платформы
         }
 
         private void DrawPlatform(Position position)
@@ -286,13 +286,14 @@ namespace Hexapod
                 position.Rail3Length > _hexapod.RailsMaxLength || position.Rail3Length < _hexapod.RailsMinLength ||
                 position.Rail4Length > _hexapod.RailsMaxLength || position.Rail4Length < _hexapod.RailsMinLength ||
                 position.Rail5Length > _hexapod.RailsMaxLength || position.Rail5Length < _hexapod.RailsMinLength ||
-                position.Rail6Length > _hexapod.RailsMaxLength || position.Rail6Length < _hexapod.RailsMinLength)
+                position.Rail6Length > _hexapod.RailsMaxLength || position.Rail6Length < _hexapod.RailsMinLength) 
+                //если длина хотябы одной штанги из 6 больше максимума или меньше минимума то красим в красный
             {
-                Gl.glColor3f(255, 0, 0);
+                Gl.glColor3f(255, 0, 0); //покрасить в красный
             }
             else
             {
-                Gl.glColor3f(0, 0, 0);
+                Gl.glColor3f(0, 0, 0); //покрасить в черный
             }
             Gl.glPushMatrix();
             Gl.glTranslated(position.Center.X, position.Center.Y, position.Center.Z);
@@ -301,8 +302,11 @@ namespace Hexapod
             Gl.glRotated(position.Theta, 1, 0, 0);
             Gl.glPushMatrix();
             Gl.glRotated(position.Fi, 0, 0, 1);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius,
-                            _hexapod.PlatformHeight, 360, 360);
+            Glu.gluCylinder(Glu.gluNewQuadric(),
+                _hexapod.PlatformRadius,       //радиус основания цилиндра
+                _hexapod.PlatformRadius,      //радиус верхушки цилиндра
+                    _hexapod.PlatformHeight,   //высота цилидра равна высоте платформы
+                            360, 360);
             Gl.glPushMatrix();
             Gl.glTranslated(0, 0, -_hexapod.CardanHeight);
             DrawCardans();
@@ -314,24 +318,28 @@ namespace Hexapod
 
         private void DrawCardans()
         {
-            DrawCardan(_hexapod.A);
-            DrawCardan(_hexapod.B);
-            DrawCardan(_hexapod.C);
-            DrawCardan(_hexapod.D);
-            DrawCardan(_hexapod.E);
-            DrawCardan(_hexapod.F);
+            DrawCardan(_hexapod.A); //нарисовать кордан вокруг точки А
+            DrawCardan(_hexapod.B);     //нарисовать кордан 
+            DrawCardan(_hexapod.C);     //нарисовать кордан
+            DrawCardan(_hexapod.D);     //нарисовать кордан
+            DrawCardan(_hexapod.E);     //нарисовать кордан
+            DrawCardan(_hexapod.F);     //нарисовать кордан
         }
 
-        private void DrawCardan(Point p)
+        private void DrawCardan(Point p)//нарисовать кордан с переданными координатами = p
         {
             Gl.glPushMatrix();
-            Gl.glTranslated(p.X, p.Y, p.Z - _hexapod.CardanHeight);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.CardanHeight,
-                            360, 360);
+            Gl.glTranslated(p.X, p.Y, p.Z - _hexapod.CardanHeight); //перемещаемся ниже на высоту кардана
+            Glu.gluCylinder(Glu.gluNewQuadric(), 
+                            _hexapod.CardanRadius, //радиус основания цилиндра
+                            _hexapod.CardanRadius,//радиус верхушки цилиндра
+                            _hexapod.CardanHeight, //высота цилидра равна высоте кардана
+                            360, 360 //степень скругливаемости
+                            ); //нарисовать цилиндр
             Gl.glPopMatrix();
         }
 
-        private void uiSettingsVisibleButton_Click(object sender, EventArgs e)
+        private void uiSettingsVisibleButton_Click(object sender, EventArgs e) //спрятать или показать окно настроек отображения 
         {
             if (uiSettingsPanel.Width == _settingsPanelWidth)
             {

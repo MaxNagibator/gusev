@@ -172,9 +172,9 @@ namespace Hexapod
                            X = x,
                            Y = y,
                            Z = z,
-                           DirectionCosineX = Math.Round((x.X - center.X), 5),
-                           DirectionCosineY = Math.Round((y.Y - center.Y), 5),
-                           DirectionCosineZ = Math.Round((z.Z - center.Z), 5),
+                           DirectionCosineX = Math.Round((x.X - center.X), 5),    //высчитываем значение направляющих косинусов
+                           DirectionCosineY = Math.Round((y.Y - center.Y), 5),    //высчитываем значение направляющих косинусов
+                           DirectionCosineZ = Math.Round((z.Z - center.Z), 5),    //высчитываем значение направляющих косинусов
                            Rail1Length = GetRailLength(A, g),
                            Rail2Length = GetRailLength(B, h),
                            Rail3Length = GetRailLength(C, i),
@@ -201,7 +201,7 @@ namespace Hexapod
                             Z = x*(Math.Sin(theta)*Math.Sin(fi)) +
                                 y*(Math.Sin(theta)*Math.Cos(fi)) +
                                 z*(Math.Cos(theta))
-                        };
+                        }; //умножение на матрицу поворота для углоов эйлера
             p.X += center.X;
             p.Y += center.Y;
             p.Z += center.Z;
