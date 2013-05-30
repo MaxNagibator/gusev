@@ -20,11 +20,18 @@ namespace Hexapod
         public Point D { get; set; }
         public Point E { get; set; }
         public Point F { get; set; }
-        public Position StartPosition { get; set; }
-        public Position FinishPosition { get; set; }
+        public Position StartPosition { get { return Track.Positions[0]; } set { Track.Positions[0] = value; } }
+        public Position FinishPosition { get { return Track.Positions[Track.Positions.Count - 1]; } set { Track.Positions[Track.Positions.Count - 1] = value; } }
         public Track Track { get; set; }
 
         public void SetParameters(MainForm mainForm)
+        {
+            SetMainParamentersFromForm(mainForm);
+            CalculateBasePoints();
+            CalculateTrack();
+        }
+
+        private void SetMainParamentersFromForm(MainForm mainForm)
         {
             PlatformRadius = Convert.ToInt32(mainForm.uiPlatformRadiusTextBox.Text);
             PlatformHeight = Convert.ToInt32(mainForm.uiPlatformHeightTextBox.Text);
@@ -36,38 +43,34 @@ namespace Hexapod
             RailsMinLength = Convert.ToInt32(mainForm.uiRailsMinLengthTextBox.Text);
             RailsMaxLength = Convert.ToInt32(mainForm.uiRailsMaxLengthTextBox.Text);
             StartPosition = new Position
-                                {
-                                    Center = new Point
-                                                 {
-                                                     X = Convert.ToInt32(mainForm.uiStartPositionX0TextBox.Text),
-                                                     Y = Convert.ToInt32(mainForm.uiStartPositionY0TextBox.Text),
-                                                     Z = Convert.ToInt32(mainForm.uiStartPositionZ0TextBox.Text)
-                                                 },
-                                    Fi = Convert.ToInt32(mainForm.uiStartPositionFiTextBox.Text),
-                                    Theta = Convert.ToInt32(mainForm.uiStartPositionThetaTextBox.Text),
-                                    Psi = Convert.ToInt32(mainForm.uiStartPositionPsiTextBox.Text),
-                                };
+            {
+                Center = new Point
+                {
+                    X = Convert.ToInt32(mainForm.uiStartPositionX0TextBox.Text),
+                    Y = Convert.ToInt32(mainForm.uiStartPositionY0TextBox.Text),
+                    Z = Convert.ToInt32(mainForm.uiStartPositionZ0TextBox.Text)
+                },
+                Fi = Convert.ToInt32(mainForm.uiStartPositionFiTextBox.Text),
+                Theta = Convert.ToInt32(mainForm.uiStartPositionThetaTextBox.Text),
+                Psi = Convert.ToInt32(mainForm.uiStartPositionPsiTextBox.Text),
+            };
             FinishPosition = new Position
-                                 {
-                                     Center = new Point
-                                                  {
-                                                      X = Convert.ToInt32(mainForm.uiFinishPositionX0TextBox.Text),
-                                                      Y = Convert.ToInt32(mainForm.uiFinishPositionY0TextBox.Text),
-                                                      Z = Convert.ToInt32(mainForm.uiFinishPositionZ0TextBox.Text)
-                                                  },
-                                     Fi = Convert.ToInt32(mainForm.uiFinishPositionFiTextBox.Text),
-                                     Theta = Convert.ToInt32(mainForm.uiFinishPositionThetaTextBox.Text),
-                                     Psi = Convert.ToInt32(mainForm.uiFinishPositionPsiTextBox.Text)
-                                 };
+            {
+                Center = new Point
+                {
+                    X = Convert.ToInt32(mainForm.uiFinishPositionX0TextBox.Text),
+                    Y = Convert.ToInt32(mainForm.uiFinishPositionY0TextBox.Text),
+                    Z = Convert.ToInt32(mainForm.uiFinishPositionZ0TextBox.Text)
+                },
+                Fi = Convert.ToInt32(mainForm.uiFinishPositionFiTextBox.Text),
+                Theta = Convert.ToInt32(mainForm.uiFinishPositionThetaTextBox.Text),
+                Psi = Convert.ToInt32(mainForm.uiFinishPositionPsiTextBox.Text)
+            };
             Track = new Track
-                        {
-                            Time = Convert.ToInt32(mainForm.uiTrackTimeTextBox.Text),
-                            StepCount = Convert.ToInt32(mainForm.uiTrackStepCountTextBox.Text)
-                        };
-            CalculateBasePoints();
-            CalculateTrack();
-            StartPosition = Track.Positions[0];
-            FinishPosition = Track.Positions[Track.Positions.Count - 1];
+            {
+                Time = Convert.ToInt32(mainForm.uiTrackTimeTextBox.Text),
+                StepCount = Convert.ToInt32(mainForm.uiTrackStepCountTextBox.Text)
+            };
         }
 
         private void CalculateBasePoints()
