@@ -42,6 +42,12 @@ namespace Hexapod
             RailsRadius = Convert.ToInt32(mainForm.uiRailsRadiusTextBox.Text);
             RailsMinLength = Convert.ToInt32(mainForm.uiRailsMinLengthTextBox.Text);
             RailsMaxLength = Convert.ToInt32(mainForm.uiRailsMaxLengthTextBox.Text);
+            Track = new Track
+            {
+                Time = Convert.ToInt32(mainForm.uiTrackTimeTextBox.Text),
+                StepCount = Convert.ToInt32(mainForm.uiTrackStepCountTextBox.Text),
+                Positions = new List<Position>(){new Position(), new Position()}
+            };
             StartPosition = new Position
             {
                 Center = new Point
@@ -65,11 +71,6 @@ namespace Hexapod
                 Fi = Convert.ToInt32(mainForm.uiFinishPositionFiTextBox.Text),
                 Theta = Convert.ToInt32(mainForm.uiFinishPositionThetaTextBox.Text),
                 Psi = Convert.ToInt32(mainForm.uiFinishPositionPsiTextBox.Text)
-            };
-            Track = new Track
-            {
-                Time = Convert.ToInt32(mainForm.uiTrackTimeTextBox.Text),
-                StepCount = Convert.ToInt32(mainForm.uiTrackStepCountTextBox.Text)
             };
         }
 

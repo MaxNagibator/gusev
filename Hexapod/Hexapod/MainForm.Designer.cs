@@ -146,7 +146,7 @@
             this.uiSceneRotateXhScrollBar = new System.Windows.Forms.HScrollBar();
             this.uiShowWayCheckBox = new System.Windows.Forms.CheckBox();
             this.uiSettingsVisibleButton = new System.Windows.Forms.Button();
-            this.uiSimpleOpenGlControl = new Tao.Platform.Windows.SimpleOpenGlControl();
+            this.uiSimpleOpenGlControl = new OpenTK.GLControl();
             this.uiPlatformPositionPanel = new System.Windows.Forms.Panel();
             this.uiHexapodPanel = new System.Windows.Forms.Panel();
             this.uiSelectTrackPanel = new System.Windows.Forms.Panel();
@@ -1461,21 +1461,13 @@
             // 
             // uiSimpleOpenGlControl
             // 
-            this.uiSimpleOpenGlControl.AccumBits = ((byte)(0));
-            this.uiSimpleOpenGlControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.uiSimpleOpenGlControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.uiSimpleOpenGlControl.AutoCheckErrors = false;
-            this.uiSimpleOpenGlControl.AutoFinish = false;
-            this.uiSimpleOpenGlControl.AutoMakeCurrent = true;
-            this.uiSimpleOpenGlControl.AutoSwapBuffers = true;
             this.uiSimpleOpenGlControl.BackColor = System.Drawing.Color.Black;
-            this.uiSimpleOpenGlControl.ColorBits = ((byte)(32));
-            this.uiSimpleOpenGlControl.DepthBits = ((byte)(16));
             this.uiSimpleOpenGlControl.Location = new System.Drawing.Point(454, 0);
             this.uiSimpleOpenGlControl.Name = "uiSimpleOpenGlControl";
             this.uiSimpleOpenGlControl.Size = new System.Drawing.Size(322, 267);
-            this.uiSimpleOpenGlControl.StencilBits = ((byte)(0));
             this.uiSimpleOpenGlControl.TabIndex = 51;
             // 
             // uiPlatformPositionPanel
@@ -1629,7 +1621,7 @@
         private System.Windows.Forms.Panel uiMainPanel;
         private System.Windows.Forms.Panel uiSettingsPanel;
         private System.Windows.Forms.Button uiSettingsVisibleButton;
-        private Tao.Platform.Windows.SimpleOpenGlControl uiSimpleOpenGlControl;
+        private OpenTK.GLControl uiSimpleOpenGlControl;
         private System.Windows.Forms.Panel uiPlatformPositionPanel;
         private System.Windows.Forms.Panel uiHexapodPanel;
         private System.Windows.Forms.Panel uiSelectTrackPanel;
@@ -1675,4 +1667,3 @@
         private System.Windows.Forms.CheckBox uiShowHexapodCheckBox;
     }
 }
-
