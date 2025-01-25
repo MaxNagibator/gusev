@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Tao.OpenGl;
-using Tao.FreeGlut;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
 
 namespace Hexapod
 {
@@ -22,11 +22,21 @@ namespace Hexapod
         public MainForm()
         {
             InitializeComponent();
-            InitializeOpenGl();
             _hexapod.SetParameters(this);
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            InitializeOpenGl();
             HideSettingsPanel();
             SetSizeTrackDataGridViewColumns();
             UpdateTrackInformation();
+        }
+
+        private void InitializeOpenGl()
+        {
+            uiSimpleOpenGlControl.MakeCurrent();
         }
 
         private void HideSettingsPanel()
@@ -34,13 +44,6 @@ namespace Hexapod
             _settingsPanelWidth = uiSettingsPanel.Width;
             uiSettingsPanel.Width = uiSettingsVisibleButton.Width + 3;
             uiSimpleOpenGlControl.Width += _settingsPanelWidth;
-        }
-
-        private void InitializeOpenGl()
-        {
-            uiSimpleOpenGlControl.InitializeContexts();
-            Glut.glutInit();
-            Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
         }
 
         private void uiParameters_TextChanged(object sender, EventArgs e)
@@ -137,32 +140,35 @@ namespace Hexapod
 
         private void DrawHexapod(Position position)
         {
-            // очитка окна 
-            Gl.glClearColor(255, 255, 255, 1);
-            // установка порта вывода в соотвествии с размерами элемента anT 
-            Gl.glViewport(0, 0, uiSimpleOpenGlControl.Width, uiSimpleOpenGlControl.Height);
-            // настройка проекции 
-            Gl.glMatrixMode(Gl.GL_PROJECTION);
-            Gl.glLoadIdentity();
-            Glu.gluPerspective(45, (float) uiSimpleOpenGlControl.Width/uiSimpleOpenGlControl.Height, 0.1, 800);
-            Gl.glMatrixMode(Gl.GL_MODELVIEW);
-            Gl.glLoadIdentity();
-            // настройка параметров OpenGL для визуализации 
-            Gl.glEnable(Gl.GL_DEPTH_TEST);
-            Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
-            Gl.glLoadIdentity();
-            Gl.glPushMatrix();
+            // очитка окна
+            GL.ClearColor(255, 255, 255, 1);
+            // установка порта вывода в соотвествии с размерами элемента anT
+            GL.Viewport(0, 0, uiSimpleOpenGlControl.Width, uiSimpleOpenGlControl.Height);
+            // настройка проекции
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+            Matrix4 perspectiveMatrix = Matrix4.CreatePerspectiveFieldOfView((float)(Math.PI / 4), (float)uiSimpleOpenGlControl.Width / uiSimpleOpenGlControl.Height, 0.1f, 800);
+            GL.LoadMatrix(ref perspectiveMatrix);
+            //Glu.gluPerspective(45, (float) uiSimpleOpenGlControl.Width/uiSimpleOpenGlControl.Height, 0.1, 800);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            // настройка параметров OpenGL для визуализации
+            GL.Enable(EnableCap.DepthTest);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            GL.LoadIdentity();
+            GL.PushMatrix();
             DrawAllComponents(position);
-            Gl.glPopMatrix();
-            Gl.glPopMatrix();
-            Gl.glFlush();
+            GL.PopMatrix();
+            GL.PopMatrix();
+            GL.Flush();
+            uiSimpleOpenGlControl.SwapBuffers();
             uiSimpleOpenGlControl.Invalidate();
         }
 
         private void DrawAllComponents(Position position)
         {
             SetSceneParameters();
-            Gl.glPushMatrix();
+            GL.PushMatrix();
             DrawAxes(150f);
             DrawPlatformWay();
             if (uiShowHexapodCheckBox.Checked)
@@ -171,60 +177,60 @@ namespace Hexapod
                 DrawRails(position);
                 DrawPlatform(position);
             }
-            Gl.glPopMatrix();
+            GL.PopMatrix();
         }
 
         private void SetSceneParameters()
         {
-            Gl.glTranslated(_sceneMoveX, _sceneMoveY, _sceneMoveZ);
-            Gl.glRotated(_sceneRotateX, 1, 0, 0);
-            Gl.glRotated(_sceneRotateY, 0, 1, 0);
-            Gl.glRotated(_sceneRotateZ, 0, 0, 1);
-            Gl.glScaled(_sceneZoom, _sceneZoom, _sceneZoom);
+            GL.Translate(_sceneMoveX, _sceneMoveY, _sceneMoveZ);
+            GL.Rotate(_sceneRotateX, 1, 0, 0);
+            GL.Rotate(_sceneRotateY, 0, 1, 0);
+            GL.Rotate(_sceneRotateZ, 0, 0, 1);
+            GL.Scale(_sceneZoom, _sceneZoom, _sceneZoom);
         }
 
         private void DrawAxes(double axeLength)
         {
-            var axeWidth = axeLength/10;
-            Gl.glBegin(Gl.GL_LINES);
+            var axeWidth = axeLength / 10;
+            GL.Begin(PrimitiveType.Lines);
             DrawAxeX(axeLength, axeWidth);
             DrawAxeY(axeLength, axeWidth);
             DrawAxeZ(axeLength, axeWidth);
-            Gl.glEnd();
-            Gl.glColor3f(0, 0, 0);
+            GL.End();
+            GL.Color3(0, 0, 0);
         }
 
         private void DrawAxeX(double axeLength, double axeWidth)
         {
-            Gl.glColor3f(255, 0, 0);
-            Gl.glVertex3d(0, 0, 0);
-            Gl.glVertex3d(axeLength, 0, 0);
-            Gl.glVertex3d(axeLength, 0, 0);
-            Gl.glVertex3d(axeLength - axeWidth, axeWidth/2, 0);
-            Gl.glVertex3d(axeLength, 0, 0);
-            Gl.glVertex3d(axeLength - axeWidth, -axeWidth/2, 0);
+            GL.Color3(255, 0, 0);
+            GL.Vertex3(0, 0, 0);
+            GL.Vertex3(axeLength, 0, 0);
+            GL.Vertex3(axeLength, 0, 0);
+            GL.Vertex3(axeLength - axeWidth, axeWidth / 2, 0);
+            GL.Vertex3(axeLength, 0, 0);
+            GL.Vertex3(axeLength - axeWidth, -axeWidth / 2, 0);
         }
 
         private void DrawAxeY(double axeLength, double axeWidth)
         {
-            Gl.glColor3f(0, 255, 0);
-            Gl.glVertex3d(0, 0, 0);
-            Gl.glVertex3d(0, axeLength, 0);
-            Gl.glVertex3d(0, axeLength, 0);
-            Gl.glVertex3d(axeWidth/2, axeLength - axeWidth, 0);
-            Gl.glVertex3d(0, axeLength, 0);
-            Gl.glVertex3d(-axeWidth/2, axeLength - axeWidth, 0);
+            GL.Color3(0, 255, 0);
+            GL.Vertex3(0, 0, 0);
+            GL.Vertex3(0, axeLength, 0);
+            GL.Vertex3(0, axeLength, 0);
+            GL.Vertex3(axeWidth / 2, axeLength - axeWidth, 0);
+            GL.Vertex3(0, axeLength, 0);
+            GL.Vertex3(-axeWidth / 2, axeLength - axeWidth, 0);
         }
 
         private void DrawAxeZ(double axeLength, double axeWidth)
         {
-            Gl.glColor3f(0, 0, 255);
-            Gl.glVertex3d(0, 0, 0);
-            Gl.glVertex3d(0, 0, axeLength);
-            Gl.glVertex3d(0, 0, axeLength);
-            Gl.glVertex3d(axeWidth/2, 0, axeLength - axeWidth);
-            Gl.glVertex3d(0, 0, axeLength);
-            Gl.glVertex3d(-axeWidth/2, 0, axeLength - axeWidth);
+            GL.Color3(0, 0, 255);
+            GL.Vertex3(0, 0, 0);
+            GL.Vertex3(0, 0, axeLength);
+            GL.Vertex3(0, 0, axeLength);
+            GL.Vertex3(axeWidth / 2, 0, axeLength - axeWidth);
+            GL.Vertex3(0, 0, axeLength);
+            GL.Vertex3(-axeWidth / 2, 0, axeLength - axeWidth);
         }
 
         private void DrawPlatformWay()
@@ -232,17 +238,17 @@ namespace Hexapod
             if (!uiShowWayCheckBox.Checked) return;
             foreach (var position in _hexapod.Track.Positions)
             {
-                Gl.glPushMatrix();
-                Gl.glTranslated(position.Center.X, position.Center.Y, position.Center.Z);
-                Gl.glRotated(position.Psi, 0, 0, 1);
-                Gl.glPushMatrix();
-                Gl.glRotated(position.Theta, 1, 0, 0);
-                Gl.glPushMatrix();
-                Gl.glRotated(position.Fi, 0, 0, 1);
+                GL.PushMatrix();
+                GL.Translate(position.Center.X, position.Center.Y, position.Center.Z);
+                GL.Rotate(position.Psi, 0, 0, 1);
+                GL.PushMatrix();
+                GL.Rotate(position.Theta, 1, 0, 0);
+                GL.PushMatrix();
+                GL.Rotate(position.Fi, 0, 0, 1);
                 DrawAxes(_hexapod.PlatformRadius);
-                Gl.glPopMatrix();
-                Gl.glPopMatrix();
-                Gl.glPopMatrix();
+                GL.PopMatrix();
+                GL.PopMatrix();
+                GL.PopMatrix();
             }
         }
 
@@ -254,34 +260,88 @@ namespace Hexapod
             DrawRail(_hexapod.D, position.J);
             DrawRail(_hexapod.E, position.K);
             DrawRail(_hexapod.F, position.L);
-            Gl.glColor3f(0, 0, 0);
+            GL.Color3(0, 0, 0);
         }
 
         private void DrawRail(Point point1, Point point2)
         {
-            Gl.glBegin(Gl.GL_LINES);
+            GL.Begin(PrimitiveType.Lines);
             var lenght = Hexapod.GetRailLength(point1, point2);
             if (lenght > _hexapod.RailsMaxLength || lenght < _hexapod.RailsMinLength)
             {
-                Gl.glColor3f(255, 0, 0);
+                GL.Color3(255, 0, 0);
             }
             else
             {
-                Gl.glColor3f(0, 0, 0);
+                GL.Color3(0, 0, 0);
             }
-            Gl.glVertex3d(point1.X, point1.Y, point1.Z);
-            Gl.glVertex3d(point2.X, point2.Y, point2.Z);
-            Gl.glEnd();
+            GL.Vertex3(point1.X, point1.Y, point1.Z);
+            GL.Vertex3(point2.X, point2.Y, point2.Z);
+            GL.End();
         }
 
         private void DrawBasePlatform()
         {
-            Gl.glPushMatrix();
-            Gl.glTranslated(0, 0, -_hexapod.PlatformHeight);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius,
-                            _hexapod.PlatformHeight, 360, 360);
-            Gl.glPopMatrix();
+            GL.PushMatrix();
+            GL.Translate(0, 0, -_hexapod.PlatformHeight);
+            DrawCylinder((float)_hexapod.PlatformRadius, (float)_hexapod.PlatformRadius, (float)_hexapod.PlatformHeight, 360);
+            // Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius,
+            //     _hexapod.PlatformHeight, 360, 360);
+            GL.PopMatrix();
             DrawCardans();
+        }
+
+        private void DrawCylinder(float baseRadius, float topRadius, float height, int slices)
+        {
+            float angleStep = 360.0f / slices;
+            float angle;
+
+            GL.Begin(PrimitiveType.Lines);
+
+            for (int i = 0; i < slices; i++)
+            {
+                angle = i * angleStep;
+                float nextAngle = (i + 1) * angleStep;
+
+                float x1 = baseRadius * (float)Math.Cos(MathHelper.DegreesToRadians(angle));
+                float y1 = baseRadius * (float)Math.Sin(MathHelper.DegreesToRadians(angle));
+                float x2 = baseRadius * (float)Math.Cos(MathHelper.DegreesToRadians(nextAngle));
+                float y2 = baseRadius * (float)Math.Sin(MathHelper.DegreesToRadians(nextAngle));
+
+                float x3 = topRadius * (float)Math.Cos(MathHelper.DegreesToRadians(nextAngle));
+                float y3 = topRadius * (float)Math.Sin(MathHelper.DegreesToRadians(nextAngle));
+                float x4 = topRadius * (float)Math.Cos(MathHelper.DegreesToRadians(angle));
+                float y4 = topRadius * (float)Math.Sin(MathHelper.DegreesToRadians(angle));
+
+                GL.Vertex3(x1, y1, 0);
+                GL.Vertex3(x2, y2, 0);
+                GL.Vertex3(x3, y3, height);
+                GL.Vertex3(x4, y4, height);
+            }
+
+            GL.End();
+
+            DrawCircle(baseRadius, slices, 0);
+            DrawCircle(topRadius, slices, height);
+        }
+
+        private void DrawCircle(float radius, int slices, float z)
+        {
+            float angleStep = 360.0f / slices;
+            float angle;
+
+            GL.Begin(PrimitiveType.Lines);
+            GL.Vertex3(0, 0, z);
+
+            for (int i = 0; i <= slices; i++)
+            {
+                angle = i * angleStep;
+                float x = radius * (float)Math.Cos(MathHelper.DegreesToRadians(angle));
+                float y = radius * (float)Math.Sin(MathHelper.DegreesToRadians(angle));
+                GL.Vertex3(x, y, z);
+            }
+
+            GL.End();
         }
 
         private void DrawPlatform(Position position)
@@ -293,28 +353,29 @@ namespace Hexapod
                 position.Rail5Length > _hexapod.RailsMaxLength || position.Rail5Length < _hexapod.RailsMinLength ||
                 position.Rail6Length > _hexapod.RailsMaxLength || position.Rail6Length < _hexapod.RailsMinLength)
             {
-                Gl.glColor3f(255, 0, 0);
+                GL.Color3(255, 0, 0);
             }
             else
             {
-                Gl.glColor3f(0, 0, 0);
+                GL.Color3(0, 0, 0);
             }
-            Gl.glPushMatrix();
-            Gl.glTranslated(position.Center.X, position.Center.Y, position.Center.Z);
-            Gl.glRotated(position.Psi, 0, 0, 1);
-            Gl.glPushMatrix();
-            Gl.glRotated(position.Theta, 1, 0, 0);
-            Gl.glPushMatrix();
-            Gl.glRotated(position.Fi, 0, 0, 1);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius,
-                            _hexapod.PlatformHeight, 360, 360);
-            Gl.glPushMatrix();
-            Gl.glTranslated(0, 0, -_hexapod.CardanHeight);
+            GL.PushMatrix();
+            GL.Translate(position.Center.X, position.Center.Y, position.Center.Z);
+            GL.Rotate(position.Psi, 0, 0, 1);
+            GL.PushMatrix();
+            GL.Rotate(position.Theta, 1, 0, 0);
+            GL.PushMatrix();
+            GL.Rotate(position.Fi, 0, 0, 1);
+            DrawCylinder((float)_hexapod.PlatformRadius, (float)_hexapod.PlatformRadius, (float)_hexapod.PlatformHeight, 360);
+            //Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.PlatformRadius, _hexapod.PlatformRadius,
+            //                _hexapod.PlatformHeight, 360, 360);
+            GL.PushMatrix();
+            GL.Translate(0, 0, -_hexapod.CardanHeight);
             DrawCardans();
-            Gl.glPopMatrix();
-            Gl.glPopMatrix();
-            Gl.glPopMatrix();
-            Gl.glPopMatrix();
+            GL.PopMatrix();
+            GL.PopMatrix();
+            GL.PopMatrix();
+            GL.PopMatrix();
         }
 
         private void DrawCardans()
@@ -329,11 +390,12 @@ namespace Hexapod
 
         private void DrawCardan(Point p)
         {
-            Gl.glPushMatrix();
-            Gl.glTranslated(p.X, p.Y, p.Z - _hexapod.CardanHeight);
-            Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.CardanHeight,
-                            360, 360);
-            Gl.glPopMatrix();
+            GL.PushMatrix();
+            GL.Translate(p.X, p.Y, p.Z - _hexapod.CardanHeight);
+            DrawCylinder((float)_hexapod.CardanRadius, (float)_hexapod.CardanRadius, (float)_hexapod.CardanHeight, 360);
+            // Glu.gluCylinder(Glu.gluNewQuadric(), _hexapod.CardanRadius, _hexapod.CardanRadius, _hexapod.CardanHeight,
+            //                 360, 360);
+            GL.PopMatrix();
         }
 
         private void uiSettingsVisibleButton_Click(object sender, EventArgs e)
@@ -530,4 +592,3 @@ namespace Hexapod
         }
     }
 }
-
